@@ -23,25 +23,28 @@
 </head>
 <body>
     <main>
-        <section>
-            <div class="page">
-                <h1>Megan Judge's Favourite Podcasts</h1>
-            </div>
-        </section>
-        <section>
-            <div class="page">
-            <div class="podgrid" id="podgrid"></div>
-            <div class="footer"><p>© 2025 Megan Judge. All rights reserved.</p></div>
-            </div>
-        </section>
-        <section>
-            <div class="page">
-                <div class="footer">
-                    <p>© 2025 Megan Judge. All rights reserved.</p>
-                </div>
-            </div>
-        </section>
-    </main>
-    <script src="script.js"></script>
+
+        <header>
+            <h1>Megan Judge's Favourite Podcasts</h1>
+        </header>
+
+        <div class="podgroup podgroup-often">
+            <h2 class="group-title">Often</h2>
+            <div class="podgrid podgrid-lg" id="grid-lg"></div>
+            <div class="podgrid podgrid-md" id="grid-md"> </div>
+        </div>
+
+        <div class="podgroup podgroup-occasionally">
+            <h2 class="group-title">Occassionally</h2>
+            <div class="podgrid podgrid-sm" id="grid-sm"></div>
+        </div>
+
+        <footer class="footer">
+            <p>© 2025 Megan Judge. All rights reserved.</p>
+        </footer>
+
+        </main>
+
+    <script src="script.js" defer></script>
 </body>
 </html>
