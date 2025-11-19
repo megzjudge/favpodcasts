@@ -1,11 +1,3 @@
-/*
-  Updates:
-    • All “podcast” entries show 🎙️, all “channel” entries show 🔊.
-    • Years label uses spaced en dash and “current” when active.
-    • JRE “Episodes” parsed from latest numbered titles (#NNNN).
-    • CaspianReport thumbnail: use Unavatar for YouTube handle; fallback to iTunes/Spotify.
-*/
-
 const ICONS = {
   youtube:
     '<svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.3 3.5 12 3.5 12 3.5s-7.3 0-9.4.6A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c2.1.6 9.4.6 9.4.6s7.3 0 9.4-.6a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8zM9.6 15.6V8.4L15.8 12l-6.2 3.6z"/></svg>',
