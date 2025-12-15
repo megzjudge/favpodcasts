@@ -176,18 +176,18 @@ const PODCASTS = [
   },
   {
     size:'sm', kind:'podcast',
-    title:'',
+    title:'Jocko Podcast',
     links:[
-      { label:'Spotify', href:'', icon:'spotify', size:'sm' },
-      { label:'YouTube', href:'', icon:'youtube', size:'sm' }
+      { label:'Spotify', href:'https://open.spotify.com/show/7irxBvxNqGYnUdFo1c2gMc', icon:'spotify', size:'sm' },
+      { label:'YouTube', href:'https://www.youtube.com/c/JockoPodcastOfficial', icon:'youtube', size:'sm' }
     ]
   },
   {
     size:'sm', kind:'podcast',
-    title:'',
+    title:'Russell Brand',
     links:[
-      { label:'Spotify', href:'', icon:'spotify', size:'sm' },
-      { label:'YouTube', href:'', icon:'youtube', size:'sm' }
+      { label:'Spotify', href:'https://open.spotify.com/show/1bmU8gqK78sF4iD2OKFKUZ', icon:'spotify', size:'sm' },
+      { label:'YouTube', href:'https://www.youtube.com/@RussellBrand', icon:'youtube', size:'sm' }
     ]
   }
 ];
