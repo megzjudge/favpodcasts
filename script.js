@@ -62,7 +62,7 @@ const PODCASTS = [
   {
     size:'md', kind:'channel',
     title:'CaspianReport',
-    art:'youtube', // prefer YouTube avatar via Unavatar
+    art:'youtube',
     links:[
       { label:'YouTube', href:'https://www.youtube.com/@CaspianReport', icon:'youtube', size:'md' }
     ]
@@ -107,6 +107,87 @@ const PODCASTS = [
     links:[
       { label:'Spotify', href:'https://open.spotify.com/show/0W3GWublEOW75ufTa8vAGq', icon:'spotify', size:'sm' },
       { label:'YouTube', href:'https://www.youtube.com/@MarkBourisYT', icon:'youtube', size:'sm' }
+    ]
+  },
+  {
+    size:'sm', kind:'podcast',
+    title:'Nomad Capitalist',
+    links:[
+      { label:'Spotify', href:'https://open.spotify.com/show/6obf671rfu4baNg2xBy5fG', icon:'spotify', size:'sm' },
+      { label:'YouTube', href:'https://www.youtube.com/c/nomadcapitalist', icon:'youtube', size:'sm' }
+    ]
+  },
+  {
+    size:'sm', kind:'podcast',
+    title:'Dark Horse Podcast with Bret Weinstein and Heather Heying',
+    links:[
+      { label:'Spotify', href:'https://open.spotify.com/show/57R7dOcs60jUfOnuNG0J1R', icon:'spotify', size:'sm' },
+      { label:'YouTube', href:'https://www.youtube.com/c/BretWeinsteinDarkHorse', icon:'youtube', size:'sm' },
+      { label:'Website', href:'https://www.bretweinstein.net/darkhorse-podcast', icon:'website', size:'sm' },
+      { label:'YouTube', href:'https://www.youtube.com/@DarkHorsePodcastClips/videos', icon:'youtube', size:'sm' }
+    ]
+  },
+  {
+    size:'sm', kind:'podcast',
+    title:'Huberman Lab',
+    links:[
+      { label:'Spotify', href:'https://open.spotify.com/show/79CkJF3UJTHFV8Dse3Oy0P', icon:'spotify', size:'sm' },
+      { label:'YouTube', href:'https://www.youtube.com/c/AndrewHubermanLab', icon:'youtube', size:'sm' }
+    ]
+  },
+  {
+    size:'sm', kind:'podcast',
+    title:'Lex Fridman',
+    links:[
+      { label:'Spotify', href:'https://open.spotify.com/show/2MAi0BvDc6GTFvKFPXnkCL', icon:'spotify', size:'sm' },
+      { label:'YouTube', href:'https://www.youtube.com/c/lexfridman', icon:'youtube', size:'sm' }
+    ]
+  },
+  {
+    size:'sm', kind:'channel',
+    title:'DW Documentary',
+    links:[
+      { label:'YouTube', href:'https://www.youtube.com/c/DWDocumentary', icon:'youtube', size:'sm' }
+    ]
+  },
+  {
+    size:'sm', kind:'podcast',
+    title:'ReasonTV',
+    links:[
+      { label:'YouTube', href:'https://www.youtube.com/@ReasonTV', icon:'youtube', size:'sm' },
+      { label:'Website', href:'https://reason.org/about-reason-foundation/', icon:'website', size:'sm' }
+    ]
+  },
+  {
+    size:'sm', kind:'podcast',
+    title:'The Rubin Report',
+    links:[
+      { label:'Spotify', href:'https://open.spotify.com/show/40MKOGQ99YLZvgR2KYHmHl', icon:'spotify', size:'sm' },
+      { label:'YouTube', href:'https://www.youtube.com/watch?v=f8BBzY3PqMI&list=PLEbhOtC9klbAEFtDOff5ZNzDDJTiLCdWc', icon:'youtube', size:'sm' }
+    ]
+  },
+  {
+    size:'sm', kind:'podcast',
+    title:'Uncommon Knowledge | Hoover Institution',
+    links:[
+      { label:'Youtube', href:'https://www.youtube.com/@HooverInstitution', icon:'youtube', size:'sm' },
+      { label:'Website', href:'https://www.hoover.org/publications/uncommon-knowledge', icon:'website', size:'sm' }
+    ]
+  },
+  {
+    size:'sm', kind:'podcast',
+    title:'',
+    links:[
+      { label:'Spotify', href:'', icon:'spotify', size:'sm' },
+      { label:'YouTube', href:'', icon:'youtube', size:'sm' }
+    ]
+  },
+  {
+    size:'sm', kind:'podcast',
+    title:'',
+    links:[
+      { label:'Spotify', href:'', icon:'spotify', size:'sm' },
+      { label:'YouTube', href:'', icon:'youtube', size:'sm' }
     ]
   }
 ];
