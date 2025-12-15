@@ -48,7 +48,8 @@ const PODCASTS = [
     title:'Academy of Ideas',
     links:[
       { label:'Spotify', href:'https://open.spotify.com/show/2dio7KUNuDHErlMumZtNt6', icon:'spotify', size:'md' },
-      { label:'YouTube', href:'https://www.youtube.com/@academyofideas', icon:'youtube', size:'md' }
+      { label:'YouTube', href:'https://www.youtube.com/@academyofideas', icon:'youtube', size:'md' },
+      { label:'Substack', href:'https://theacademyofideas.substack.com/', icon:'substack', size:'md' }
     ]
   },
   {
@@ -65,6 +66,14 @@ const PODCASTS = [
     art:'youtube',
     links:[
       { label:'YouTube', href:'https://www.youtube.com/@CaspianReport', icon:'youtube', size:'md' }
+    ]
+  },
+  {
+    size:'md', kind:'channel',
+    title:'After Skool',
+    art:'youtube',
+    links:[
+      { label:'YouTube', href:'https://www.youtube.com/@AfterSkool', icon:'youtube', size:'md' }
     ]
   },
 
@@ -144,6 +153,14 @@ const PODCASTS = [
     ]
   },
   {
+    size:'sm', kind:'podcast',
+    title:'Peter Boghossian: Conversations & Street Epistemology',
+    links:[
+      { label:'Spotify', href:'https://open.spotify.com/show/4H8GYvSCxN4yJLnBCQDfwZ', icon:'spotify', size:'sm' },
+      { label:'YouTube', href:'https://www.youtube.com/@drpeterboghossian/', icon:'youtube', size:'sm' }
+    ]
+  },
+  {
     size:'sm', kind:'channel',
     title:'DW Documentary',
     links:[
@@ -184,6 +201,14 @@ const PODCASTS = [
   },
   {
     size:'sm', kind:'podcast',
+    title:'Russell Brand',
+    links:[
+      { label:'Spotify', href:'https://open.spotify.com/show/1bmU8gqK78sF4iD2OKFKUZ', icon:'spotify', size:'sm' },
+      { label:'YouTube', href:'https://www.youtube.com/@RussellBrand', icon:'youtube', size:'sm' }
+    ]
+  },
+  {
+    size:'sm', kind:'channel',
     title:'Russell Brand',
     links:[
       { label:'Spotify', href:'https://open.spotify.com/show/1bmU8gqK78sF4iD2OKFKUZ', icon:'spotify', size:'sm' },
