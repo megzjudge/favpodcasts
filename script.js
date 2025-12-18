@@ -209,10 +209,17 @@ const PODCASTS = [
   },
   {
     size:'sm', kind:'channel',
-    title:'Russell Brand',
+    title:'Dan Crenshaw',
     links:[
-      { label:'Spotify', href:'https://open.spotify.com/show/1bmU8gqK78sF4iD2OKFKUZ', icon:'spotify', size:'sm' },
-      { label:'YouTube', href:'https://www.youtube.com/@RussellBrand', icon:'youtube', size:'sm' }
+      { label:'Spotify', href:'https://open.spotify.com/show/2BbbFyOBNTLpYDzUai6ta2?si=d59ad3a3fad64f75&nd=1', icon:'spotify', size:'sm' },
+      { label:'YouTube', href:'https://www.youtube.com/@RepDanCrenshaw', icon:'youtube', size:'sm' }
+    ]
+  },
+  {
+    size:'sm', kind:'channel',
+    title:'Shane Hazel',
+    links:[
+      { label:'Spotify', href:'https://open.spotify.com/show/7ztGuDsRRnwL9PnZQhZPwP?si=50b6c72abc10439d&nd=1', icon:'spotify', size:'sm' },
     ]
   }
 ];
