@@ -219,8 +219,8 @@ const PODCASTS = [
     years: "2014",
     topics: "Technology, Science",
     links: [
-      { label: "Spotify", href: "https://open.spotify.com/show/2MAi0BvDc6GTFvKFPXnkCL", icon: "spotify", size: "sm" },
       { label: "YouTube", href: "https://www.youtube.com/c/lexfridman", icon: "youtube", size: "sm" },
+      { label: "Spotify", href: "https://open.spotify.com/show/2MAi0BvDc6GTFvKFPXnkCL", icon: "spotify", size: "sm" },
       { label: "Grokipedia", href: "https://grokipedia.com/page/Lex_Fridman", icon: "grokipedia", size: "sm" },
       { label: "Podchaser", href: "https://www.podchaser.com/podcasts/lex-fridman-podcast-721928", icon: "podchaser", size: "sm" }
     ]
