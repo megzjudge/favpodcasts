@@ -77,6 +77,14 @@ h1{
     color:var(--gold);
     text-shadow:2px 2px 6px var(--shadow);
     letter-spacing:.5px;
+    font-family: 'maccoy', fantasy;
+}
+
+@font-face {
+    font-family: 'maccoy';
+    src: url('fonts/Maccoy_Regular.otf');
+    font-style: normal;
+    font-display: swap;
 }
 
 /* ====== SECTIONS (transparent; normalized spacing) ====== */
