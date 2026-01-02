@@ -1,7 +1,7 @@
 :root{
     /* Page + cards */
-    --page:#124232;              /* page background (lighter green) */
-    --panel:#0c1c16;             /* cards (dark) */
+    --page:#124232;
+    --panel:#0c1c16;
     --panel-hover:#0e211a;
 
     /* Accents */
@@ -10,7 +10,7 @@
     --muted:#cbd5d1;
 
     /* Reds */
-    --red-700:#8a0000;           /* darker hover red */
+    --red-700:#8a0000;
     --red-600:#b30000;
     --red-500:#d11111;
 
@@ -83,11 +83,11 @@ h1{
 .podgroup{
     width:100%;
     max-width:1000px;
-    background:transparent;          /* no middle dark band */
+    background:transparent;
     border-radius:18px;
-    box-shadow:none;                  /* no section shadow */
-    padding:0 32px 32px;              /* bottom padding = 32 */
-    margin: auto 48px;            /* equal external spacing above & below */
+    box-shadow:none;
+    padding:0 32px 32px;
+    margin: auto 48px;
 }
 
 /* Title with symmetric spacing and gold rules */
@@ -98,7 +98,7 @@ h1{
     color:var(--gold);
     text-shadow:2px 2px 5px var(--shadow);
     font-size:2rem;
-    margin:32px 0;                    /* equal lead-in/out around titles */
+    margin:32px 0;
     padding:0;
 }
 .group-title::before,
@@ -107,7 +107,7 @@ h1{
     display:block;
     height:1px;
     background:rgba(212,175,55,.25);
-    margin:14px 0;                    /* equal space above/below title text */
+    margin:14px 0;
 }
 
 /* ====== GRIDS ====== */
@@ -115,16 +115,16 @@ h1{
     width:100%;
     display:grid;
     grid-template-columns:1fr;
-    gap:28px;                         /* space between cards */
-    margin:0 0 32px 0;                /* bottom space mirrors title’s top */
+    gap:28px;
+    margin:0 0 32px 0;
     background:transparent;
 }
 
 /* ====== CARDS ====== */
 .pod{
-    background:var(--panel);          /* only cards are dark */
+    background:var(--panel);
     border-radius:16px;
-    padding:38px 26px 36px;           /* extra top for badge clearance */
+    padding:38px 26px 36px;
     box-shadow:
         0 12px 36px rgba(0,0,0,.40),
         inset 0 0 0 1px rgba(255,255,255,.03);
@@ -133,10 +133,9 @@ h1{
     flex-direction:column;
     align-items:center;
     text-align:center;
-    position:relative;                /* enable badge positioning */
+    position:relative;
 }
 
-/* Card hover (restricted to grid content) */
 .podgrid .pod:hover{
     transform:translateY(-3px);
     box-shadow:0 18px 48px rgba(0,0,0,.55), 0 0 14px var(--glow);
@@ -290,4 +289,29 @@ h2.group-title {
     height:1px;
     background:rgba(212,175,55,.25);
     margin:14px 0;
+}
+
+/* ====== MOBILE ====== */
+@media (max-width: 480px){
+  .links{
+    gap:10px 10px;
+    max-width:100%;
+  }
+
+  .pill{
+    --pill-pad:.64rem .9rem;
+    --pill-fs:.86rem;
+
+    border-width:2px;
+  }
+
+  .pill svg{
+    width:1em;
+    height:1em;
+    margin-right:.28em;
+  }
+
+  .pill.lg{ --pill-fs:.90rem; }
+  .pill.md{ --pill-fs:.84rem; }
+  .pill.sm{ --pill-fs:.80rem; }
 }
