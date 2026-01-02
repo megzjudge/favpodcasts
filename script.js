@@ -387,18 +387,21 @@ const getBadge = (cfg) => {
 /* Cloudflare Pages Function at functions/podchaser.js => /podchaser */
 async function podchaserCount(title){
   const url = `/podchaser?title=${encodeURIComponent(title)}`;
-  const res = await fetch(url, { headers: { "accept": "application/json" } });
+  const res = await fetch(url, { headers: { accept: "application/json" } });
 
   const ct = (res.headers.get("content-type") || "").toLowerCase();
+  const text = await res.text();
 
-  // If your function didn’t run (or routing fell through), you’ll get HTML.
-  if (!ct.includes("application/json")){
-    const text = await res.text();
-    throw new Error(`Podchaser non-JSON response (${res.status}) from ${url}: ${text.slice(0,200)}`);
+  // This will tell you immediately whether you hit the function or index.html
+  console.log("[podchaserCount]", { url, status: res.status, contentType: ct, head: text.slice(0,120) });
+
+  if (!res.ok) throw new Error(`Podchaser failed (${res.status}): ${text.slice(0,200)}`);
+  try{
+    const data = JSON.parse(text);
+    return Number.isFinite(data.numberOfEpisodes) ? data.numberOfEpisodes : null;
+  }catch{
+    throw new Error(`Podchaser non-JSON (${res.status}) from ${url}: ${text.slice(0,200)}`);
   }
-
-  const data = await res.json();
-  return Number.isFinite(data.numberOfEpisodes) ? data.numberOfEpisodes : null;
 }
 
 /* Thumb cache to avoid repeated network calls */
