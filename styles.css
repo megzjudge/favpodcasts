@@ -299,7 +299,7 @@ h2.group-title {
   }
 
   .pill{
-    --pill-pad: .64rem .9rem;
+    --pill-pad: .64rem .7rem;
     --pill-fs: .86rem;
 
     border-width: 2px;
