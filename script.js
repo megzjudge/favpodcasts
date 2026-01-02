@@ -37,6 +37,7 @@ const PODCASTS = [
     title:'Triggernometry',
     links:[
       { label:'YouTube', href:'https://www.youtube.com/@triggerpod', icon:'youtube', size:'lg' },
+      { label:'YouTube Clips', href:'https://www.youtube.com/@TRIGGERClips', icon:'youtube', size:'lg' },
       { label:'Spotify', href:'https://open.spotify.com/show/1JH26td5UtmKQWHLv0NCZp', icon:'spotify', size:'lg' },
       { label:'Substack', href:'https://www.triggerpod.co.uk/', icon:'substack', size:'md' }
     ]
@@ -66,14 +67,6 @@ const PODCASTS = [
     art:'youtube',
     links:[
       { label:'YouTube', href:'https://www.youtube.com/@CaspianReport', icon:'youtube', size:'md' }
-    ]
-  },
-  {
-    size:'md', kind:'channel',
-    title:'After Skool',
-    art:'youtube',
-    links:[
-      { label:'YouTube', href:'https://www.youtube.com/@AfterSkool', icon:'youtube', size:'md' }
     ]
   },
 
@@ -220,6 +213,14 @@ const PODCASTS = [
     title:'Shane Hazel',
     links:[
       { label:'Spotify', href:'https://open.spotify.com/show/7ztGuDsRRnwL9PnZQhZPwP?si=50b6c72abc10439d&nd=1', icon:'spotify', size:'sm' },
+    ]
+  },
+  {
+    size:'md', kind:'channel',
+    title:'After Skool',
+    art:'youtube',
+    links:[
+      { label:'YouTube', href:'https://www.youtube.com/@AfterSkool', icon:'youtube', size:'md' }
     ]
   }
 ];
