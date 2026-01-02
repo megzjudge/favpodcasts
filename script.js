@@ -12,404 +12,33 @@ const ICONS = {
 };
 
 /* kind: 'podcast' => 🎙️, 'channel' => 🔊 */
-const KIND_BADGE = { podcast:'🎙️', channel:'🔊' };
-
-const PODCASTS = [
-  /* Often (large) */
-  {
-    size:'lg', kind:'podcast',
-    title:'The Joe Rogan Experience',
-    years: '2009',
-    topics: 'Comedy, Society & Culture',
-    links:[
-      { label:'Spotify', href:'https://open.spotify.com/show/4rOoJ6Egrf8K2IrywzwOMk', icon:'spotify', size:'lg' },
-      { label:'YouTube', href:'https://www.youtube.com/@joerogan', icon:'youtube', size:'lg' },
-      { label:'Spotify', href:'https://open.spotify.com/show/1LMmQF9PH8LjYrktU0Oq5Y', icon:'spotify', size:'md' },
-      { label:'YouTube', href:'https://www.youtube.com/@JREClips', icon:'youtube', size:'md' },
-      { label:'Grokipedia', href: 'https://grokipedia.com/page/The_Joe_Rogan_Experience', icon:'grokipedia', size:'sm' },
-      { label:'Podchaser', href: 'https://www.podchaser.com/podcasts/the-joe-rogan-experience-10829', icon:'podchaser', size:'sm' }
-    ]
-  },
-  {
-    size:'lg', kind:'podcast',
-    title:'Modern Wisdom',
-    years: '2018',
-    topics: 'Society & Culture, Health & Fitness',
-    links:[
-      { label:'Spotify', href:'https://open.spotify.com/show/0XrOqvxlqQI6bmdYHuIVnr', icon:'spotify', size:'lg' },
-      { label:'YouTube', href:'https://www.youtube.com/@ChrisWillx', icon:'youtube', size:'lg' },
-      { label:'Grokipedia', href: 'https://grokipedia.com/page/Chris_Williamson', icon:'grokipedia', size:'sm' },
-      { label:'Podchaser', href: 'https://www.podchaser.com/podcasts/modern-wisdom-5872558', icon:'podchaser', size:'sm' }
-    ]
-  },
-  {
-    size:'lg', kind:'podcast',
-    title:'Triggernometry',
-    years: '2018',
-    topics: 'Politics, News, Society & Culture',
-    links:[
-      { label:'Spotify', href:'https://open.spotify.com/show/1JH26td5UtmKQWHLv0NCZp', icon:'spotify', size:'lg' },
-      { label:'YouTube', href:'https://www.youtube.com/@triggerpod', icon:'youtube', size:'lg' },
-      { label:'YouTube Clips', href:'https://www.youtube.com/@TRIGGERClips', icon:'youtube', size:'lg' },
-      { label:'Substack', href:'https://www.triggerpod.co.uk/', icon:'substack', size:'md' },
-      { label:'Grokipedia', href: 'https://grokipedia.com/page/Konstantin_Kisin', icon:'grokipedia', size:'sm' },
-      { label:'Podchaser', href: 'https://www.podchaser.com/podcasts/triggernometry-664691', icon:'podchaser', size:'sm' }
-    ]
-  },
-
-  /* Often (medium) — channels */
-  {
-    size:'md', kind:'channel',
-    title:'Academy of Ideas',
-    years: '2012',
-    topics: 'Philosophy, Psychology, Society & Culture',
-    links:[
-
-      { label:'Spotify', href:'https://open.spotify.com/show/2dio7KUNuDHErlMumZtNt6', icon:'spotify', size:'md' },
-      { label:'YouTube', href:'https://www.youtube.com/@academyofideas', icon:'youtube', size:'md' },
-      { label:'Substack', href:'https://theacademyofideas.substack.com/', icon:'substack', size:'md' },
-      { label:'Podchaser', href: 'https://www.podchaser.com/podcasts/academy-of-ideas-649141', icon:'podchaser', size:'sm' }
-    ]
-  },
-  {
-    size:'md', kind:'channel',
-    title:'Eternalised',
-    years: '2020',
-    topics: 'Philosophy, Psychology, Society & Culture',
-    links:[
-      { label:'Spotify', href:'https://open.spotify.com/show/6Wimp2yM4QWuIJZneUNqbr', icon:'spotify', size:'md' },
-      { label:'YouTube', href:'https://www.youtube.com/@Eternalised', icon:'youtube', size:'md' },
-      { label:'Podchaser', href: 'https://www.podchaser.com/podcasts/eternalised-1419110', icon:'podchaser', size:'sm' }
-    ]
-  },
-  {
-    size:'md', kind:'channel',
-    title:'CaspianReport',
-    years: '2010',
-    topics: 'Politics, News',
-    links:[
-      { label:'YouTube', href:'https://www.youtube.com/@CaspianReport', icon:'youtube', size:'md' }
-    ]
-  },
-
-  /* Occasionally (small) — podcasts */
-  {
-    size:'sm', kind:'podcast',
-    title:'The Jordan B Peterson Podcast',
-    years: '2016',
-    topics: 'Society & Culture, Education, Psychology',
-    links:[
-      { label:'Spotify', href:'https://open.spotify.com/show/1Zw2DKjelPnuEYpydFlhgN', icon:'spotify', size:'sm' },
-      { label:'YouTube', href:'https://www.youtube.com/@JordanBPeterson', icon:'youtube', size:'sm' },
-      { label:'Grokipedia', href: 'https://grokipedia.com/page/jordan_b_peterson#podcast-and-lecture-series', icon:'grokipedia', size:'sm' },
-      { label:'Podchaser', href: 'https://www.podchaser.com/podcasts/the-jordan-b-peterson-podcast-225906', icon:'podchaser', size:'sm' }
-    ]
-  },
-  {
-    size:'sm', kind:'podcast',
-    title:'John Anderson: Conversations',
-    years: '2018',
-    topics: 'Society & Culture, Politics',
-    links:[
-      { label:'Spotify', href:'https://open.spotify.com/show/6Qh2fEsC7nEVxXxQzwTv54', icon:'spotify', size:'sm' },
-      { label:'YouTube', href:'https://www.youtube.com/@JohnAndersonMedia', icon:'youtube', size:'sm' },
-      { label:'Grokipedia', href: 'https://grokipedia.com/page/John_Anderson', icon:'grokipedia', size:'sm' },
-      { label:'Podchaser', href: 'https://www.podchaser.com/podcasts/john-anderson-conversations-657776', icon:'podchaser', size:'sm' }
-    ]
-  },
-  {
-    size:'sm', kind:'podcast',
-    title:'Heretics',
-    years: '2023',
-    topics: 'News, Society & Culture',
-    links:[
-      { label:'Spotify', href:'https://open.spotify.com/show/2NiFf7pGB4pqkvbrnS1b9X', icon:'spotify', size:'sm' },
-      { label:'YouTube', href:'https://www.youtube.com/@andrewgoldheretics', icon:'youtube', size:'sm' },
-      { label:'Grokipedia', href: 'https://grokipedia.com/page/andrew-gold-journalist', icon:'grokipedia', size:'sm' },
-      { label:'Podchaser', href: 'https://www.podchaser.com/podcasts/heretics-1316949', icon:'podchaser', size:'sm' }
-    ]
-  },
-  {
-    size:'sm', kind:'podcast',
-    title:'Within Reason',
-    years: '2019',
-    topics: 'Philosophy, Society & Culture',
-    links:[
-      { label:'Spotify', href:'https://open.spotify.com/show/16wUbvDT95dxzpG2KEhakK', icon:'spotify', size:'sm' },
-      { label:'YouTube', href:'https://www.youtube.com/@CosmicSkeptic', icon:'youtube', size:'sm' },
-      { label:'Grokipedia', href: 'https://grokipedia.com/page/alex-oconnor', icon:'grokipedia', size:'sm' },
-      { label:'Podchaser', href: 'https://www.podchaser.com/podcasts/within-reason-836655', icon:'podchaser', size:'sm' }
-    ]
-  },
-  {
-    size:'sm', kind:'podcast',
-    title:'Straight Talk with Mark Bouris',
-    years: '2015',
-    topics: 'Business, Society & Culture',
-    links:[
-      { label:'Spotify', href:'https://open.spotify.com/show/0W3GWublEOW75ufTa8vAGq', icon:'spotify', size:'sm' },
-      { label:'YouTube', href:'https://www.youtube.com/@MarkBourisYT', icon:'youtube', size:'sm' },
-      { label:'Grokipedia', href: 'https://grokipedia.com/page/Mark_Bouris', icon:'grokipedia', size:'sm' },
-      { label:'Podchaser', href: 'https://www.podchaser.com/podcasts/straight-talk-with-mark-bouris-1909016', icon:'podchaser', size:'sm' }
-    ]
-  },
-  {
-    size:'md', kind:'channel',
-    title:'After Skool',
-    years: '2016',
-    topics: 'Philosophy, Psychology, Education',
-    links:[
-      { label:'YouTube', href:'https://www.youtube.com/@AfterSkool', icon:'youtube', size:'md' },
-      { label:'Podchaser', href: 'https://www.podchaser.com/podcasts/after-skool-6050376/', icon:'podchaser', size:'sm' }
-    ]
-  },
-  {
-    size:'sm', kind:'podcast',
-    title:'Nomad Capitalist',
-    years: '2013',
-    topics: 'Places & Travel, Society & Culture',
-    links:[
-      { label:'Spotify', href:'https://open.spotify.com/show/6obf671rfu4baNg2xBy5fG', icon:'spotify', size:'sm' },
-      { label:'YouTube', href:'https://www.youtube.com/c/nomadcapitalist', icon:'youtube', size:'sm' },
-      { label:'Podchaser', href: 'https://www.podchaser.com/podcasts/nomad-capitalist-4986930', icon:'podchaser', size:'sm' }
-    ]
-  },
-  {
-    size:'sm', kind:'podcast',
-    title:'Dark Horse Podcast with Bret Weinstein and Heather Heying',
-    years: '2019',
-    topics: 'Science, Society & Culture',
-    links:[
-      { label:'Spotify', href:'https://open.spotify.com/show/57R7dOcs60jUfOnuNG0J1R', icon:'spotify', size:'sm' },
-      { label:'YouTube', href:'https://www.youtube.com/c/BretWeinsteinDarkHorse', icon:'youtube', size:'sm' },
-      { label:'YouTube', href:'https://www.youtube.com/@DarkHorsePodcastClips/videos', icon:'youtube', size:'sm' },
-      { label:'Grokipedia', href: 'https://grokipedia.com/page/Bret_Weinstein', icon:'grokipedia', size:'sm' },
-      { label:'Grokipedia', href: 'https://grokipedia.com/page/Heather_Heying', icon:'grokipedia', size:'sm' },
-      { label:'Podchaser', href: 'https://www.podchaser.com/podcasts/darkhorse-podcast-891627', icon:'podchaser', size:'sm' }
-    ]
-  },
-  {
-    size:'sm', kind:'podcast',
-    title:'Huberman Lab',
-    years: '2020',
-    topics: 'Health & Fitness, Science',
-    links:[
-      { label:'Spotify', href:'https://open.spotify.com/show/79CkJF3UJTHFV8Dse3Oy0P', icon:'spotify', size:'sm' },
-      { label:'YouTube', href:'https://www.youtube.com/c/AndrewHubermanLab', icon:'youtube', size:'sm' },
-      { label:'Grokipedia', href: 'https://grokipedia.com/page/Andrew_Huberman', icon:'grokipedia', size:'sm' },
-      { label:'Podchaser', href: 'https://www.podchaser.com/podcasts/huberman-lab-1576373', icon:'podchaser', size:'sm' }
-    ]
-  },
-  {
-    size:'sm', kind:'podcast',
-    title:'Lex Fridman',
-    years: '2014',
-    topics: 'Technology, Science',
-    links:[
-      { label:'Spotify', href:'https://open.spotify.com/show/2MAi0BvDc6GTFvKFPXnkCL', icon:'spotify', size:'sm' },
-      { label:'YouTube', href:'https://www.youtube.com/c/lexfridman', icon:'youtube', size:'sm' },
-      { label:'Grokipedia', href: 'https://grokipedia.com/page/Lex_Fridman', icon:'grokipedia', size:'sm' },
-      { label:'Podchaser', href: 'https://www.podchaser.com/podcasts/lex-fridman-podcast-721928', icon:'podchaser', size:'sm' }
-    ]
-  },
-  {
-    size:'sm', kind:'podcast',
-    title:'Conversations with Peter Boghossian',
-    years: '2012',
-    topics: 'Society & Culture, News',
-    links:[
-      { label:'Spotify', href:'https://open.spotify.com/show/4H8GYvSCxN4yJLnBCQDfwZ', icon:'spotify', size:'sm' },
-      { label:'YouTube', href:'https://www.youtube.com/@drpeterboghossian/', icon:'youtube', size:'sm' },
-      { label:'Grokipedia', href: 'https://grokipedia.com/page/Peter_Boghossian', icon:'grokipedia', size:'sm' },
-      { label:'Podchaser', href: 'https://www.podchaser.com/podcasts/conversations-with-peter-bogho-4930998', icon:'podchaser', size:'sm' }
-    ]
-  },
-  {
-    size:'sm', kind:'channel',
-    title:'DW Documentary',
-    years: '2014',
-    topics: 'Documentary, Society & Culture',
-    links:[
-      { label:'YouTube', href:'https://www.youtube.com/c/DWDocumentary', icon:'youtube', size:'sm' },
-      { label:'Grokipedia', href: 'https://grokipedia.com/page/DW-TV', icon:'grokipedia', size:'sm' }
-    ]
-  },
-  {
-    size:'sm', kind:'podcast',
-    title:'ReasonTV',
-    years: '2007',
-    topics: 'Politics, Society & Culture',
-    links:[
-      { label:'YouTube', href:'https://www.youtube.com/@ReasonTV', icon:'youtube', size:'sm' },
-      { label:'Website', href:'https://reason.org/about-reason-foundation/', icon:'website', size:'sm' },
-      { label:'Grokipedia', href: 'https://grokipedia.com/page/Reason_Foundation', icon:'grokipedia', size:'sm' }
-    ]
-  },
-  {
-    size:'sm', kind:'podcast',
-    title:'The Rubin Report',
-    years: '2013',
-    topics: 'News Commentary, News',
-    links:[
-      { label:'Spotify', href:'https://open.spotify.com/show/40MKOGQ99YLZvgR2KYHmHl', icon:'spotify', size:'sm' },
-      { label:'YouTube', href:'https://www.youtube.com/watch?v=UMTacwjK-QI&list=PLEbhOtC9klbAEFtDOff5ZNzDDJTiLCdWc', icon:'youtube', size:'sm' },
-      { label:'Grokipedia', href: 'https://grokipedia.com/page/The_Rubin_Report', icon:'grokipedia', size:'sm' },
-      { label:'Podchaser', href: 'https://www.podchaser.com/podcasts/the-rubin-report-1564', icon:'podchaser', size:'sm' }
-    ]
-  },
-  {
-    size:'sm', kind:'podcast',
-    title:'Uncommon Knowledge | Hoover Institution',
-    years: '2008',
-    topics: 'Politics, History, Society & Culture',
-    links:[
-      { label:'Youtube', href:'https://www.youtube.com/@HooverInstitution', icon:'youtube', size:'sm' },
-      { label:'Website', href:'https://www.hoover.org/publications/uncommon-knowledge', icon:'website', size:'sm' },
-      { label:'Grokipedia', href: 'https://grokipedia.com/page/Hoover_Institution', icon:'grokipedia', size:'sm' },
-      { label:'Podchaser', href: 'https://www.podchaser.com/podcasts/uncommon-knowledge-666841', icon:'podchaser', size:'sm' }
-    ]
-  },
-  {
-    size:'sm', kind:'podcast',
-    title:'Jocko Podcast',
-    years: '2015',
-    topics: 'Self-Improvement, Health & Fitness, Society & Culture',
-    links:[
-      { label:'Spotify', href:'https://open.spotify.com/show/7irxBvxNqGYnUdFo1c2gMc', icon:'spotify', size:'sm' },
-      { label:'YouTube', href:'https://www.youtube.com/c/JockoPodcastOfficial', icon:'youtube', size:'sm' },
-      { label:'Grokipedia', href: 'https://grokipedia.com/page/Jocko_Willink', icon:'grokipedia', size:'sm' },
-      { label:'Podchaser', href: 'https://www.podchaser.com/podcasts/jocko-podcast-208346', icon:'podchaser', size:'sm' }
-    ]
-  },
-  {
-    size:'sm', kind:'podcast',
-    title:'Russell Brand',
-    years: '2017',
-    topics: 'News Commentary, News, Politics',
-    links:[
-      { label:'Spotify', href:'https://open.spotify.com/show/1bmU8gqK78sF4iD2OKFKUZ', icon:'spotify', size:'sm' },
-      { label:'YouTube', href:'https://www.youtube.com/@RussellBrand', icon:'youtube', size:'sm' },
-      { label:'Grokipedia', href: 'https://grokipedia.com/page/Russell_Brand', icon:'grokipedia', size:'sm' },
-      { label:'Podchaser', href: 'https://www.podchaser.com/podcasts/under-the-skin-with-russell-br-455708', icon:'podchaser', size:'sm' },
-      { label:'Podchaser', href: 'https://www.podchaser.com/podcasts/stay-free-with-russell-brand-4912796', icon:'podchaser', size:'sm' }
-    ]
-  },
-  {
-    size:'sm', kind:'podcast',
-    title:'Hold These Truths with Dan Crenshaw',
-    years: '2019',
-    topics: 'Politics, Society & Culture, News',
-    links:[
-      { label:'Spotify', href:'https://open.spotify.com/show/2BbbFyOBNTLpYDzUai6ta2?si=d59ad3a3fad64f75&nd=1', icon:'spotify', size:'sm' },
-      { label:'YouTube', href:'https://www.youtube.com/@RepDanCrenshaw', icon:'youtube', size:'sm' },
-      { label:'Grokipedia', href: 'https://grokipedia.com/page/Dan_Crenshaw', icon:'grokipedia', size:'sm' },
-      { label:'Podchaser', href: 'https://www.podchaser.com/podcasts/hold-these-truths-with-dan-cre-1037869', icon:'podchaser', size:'sm' }
-    ]
-  },
-  {
-    size:'sm', kind:'podcast',
-    title:'The Shane Hazel Show',
-    years: '2020',
-    topics: 'Comedy, Society & Cultures',
-    links:[
-      { label:'Spotify', href:'https://open.spotify.com/show/7ztGuDsRRnwL9PnZQhZPwP?si=50b6c72abc10439d&nd=1', icon:'spotify', size:'sm' },
-      { label:'Grokipedia', href: '', icon:'grokipedia', size:'sm' },
-      { label:'Podchaser', href: 'https://www.podchaser.com/podcasts/the-shane-hazel-show-1153063', icon:'podchaser', size:'sm' }
-    ]
-  }
-];
-
-/* iTunes: search for show (get collectionId + details) */
-async function itunesFindShow(title){
-  try{
-    const url = `https://itunes.apple.com/search?term=${encodeURIComponent(title)}&media=podcast&limit=1&country=au`;
-    const res = await fetch(url);
-    if(!res.ok) throw new Error('iTunes search failed');
-    const data = await res.json();
-    const item = (data.results || [])[0];
-    if(!item) return null;
-    return {
-      collectionId: item.collectionId,
-      title:        item.collectionName || item.trackName || title,
-      description:  item.description || '',
-      genres:       item.genres || [],
-      trackCount:   item.trackCount || null,
-      releaseDate:  item.releaseDate || null,
-      artwork:      item.artworkUrl600 || item.artworkUrl100 || null
-    };
-  }catch(e){
-    console.warn('iTunes find error', e);
-    return null;
-  }
-}
-
-/* iTunes: lookup up to 200 episodes; return list + first/last dates */
-async function itunesEpisodes(collectionId){
-  try{
-    const url = `https://itunes.apple.com/lookup?id=${collectionId}&entity=podcastEpisode&limit=200`;
-    const res = await fetch(url);
-    if(!res.ok) throw new Error('iTunes lookup failed');
-    const data = await res.json();
-    const eps = (data.results || []).filter(r => r.wrapperType === 'podcastEpisode');
-    let first = null, last = null;
-    for (const e of eps){
-      const d = e.releaseDate ? new Date(e.releaseDate) : null;
-      if(!d) continue;
-      if(!first || d < first) first = d;
-      if(!last  || d > last ) last  = d;
-    }
-    return { episodes: eps, first, last };
-  }catch(e){
-    console.warn('iTunes episode fetch error', e);
-    return { episodes: [], first: null, last: null };
-  }
-}
-
-/* Derive highest #NNNN appearing in episode titles (e.g., "#2412") */
-function maxNumberedEpisode(episodes){
-  let maxNum = null;
-  const rx = /#\s*(\d{2,5})\b/;
-  for (const e of episodes){
-    const name = e.trackName || e.collectionName || '';
-    const m = name.match(rx);
-    if (m){
-      const n = parseInt(m[1], 10);
-      if (!Number.isNaN(n) && (maxNum === null || n > maxNum)) maxNum = n;
-    }
-  }
-  return maxNum;
-}
+const KIND_BADGE = { podcast: '🎙️', channel: '🔊' };
 
 /* YouTube avatar via Unavatar (works with @handles) */
 async function youtubeThumb(channelUrl){
   try{
     const handle = channelUrl.split('/').pop() || '';
     const cleaned = handle.startsWith('@') ? handle.slice(1) : handle;
-    const unavatar = `https://unavatar.io/youtube/${encodeURIComponent(cleaned)}`;
-    const res = await fetch(unavatar, { mode:'cors' });
-    if(!res.ok) throw new Error('Unavatar failed');
-    return unavatar;
-  }catch(e){
-    console.warn('YouTube avatar fetch error', e);
+    return `https://unavatar.io/youtube/${encodeURIComponent(cleaned)}`;
+  }catch (e){
+    console.warn('YouTube avatar url error', e);
     return null;
   }
 }
 
-/* Spotify oEmbed thumbnail (fallback) */
+/* Spotify oEmbed thumbnail */
 async function spotifyThumb(spotifyUrl){
   try{
     const api = `https://open.spotify.com/oembed?url=${encodeURIComponent(spotifyUrl)}`;
     const res = await fetch(api);
-    if(!res.ok) throw new Error('Spotify oEmbed failed');
+    if (!res.ok) throw new Error('Spotify oEmbed failed');
     const data = await res.json();
     return data.thumbnail_url || null;
-  }catch(e){
+  }catch (e){
     console.warn('Spotify oEmbed error', e);
     return null;
   }
 }
-
-const firstSentence = t => (t || '').split(/(?<=[.!?])\s+/)[0] || '';
 
 const pill = link =>
   `<a class="pill ${link.size}" href="${link.href}" target="_blank" rel="noopener">
@@ -417,8 +46,8 @@ const pill = link =>
    </a>`;
 
 function mountToGrid(size){
-  if(size === 'lg') return document.getElementById('grid-lg');
-  if(size === 'md') return document.getElementById('grid-md');
+  if (size === 'lg') return document.getElementById('grid-lg');
+  if (size === 'md') return document.getElementById('grid-md');
   return document.getElementById('grid-sm');
 }
 
@@ -428,49 +57,44 @@ const getBadge = (cfg) => {
   return badge ? `<div class="podbadge" aria-hidden="true">${badge}</div>` : '';
 };
 
+/* Podchaser count (never throws; returns null on any problem) */
 async function podchaserCount(title){
-  const url = `/podchaser-count?title=${encodeURIComponent(title)}`;
-  const res = await fetch(url);
-  const text = await res.text();
-  if(!res.ok) throw new Error(`Podchaser count failed (${res.status}): ${text.slice(0,200)}`);
   try{
+    const url = `/podchaser-count?title=${encodeURIComponent(title)}`;
+    const res = await fetch(url, { headers: { accept: 'application/json' } });
+    const text = await res.text();
+
+    if (!res.ok) {
+      console.warn('Podchaser count HTTP error', res.status, text.slice(0, 200));
+      return null;
+    }
+
+    // If your route is wrong you'll get HTML here; JSON.parse will fail and we return null.
     const data = JSON.parse(text);
     return Number.isFinite(data.numberOfEpisodes) ? data.numberOfEpisodes : null;
-  }catch{
-    throw new Error(`Podchaser count non-JSON: ${text.slice(0,200)}`);
+  }catch (e){
+    console.warn('Podchaser count parse/network error', e);
+    return null;
   }
 }
 
 async function render(){
-  for(const cfg of PODCASTS){
+  for (const cfg of PODCASTS){
     const primarySpotify = (cfg.links || []).find(l => l.icon === 'spotify')?.href || null;
     const youtubeChannel = (cfg.links || []).find(l => l.icon === 'youtube')?.href || null;
 
-    const show   = await itunesFindShow(cfg.title);
+    // Thumb: Spotify first, then YouTube fallback (no iTunes)
+    const thumbUrl =
+      (primarySpotify ? await spotifyThumb(primarySpotify) : null) ||
+      (youtubeChannel ? await youtubeThumb(youtubeChannel) : null);
 
-    let thumbUrl = null;
-    if (cfg.art === 'youtube' && youtubeChannel){
-      thumbUrl = await youtubeThumb(youtubeChannel)
-              || show?.artwork
-              || (primarySpotify ? await spotifyThumb(primarySpotify) : null);
-    } else {
-      thumbUrl = show?.artwork
-              || (primarySpotify ? await spotifyThumb(primarySpotify) : (youtubeChannel ? await youtubeThumb(youtubeChannel) : null));
-    }
-
-    const topics = (show?.genres || []).filter(g => typeof g === 'string').slice(0, 4).join(', ');
-    const oneLiner = firstSentence(show?.description || '');
-
+    // Episodes: Podchaser only (optional)
     const hasPodchaser = (cfg.links || []).some(l => l.icon === 'podchaser');
-    const podchaserEpisodes = hasPodchaser ? await podchaserCount(cfg.title) : null;
-
-    const episodesCount =
-      Number.isFinite(podchaserEpisodes) ? podchaserEpisodes
-      : ((cfg.title === 'The Joe Rogan Experience' && Number.isInteger(numbered))
-          ? numbered
-          : (Number.isFinite(show?.trackCount) ? show.trackCount : null));
-
+    const episodesCount = hasPodchaser ? await podchaserCount(cfg.title) : null;
     const episodes = Number.isFinite(episodesCount) ? episodesCount.toLocaleString() : '';
+
+    const years = (cfg.years || '').trim();
+    const topics = (cfg.topics || '').trim();
 
     const card = document.createElement('article');
     card.className = `pod size-${cfg.size}`;
@@ -482,17 +106,16 @@ async function render(){
         <h2>${cfg.title}</h2>
 
         <div class="meta">
-          ${cfg.years ? `<p><strong>Created:</strong> ${cfg.years}</p>` : ''}
-          ${topics    ? `<p><strong>Topics:</strong> ${topics}</p>` : ''}
-          ${episodes  ? `<p><strong>Episodes:</strong> ${episodes}</p>` : ''}
+          ${years    ? `<p><strong>Created:</strong> ${years}</p>` : ''}
+          ${topics   ? `<p><strong>Topics:</strong> ${topics}</p>` : ''}
+          ${episodes ? `<p><strong>Episodes:</strong> ${episodes}</p>` : ''}
         </div>
-
-        ${oneLiner ? `<p class="desc">${oneLiner}</p>` : ''}
 
         <div class="links">
           ${(cfg.links || []).map(pill).join('')}
         </div>
       `;
+
     mountToGrid(cfg.size).appendChild(card);
   }
 }
