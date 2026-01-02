@@ -88,7 +88,7 @@ const PODCASTS = [
     years: '2010',
     topics: 'Politics, News',
     links:[
-      { label:'YouTube', href:'https://www.youtube.com/@CaspianReport', icon:'youtube', size:'md' },
+      { label:'YouTube', href:'https://www.youtube.com/@CaspianReport', icon:'youtube', size:'md' }
     ]
   },
 
@@ -242,7 +242,7 @@ const PODCASTS = [
     links:[
       { label:'YouTube', href:'https://www.youtube.com/@ReasonTV', icon:'youtube', size:'sm' },
       { label:'Website', href:'https://reason.org/about-reason-foundation/', icon:'website', size:'sm' },
-      { label:'Grokipedia', href: 'https://grokipedia.com/page/Reason_Foundation', icon:'grokipedia', size:'sm' },
+      { label:'Grokipedia', href: 'https://grokipedia.com/page/Reason_Foundation', icon:'grokipedia', size:'sm' }
     ]
   },
   {
