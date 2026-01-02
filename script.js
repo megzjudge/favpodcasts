@@ -344,29 +344,6 @@ const PODCASTS = [
 
 const firstSentence = t => (t || "").split(/(?<=[.!?])\s+/)[0] || "";
 
-/* YouTube avatar via Unavatar (works with @handles)
-   IMPORTANT: do NOT fetch() this URL (CORS). Just return it and let <img> load it. */
-function youtubeThumb(channelUrl){
-  const handle = (channelUrl.split("/").pop() || "").trim();
-  const cleaned = handle.startsWith("@") ? handle.slice(1) : handle;
-  if (!cleaned) return null;
-  return `https://unavatar.io/youtube/${encodeURIComponent(cleaned)}`;
-}
-
-/* Spotify oEmbed thumbnail (fallback) */
-async function spotifyThumb(spotifyUrl){
-  try{
-    const api = `https://open.spotify.com/oembed?url=${encodeURIComponent(spotifyUrl)}`;
-    const res = await fetch(api);
-    if(!res.ok) throw new Error("Spotify oEmbed failed");
-    const data = await res.json();
-    return data.thumbnail_url || null;
-  }catch(e){
-    console.warn("Spotify oEmbed error", e);
-    return null;
-  }
-}
-
 const pill = link =>
   `<a class="pill ${link.size}" href="${link.href}" target="_blank" rel="noopener">
      ${ICONS[link.icon] || ICONS.site}${link.label}
@@ -384,7 +361,32 @@ const getBadge = (cfg) => {
   return badge ? `<div class="podbadge" aria-hidden="true">${badge}</div>` : "";
 };
 
-/* Cloudflare Pages Function at functions/podchaser.js => /podchaser */
+/* YouTube avatar via Unavatar (works with @handles) */
+async function youtubeThumb(channelUrl){
+  try{
+    const handle = channelUrl.split("/").pop() || "";
+    const cleaned = handle.startsWith("@") ? handle.slice(1) : handle;
+    return `https://unavatar.io/youtube/${encodeURIComponent(cleaned)}`;
+  }catch(e){
+    console.warn("YouTube avatar fetch error", e);
+    return null;
+  }
+}
+
+/* Spotify oEmbed thumbnail (fallback) */
+async function spotifyThumb(spotifyUrl){
+  try{
+    const api = `https://open.spotify.com/oembed?url=${encodeURIComponent(spotifyUrl)}`;
+    const res = await fetch(api);
+    if(!res.ok) throw new Error("Spotify oEmbed failed");
+    const data = await res.json();
+    return data.thumbnail_url || null;
+  }catch(e){
+    console.warn("Spotify oEmbed error", e);
+    return null;
+  }
+}
+
 async function podchaserCount(title){
   const url = `/podchaser?title=${encodeURIComponent(title)}`;
   const res = await fetch(url, { headers: { accept: "application/json" } });
@@ -392,88 +394,137 @@ async function podchaserCount(title){
   const ct = (res.headers.get("content-type") || "").toLowerCase();
   const text = await res.text();
 
-  // This will tell you immediately whether you hit the function or index.html
+  // Leave this in while tuning; remove later if you want
   console.log("[podchaserCount]", { url, status: res.status, contentType: ct, head: text.slice(0,120) });
 
   if (!res.ok) throw new Error(`Podchaser failed (${res.status}): ${text.slice(0,200)}`);
-  try{
-    const data = JSON.parse(text);
-    return Number.isFinite(data.numberOfEpisodes) ? data.numberOfEpisodes : null;
-  }catch{
-    throw new Error(`Podchaser non-JSON (${res.status}) from ${url}: ${text.slice(0,200)}`);
+  const data = JSON.parse(text);
+  return Number.isFinite(data.numberOfEpisodes) ? data.numberOfEpisodes : null;
+}
+
+/* Small concurrency limiter */
+async function runPool(tasks, limit = 6){
+  const executing = new Set();
+  const results = [];
+
+  for (const task of tasks){
+    const p = (async () => task())()
+      .then(v => ({ ok:true, value:v }))
+      .catch(e => ({ ok:false, error:e }));
+
+    results.push(p);
+    executing.add(p);
+
+    p.finally(() => executing.delete(p));
+
+    if (executing.size >= limit){
+      await Promise.race(executing);
+    }
   }
+
+  return Promise.all(results);
 }
 
-/* Thumb cache to avoid repeated network calls */
-const _thumbCache = new Map();
-
-function getThumb(primarySpotify, youtubeChannel){
-  const key = `${primarySpotify || ""}|${youtubeChannel || ""}`;
-  if (_thumbCache.has(key)) return _thumbCache.get(key);
-
-  const p = (async () => {
-    const yt = youtubeChannel ? youtubeThumb(youtubeChannel) : null;
-    if (yt) return yt;
-    return primarySpotify ? await spotifyThumb(primarySpotify) : null;
-  })().catch(e => {
-    console.warn("Thumb fetch error", e);
-    return null;
-  });
-
-  _thumbCache.set(key, p);
-  return p;
+function formatInt(n){
+  return Number.isFinite(n) ? n.toLocaleString() : "";
 }
 
-async function render(){
-  for (const cfg of PODCASTS){
+async function getThumb(cfg){
+  try{
     const primarySpotify = (cfg.links || []).find(l => l.icon === "spotify")?.href || null;
     const youtubeChannel = (cfg.links || []).find(l => l.icon === "youtube")?.href || null;
 
-    // Thumb (cached)
-    const thumbUrl = await getThumb(primarySpotify, youtubeChannel);
-
-    // Episodes: only attempt if Podchaser link exists
-    const hasPodchaser = (cfg.links || []).some(l => l.icon === "podchaser");
-    let episodesCount = null;
-
-    if (hasPodchaser){
-      try{
-        episodesCount = await podchaserCount(cfg.title);
-      }catch(e){
-        // Don’t blow up the page if routing/auth is wrong; just skip episodes.
-        console.warn("Podchaser count error", e);
-        episodesCount = null;
-      }
+    // Prefer YouTube avatar if a YouTube link exists; else Spotify oEmbed
+    if (youtubeChannel){
+      const yt = await youtubeThumb(youtubeChannel);
+      if (yt) return yt;
     }
-
-    const episodes = Number.isFinite(episodesCount) ? episodesCount.toLocaleString() : "";
-
-    // Use your const-provided values ONLY
-    const topics  = cfg.topics || "";
-    const created = cfg.years || "";
-
-    const card = document.createElement("article");
-    card.className = `pod size-${cfg.size}`;
-    card.innerHTML =
-      `
-        ${getBadge(cfg)}
-        ${thumbUrl ? `<div class="podthumb"><img alt="${cfg.title} cover" src="${thumbUrl}" loading="lazy" decoding="async"/></div>` : ""}
-
-        <h2>${cfg.title}</h2>
-
-        <div class="meta">
-          ${topics   ? `<p><strong>Topics:</strong> ${topics}</p>` : ""}
-          ${episodes ? `<p><strong>Episodes:</strong> ${episodes}</p>` : ""}
-          ${created  ? `<p><strong>Created:</strong> ${created}</p>` : ""}
-        </div>
-
-        <div class="links">
-          ${(cfg.links || []).map(pill).join("")}
-        </div>
-      `;
-
-    mountToGrid(cfg.size).appendChild(card);
+    if (primarySpotify){
+      const sp = await spotifyThumb(primarySpotify);
+      if (sp) return sp;
+    }
+    return null;
+  }catch(e){
+    console.warn("Thumb fetch error", e);
+    return null;
   }
+}
+
+function buildCard(cfg){
+  const card = document.createElement("article");
+  card.className = `pod size-${cfg.size}`;
+  card.dataset.title = cfg.title;
+
+  // Placeholders that will be updated asynchronously
+  const topics = cfg.topics || "";
+  const created = cfg.years || "";
+
+  card.innerHTML = `
+    ${getBadge(cfg)}
+    <div class="podthumb is-loading"></div>
+
+    <h2>${cfg.title}</h2>
+
+    <div class="meta">
+      ${topics  ? `<p><strong>Topics:</strong> ${topics}</p>` : ""}
+      <p class="episodes-row" style="display:none"><strong>Episodes:</strong> <span class="episodes-val"></span></p>
+      ${created ? `<p><strong>Created:</strong> ${created}</p>` : ""}
+    </div>
+
+    <div class="links">
+      ${(cfg.links || []).map(pill).join("")}
+    </div>
+  `;
+
+  return card;
+}
+
+async function hydrateCard(cfg, card){
+  // Thumb + episodes fetch in parallel (when relevant)
+  const tasks = [];
+
+  tasks.push(async () => {
+    const thumbUrl = await getThumb(cfg);
+    if (!thumbUrl) return;
+    const holder = card.querySelector(".podthumb");
+    if (!holder) return;
+    holder.classList.remove("is-loading");
+    holder.innerHTML = `<img alt="${cfg.title} cover" src="${thumbUrl}" loading="lazy" decoding="async"/>`;
+  });
+
+  const hasPodchaser = (cfg.links || []).some(l => l.icon === "podchaser");
+  if (hasPodchaser){
+    tasks.push(async () => {
+      const n = await podchaserCount(cfg.title);
+      if (!Number.isFinite(n)) return;
+      const row = card.querySelector(".episodes-row");
+      const val = card.querySelector(".episodes-val");
+      if (!row || !val) return;
+      val.textContent = formatInt(n);
+      row.style.display = "";
+    });
+  } else {
+    // Optional: if you want to show nothing, do nothing.
+    // If you want a static count later, add cfg.episodes and print it here.
+  }
+
+  // Run both tasks (thumb + episodes) concurrently for this card
+  await Promise.allSettled(tasks.map(fn => fn()));
+}
+
+async function render(){
+  // 1) Render immediately (no awaits)
+  const cards = [];
+
+  for (const cfg of PODCASTS){
+    const card = buildCard(cfg);
+    mountToGrid(cfg.size).appendChild(card);
+    cards.push({ cfg, card });
+  }
+
+  // 2) Hydrate in a pool (limits concurrent network work)
+  const hydrateTasks = cards.map(({ cfg, card }) => () => hydrateCard(cfg, card));
+  await runPool(hydrateTasks, 6);
 }
 
 render();
