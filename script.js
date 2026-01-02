@@ -354,13 +354,11 @@ function mountToGrid(size){
   return document.getElementById("grid-sm");
 }
 
-/* Badge HTML from kind */
 const getBadge = (cfg) => {
   const badge = KIND_BADGE[cfg.kind];
   return badge ? `<div class="podbadge" aria-hidden="true">${badge}</div>` : "";
 };
 
-/* YouTube avatar via Unavatar (works with @handles) */
 async function youtubeThumb(channelUrl){
   try{
     const handle = channelUrl.split("/").pop() || "";
@@ -368,14 +366,13 @@ async function youtubeThumb(channelUrl){
     const unavatar = `https://unavatar.io/youtube/${encodeURIComponent(cleaned)}`;
     const res = await fetch(unavatar, { mode:"cors" });
     if(!res.ok) throw new Error("Unavatar failed");
-    return unavatar; // channel avatar URL
+    return unavatar;
   }catch(e){
     console.warn("YouTube avatar fetch error", e);
     return null;
   }
 }
 
-/* Spotify show artwork (server-side via Pages Function -> Spotify Web API) */
 async function spotifyShowThumb(spotifyUrl){
   try{
     const api = `/spotify?url=${encodeURIComponent(spotifyUrl)}`;
@@ -383,7 +380,7 @@ async function spotifyShowThumb(spotifyUrl){
     const text = await res.text();
     if(!res.ok) throw new Error(`Spotify API failed (${res.status}): ${text.slice(0,200)}`);
     const data = JSON.parse(text);
-    return data?.image || null; // guaranteed show-level image if available
+    return data?.image || null;
   }catch(e){
     console.warn("Spotify show thumb error", e);
     return null;
@@ -403,14 +400,6 @@ async function podchaserCount(title){
   }
 }
 
-/**
- * Artwork selection rule:
- * - Use the FIRST link in cfg.links as the primary artwork source.
- * - If it fails, fall back to the next usable source (spotify/youtube).
- * This avoids episode thumbnails because:
- * - Spotify comes from /v1/shows (show-level image)
- * - YouTube comes from unavatar (channel avatar)
- */
 async function getThumbFromLinks(links){
   const tryOne = async (link) => {
     if(!link?.href || !link?.icon) return null;
@@ -419,13 +408,11 @@ async function getThumbFromLinks(links){
     return null;
   };
 
-  // 1) primary: first listed link
   if(Array.isArray(links) && links.length){
     const primary = await tryOne(links[0]);
     if(primary) return primary;
   }
 
-  // 2) fallback: any spotify/youtube in order
   for(const l of (links || [])){
     const u = await tryOne(l);
     if(u) return u;
@@ -444,7 +431,6 @@ async function render(){
       thumbUrl = null;
     }
 
-    // Episodes: only if they have a Podchaser link (keeps API calls bounded)
     let episodesCount = null;
     try{
       const hasPodchaser = (cfg.links || []).some(l => l.icon === "podchaser");
