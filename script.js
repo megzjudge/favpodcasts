@@ -345,7 +345,7 @@ const PODCASTS = [
 const firstSentence = t => (t || "").split(/(?<=[.!?])\s+/)[0] || "";
 
 /* YouTube avatar via Unavatar (works with @handles)
-   IMPORTANT: do NOT fetch() the URL (CORS). Just return it and let <img> load it. */
+   IMPORTANT: do NOT fetch() this URL (CORS). Just return it and let <img> load it. */
 function youtubeThumb(channelUrl){
   const handle = (channelUrl.split("/").pop() || "").trim();
   const cleaned = handle.startsWith("@") ? handle.slice(1) : handle;
@@ -384,17 +384,21 @@ const getBadge = (cfg) => {
   return badge ? `<div class="podbadge" aria-hidden="true">${badge}</div>` : "";
 };
 
+/* Cloudflare Pages Function at functions/podchaser.js => /podchaser */
 async function podchaserCount(title){
-  const url = `/podchaser-count?title=${encodeURIComponent(title)}`;
-  const res = await fetch(url);
-  const text = await res.text();
-  if(!res.ok) throw new Error(`Podchaser count failed (${res.status}): ${text.slice(0,200)}`);
-  try{
-    const data = JSON.parse(text);
-    return Number.isFinite(data.numberOfEpisodes) ? data.numberOfEpisodes : null;
-  }catch{
-    throw new Error(`Podchaser count non-JSON: ${text.slice(0,200)}`);
+  const url = `/podchaser?title=${encodeURIComponent(title)}`;
+  const res = await fetch(url, { headers: { "accept": "application/json" } });
+
+  const ct = (res.headers.get("content-type") || "").toLowerCase();
+
+  // If your function didn’t run (or routing fell through), you’ll get HTML.
+  if (!ct.includes("application/json")){
+    const text = await res.text();
+    throw new Error(`Podchaser non-JSON response (${res.status}) from ${url}: ${text.slice(0,200)}`);
   }
+
+  const data = await res.json();
+  return Number.isFinite(data.numberOfEpisodes) ? data.numberOfEpisodes : null;
 }
 
 /* Thumb cache to avoid repeated network calls */
@@ -405,11 +409,8 @@ function getThumb(primarySpotify, youtubeChannel){
   if (_thumbCache.has(key)) return _thumbCache.get(key);
 
   const p = (async () => {
-    // 1) Prefer YouTube avatar (fast; no extra JS fetch needed beyond <img>)
     const yt = youtubeChannel ? youtubeThumb(youtubeChannel) : null;
     if (yt) return yt;
-
-    // 2) Fallback to Spotify oEmbed thumbnail
     return primarySpotify ? await spotifyThumb(primarySpotify) : null;
   })().catch(e => {
     console.warn("Thumb fetch error", e);
@@ -428,7 +429,7 @@ async function render(){
     // Thumb (cached)
     const thumbUrl = await getThumb(primarySpotify, youtubeChannel);
 
-    // Episodes: prefer Podchaser if present
+    // Episodes: only attempt if Podchaser link exists
     const hasPodchaser = (cfg.links || []).some(l => l.icon === "podchaser");
     let episodesCount = null;
 
@@ -436,6 +437,7 @@ async function render(){
       try{
         episodesCount = await podchaserCount(cfg.title);
       }catch(e){
+        // Don’t blow up the page if routing/auth is wrong; just skip episodes.
         console.warn("Podchaser count error", e);
         episodesCount = null;
       }
@@ -443,8 +445,8 @@ async function render(){
 
     const episodes = Number.isFinite(episodesCount) ? episodesCount.toLocaleString() : "";
 
-    // Use your const-provided values
-    const topics = cfg.topics || "";
+    // Use your const-provided values ONLY
+    const topics  = cfg.topics || "";
     const created = cfg.years || "";
 
     const card = document.createElement("article");
