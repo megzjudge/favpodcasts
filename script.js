@@ -112,7 +112,7 @@ const PODCASTS = [
     topics: 'Society & Culture, Politics',
     links:[
       { label:'Spotify', href:'https://open.spotify.com/show/6Qh2fEsC7nEVxXxQzwTv54', icon:'spotify', size:'sm' },
-      { label:'YouTube', href:'https://www.youtube.com/@JohnAndersonMedia', icon:'youtube', size:'sm' }
+      { label:'YouTube', href:'https://www.youtube.com/@JohnAndersonMedia', icon:'youtube', size:'sm' },
       { label:'Grokipedia', href: 'https://grokipedia.com/page/John_Anderson', icon:'grokipedia', size:'sm' },
       { label:'Podchaser', href: 'https://www.podchaser.com/podcasts/john-anderson-conversations-657776', icon:'podchaser', size:'sm' }
     ]
@@ -124,7 +124,7 @@ const PODCASTS = [
     topics: 'News, Society & Culture',
     links:[
       { label:'Spotify', href:'https://open.spotify.com/show/2NiFf7pGB4pqkvbrnS1b9X', icon:'spotify', size:'sm' },
-      { label:'YouTube', href:'https://www.youtube.com/@andrewgoldheretics', icon:'youtube', size:'sm' }
+      { label:'YouTube', href:'https://www.youtube.com/@andrewgoldheretics', icon:'youtube', size:'sm' },
       { label:'Grokipedia', href: 'https://grokipedia.com/page/andrew-gold-journalist', icon:'grokipedia', size:'sm' },
       { label:'Podchaser', href: 'https://www.podchaser.com/podcasts/heretics-1316949', icon:'podchaser', size:'sm' }
     ]
@@ -136,7 +136,7 @@ const PODCASTS = [
     topics: 'Philosophy, Society & Culture',
     links:[
       { label:'Spotify', href:'https://open.spotify.com/show/16wUbvDT95dxzpG2KEhakK', icon:'spotify', size:'sm' },
-      { label:'YouTube', href:'https://www.youtube.com/@CosmicSkeptic', icon:'youtube', size:'sm' }
+      { label:'YouTube', href:'https://www.youtube.com/@CosmicSkeptic', icon:'youtube', size:'sm' },
       { label:'Grokipedia', href: 'https://grokipedia.com/page/alex-oconnor', icon:'grokipedia', size:'sm' },
       { label:'Podchaser', href: 'https://www.podchaser.com/podcasts/within-reason-836655', icon:'podchaser', size:'sm' }
     ]
@@ -148,7 +148,7 @@ const PODCASTS = [
     topics: 'Business, Society & Culture',
     links:[
       { label:'Spotify', href:'https://open.spotify.com/show/0W3GWublEOW75ufTa8vAGq', icon:'spotify', size:'sm' },
-      { label:'YouTube', href:'https://www.youtube.com/@MarkBourisYT', icon:'youtube', size:'sm' }
+      { label:'YouTube', href:'https://www.youtube.com/@MarkBourisYT', icon:'youtube', size:'sm' },
       { label:'Grokipedia', href: 'https://grokipedia.com/page/Mark_Bouris', icon:'grokipedia', size:'sm' },
       { label:'Podchaser', href: 'https://www.podchaser.com/podcasts/straight-talk-with-mark-bouris-1909016', icon:'podchaser', size:'sm' }
     ]
