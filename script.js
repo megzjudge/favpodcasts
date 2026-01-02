@@ -441,8 +441,17 @@ const getBadge = (cfg) => {
 async function podchaserCount(title){
   try{
     const res = await fetch(`/podchaser-count?title=${encodeURIComponent(title)}`);
-    if(!res.ok) throw new Error('Podchaser count failed');
-    const data = await res.json();
+    const text = await res.text();
+
+    if(!res.ok) throw new Error(`Podchaser count failed (${res.status})`);
+
+    // If it’s HTML, you’ll see it immediately in the console.
+    if (text.trim().startsWith('<')) {
+      console.warn('Podchaser count returned HTML:', text.slice(0, 200));
+      return null;
+    }
+
+    const data = JSON.parse(text);
     return Number.isFinite(data.numberOfEpisodes) ? data.numberOfEpisodes : null;
   }catch(e){
     console.warn('Podchaser count error', e);
