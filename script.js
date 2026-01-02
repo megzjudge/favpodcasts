@@ -24,8 +24,8 @@ const PODCASTS = [
     years: "2009",
     topics: "Comedy, Society & Culture",
     links: [
-      { label: "Spotify", href: "https://open.spotify.com/show/4rOoJ6Egrf8K2IrywzwOMk", icon: "spotify", size: "lg" },
       { label: "YouTube", href: "https://www.youtube.com/@joerogan", icon: "youtube", size: "lg" },
+      { label: "Spotify", href: "https://open.spotify.com/show/4rOoJ6Egrf8K2IrywzwOMk", icon: "spotify", size: "lg" },
       { label: "Spotify", href: "https://open.spotify.com/show/1LMmQF9PH8LjYrktU0Oq5Y", icon: "spotify", size: "md" },
       { label: "YouTube", href: "https://www.youtube.com/@JREClips", icon: "youtube", size: "md" },
       { label: "Grokipedia", href: "https://grokipedia.com/page/The_Joe_Rogan_Experience", icon: "grokipedia", size: "sm" },
@@ -39,8 +39,8 @@ const PODCASTS = [
     years: "2018",
     topics: "Society & Culture, Health & Fitness",
     links: [
-      { label: "Spotify", href: "https://open.spotify.com/show/0XrOqvxlqQI6bmdYHuIVnr", icon: "spotify", size: "lg" },
       { label: "YouTube", href: "https://www.youtube.com/@ChrisWillx", icon: "youtube", size: "lg" },
+      { label: "Spotify", href: "https://open.spotify.com/show/0XrOqvxlqQI6bmdYHuIVnr", icon: "spotify", size: "lg" },
       { label: "Grokipedia", href: "https://grokipedia.com/page/Chris_Williamson", icon: "grokipedia", size: "sm" },
       { label: "Podchaser", href: "https://www.podchaser.com/podcasts/modern-wisdom-5872558", icon: "podchaser", size: "sm" }
     ]
@@ -82,8 +82,8 @@ const PODCASTS = [
     years: "2020",
     topics: "Philosophy, Psychology",
     links: [
-      { label: "Spotify", href: "https://open.spotify.com/show/6Wimp2yM4QWuIJZneUNqbr", icon: "spotify", size: "md" },
       { label: "YouTube", href: "https://www.youtube.com/@Eternalised", icon: "youtube", size: "md" },
+      { label: "Spotify", href: "https://open.spotify.com/show/6Wimp2yM4QWuIJZneUNqbr", icon: "spotify", size: "md" },
       { label: "Podchaser", href: "https://www.podchaser.com/podcasts/eternalised-1419110", icon: "podchaser", size: "sm" }
     ]
   },
@@ -104,8 +104,8 @@ const PODCASTS = [
     years: "2016",
     topics: "Society & Culture, Education, Psychology",
     links: [
-      { label: "Spotify", href: "https://open.spotify.com/show/1Zw2DKjelPnuEYpydFlhgN", icon: "spotify", size: "sm" },
       { label: "YouTube", href: "https://www.youtube.com/@JordanBPeterson", icon: "youtube", size: "sm" },
+      { label: "Spotify", href: "https://open.spotify.com/show/1Zw2DKjelPnuEYpydFlhgN", icon: "spotify", size: "sm" },
       { label: "Grokipedia", href: "https://grokipedia.com/page/jordan_b_peterson#podcast-and-lecture-series", icon: "grokipedia", size: "sm" },
       { label: "Podchaser", href: "https://www.podchaser.com/podcasts/the-jordan-b-peterson-podcast-225906", icon: "podchaser", size: "sm" }
     ]
@@ -130,8 +130,8 @@ const PODCASTS = [
     years: "2023",
     topics: "News, Society & Culture",
     links: [
-      { label: "Spotify", href: "https://open.spotify.com/show/2NiFf7pGB4pqkvbrnS1b9X", icon: "spotify", size: "sm" },
       { label: "YouTube", href: "https://www.youtube.com/@andrewgoldheretics", icon: "youtube", size: "sm" },
+      { label: "Spotify", href: "https://open.spotify.com/show/2NiFf7pGB4pqkvbrnS1b9X", icon: "spotify", size: "sm" },
       { label: "Grokipedia", href: "https://grokipedia.com/page/andrew-gold-journalist", icon: "grokipedia", size: "sm" },
       { label: "Podchaser", href: "https://www.podchaser.com/podcasts/heretics-1316949", icon: "podchaser", size: "sm" }
     ]
@@ -143,8 +143,8 @@ const PODCASTS = [
     years: "2019",
     topics: "Philosophy, Society & Culture",
     links: [
-      { label: "Spotify", href: "https://open.spotify.com/show/16wUbvDT95dxzpG2KEhakK", icon: "spotify", size: "sm" },
       { label: "YouTube", href: "https://www.youtube.com/@CosmicSkeptic", icon: "youtube", size: "sm" },
+      { label: "Spotify", href: "https://open.spotify.com/show/16wUbvDT95dxzpG2KEhakK", icon: "spotify", size: "sm" },
       { label: "Grokipedia", href: "https://grokipedia.com/page/alex-oconnor", icon: "grokipedia", size: "sm" },
       { label: "Podchaser", href: "https://www.podchaser.com/podcasts/within-reason-836655", icon: "podchaser", size: "sm" }
     ]
@@ -156,8 +156,8 @@ const PODCASTS = [
     years: "2015",
     topics: "Business, Society & Culture",
     links: [
-      { label: "Spotify", href: "https://open.spotify.com/show/0W3GWublEOW75ufTa8vAGq", icon: "spotify", size: "sm" },
       { label: "YouTube", href: "https://www.youtube.com/@MarkBourisYT", icon: "youtube", size: "sm" },
+      { label: "Spotify", href: "https://open.spotify.com/show/0W3GWublEOW75ufTa8vAGq", icon: "spotify", size: "sm" },
       { label: "Grokipedia", href: "https://grokipedia.com/page/Mark_Bouris", icon: "grokipedia", size: "sm" },
       { label: "Podchaser", href: "https://www.podchaser.com/podcasts/straight-talk-with-mark-bouris-1909016", icon: "podchaser", size: "sm" }
     ]
@@ -308,8 +308,8 @@ const PODCASTS = [
     years: "2017",
     topics: "News Commentary, News, Politics",
     links: [
-      { label: "Spotify", href: "https://open.spotify.com/show/1bmU8gqK78sF4iD2OKFKUZ", icon: "spotify", size: "sm" },
       { label: "YouTube", href: "https://www.youtube.com/@RussellBrand", icon: "youtube", size: "sm" },
+      { label: "Spotify", href: "https://open.spotify.com/show/1bmU8gqK78sF4iD2OKFKUZ", icon: "spotify", size: "sm" },
       { label: "Grokipedia", href: "https://grokipedia.com/page/Russell_Brand", icon: "grokipedia", size: "sm" },
       { label: "Podchaser", href: "https://www.podchaser.com/podcasts/under-the-skin-with-russell-br-455708", icon: "podchaser", size: "sm" },
       { label: "Podchaser", href: "https://www.podchaser.com/podcasts/stay-free-with-russell-brand-4912796", icon: "podchaser", size: "sm" }
@@ -322,8 +322,8 @@ const PODCASTS = [
     years: "2019",
     topics: "Politics, Society & Culture, News",
     links: [
-      { label: "Spotify", href: "https://open.spotify.com/show/2BbbFyOBNTLpYDzUai6ta2?si=d59ad3a3fad64f75&nd=1", icon: "spotify", size: "sm" },
       { label: "YouTube", href: "https://www.youtube.com/@RepDanCrenshaw", icon: "youtube", size: "sm" },
+      { label: "Spotify", href: "https://open.spotify.com/show/2BbbFyOBNTLpYDzUai6ta2?si=d59ad3a3fad64f75&nd=1", icon: "spotify", size: "sm" },
       { label: "Grokipedia", href: "https://grokipedia.com/page/Dan_Crenshaw", icon: "grokipedia", size: "sm" },
       { label: "Podchaser", href: "https://www.podchaser.com/podcasts/hold-these-truths-with-dan-cre-1037869", icon: "podchaser", size: "sm" }
     ]
@@ -345,7 +345,22 @@ const PODCASTS = [
 const firstSentence = t => (t || '').split(/(?<=[.!?])\s+/)[0] || '';
 
 /**
- * Robustly pick a "channel-like" YouTube URL from cfg.links.
+ * Returns the FIRST Spotify URL in the list (if any).
+ */
+function pickFirstSpotifyUrl(links = []) {
+  return (links.find(l => l?.icon === 'spotify' && typeof l?.href === 'string')?.href) || null;
+}
+
+/**
+ * Returns the FIRST YouTube URL in the list (if any).
+ * Note: this may be a watch URL; we validate later.
+ */
+function pickFirstYoutubeUrl(links = []) {
+  return (links.find(l => l?.icon === 'youtube' && typeof l?.href === 'string')?.href) || null;
+}
+
+/**
+ * Returns a "channel-like" YouTube URL we can derive an avatar from.
  * We avoid watch?v=... links because those are videos/playlists, not channels/handles.
  */
 function pickYoutubeChannelUrl(links = []) {
@@ -357,54 +372,49 @@ function pickYoutubeChannelUrl(links = []) {
     u.includes('youtube.com/c/') ||
     u.includes('youtube.com/user/');
 
-  // Prefer explicit handle/channel/c/user urls
   const channelish = yt.find(l => isChannelish(l.href));
   if (channelish) return channelish.href;
 
-  // If someone pasted something like ".../@Handle/videos", that’s still fine.
-  const handleVideos = yt.find(l => l.href.includes('youtube.com/@'));
-  if (handleVideos) return handleVideos.href;
+  // Still allow @handle with extra path (e.g., /@Handle/videos)
+  const handleish = yt.find(l => l.href.includes('youtube.com/@'));
+  if (handleish) return handleish.href;
 
-  // Otherwise treat as not usable for channel avatar (e.g., watch?v=...)
   return null;
 }
 
 /**
- * Convert a YouTube channel URL into an Unavatar request that returns the channel avatar.
+ * Convert a YouTube URL into an Unavatar request that returns the channel avatar.
  * Works with:
  * - https://www.youtube.com/@handle
  * - https://www.youtube.com/channel/UC...
  * - https://www.youtube.com/c/Name
  * - https://www.youtube.com/user/Name
  */
-async function youtubeThumb(channelUrl) {
-  const url = String(channelUrl || '').trim();
+async function youtubeThumb(youtubeUrl) {
+  const url = String(youtubeUrl || '').trim();
   if (!url) return null;
 
   let key = null;
 
-  // @handle
   const mHandle = url.match(/youtube\.com\/@([^/?#]+)/i);
   if (mHandle?.[1]) key = mHandle[1];
 
-  // /channel/UCxxxx
   if (!key) {
     const mChannel = url.match(/youtube\.com\/channel\/([^/?#]+)/i);
     if (mChannel?.[1]) key = mChannel[1];
   }
 
-  // /c/Name
   if (!key) {
     const mC = url.match(/youtube\.com\/c\/([^/?#]+)/i);
     if (mC?.[1]) key = mC[1];
   }
 
-  // /user/Name
   if (!key) {
     const mUser = url.match(/youtube\.com\/user\/([^/?#]+)/i);
     if (mUser?.[1]) key = mUser[1];
   }
 
+  // If it’s a watch URL (or anything non-channelish), we refuse here so we can fallback cleanly.
   if (!key) return null;
 
   const unavatar = `https://unavatar.io/youtube/${encodeURIComponent(key)}`;
@@ -452,8 +462,8 @@ const getBadge = (cfg) => {
 };
 
 /**
- * Your Worker is at /podchaser (per your logs).
- * This function is intentionally tolerant: if anything looks off, it returns null.
+ * Worker endpoint: /podchaser
+ * Tolerant parsing: returns null on any issue.
  */
 async function podchaserCount(title) {
   const url = `/podchaser?title=${encodeURIComponent(title)}`;
@@ -475,36 +485,44 @@ async function podchaserCount(title) {
 }
 
 /**
- * Thumbnail policy overrides per your request.
- * - forceSpotify: always use Spotify artwork, never YouTube
+ * Thumbnail selection rule:
+ * 1) Look at cfg.links[0].icon:
+ *    - spotify => spotifyThumb(first.href)
+ *    - youtube => youtubeThumb(first.href)  (channelish only)
+ * 2) If that fails:
+ *    - fallback to FIRST Spotify link anywhere in links
+ *    - else fallback to any channelish YouTube link anywhere in links
+ *    - else null
  */
-const THUMB_RULES = {
-  'Huberman Lab': { forceSpotify: true },
-  'Conversations with Peter Boghossian': { forceSpotify: true },
-  'The Rubin Report': { forceSpotify: true } // because your YouTube link is a watch URL, not a channel
-};
-
 async function getThumb(cfg) {
   const links = cfg.links || [];
-  const primarySpotify = links.find(l => l.icon === 'spotify')?.href || null;
+  const first = links[0] || null;
+
+  const firstSpotify = pickFirstSpotifyUrl(links);
   const youtubeChannelUrl = pickYoutubeChannelUrl(links);
 
-  const rule = THUMB_RULES[cfg.title] || null;
-
-  // Forced Spotify (Huberman, Boghossian, Rubin)
-  if (rule?.forceSpotify) {
-    return (primarySpotify ? await spotifyThumb(primarySpotify) : null);
+  // 1) Primary: first listed link drives the thumbnail source
+  if (first?.icon === 'spotify' && first?.href) {
+    const sp = await spotifyThumb(first.href);
+    if (sp) return sp;
   }
 
-  // Default preference:
-  // - Prefer YouTube channel avatar (it’s fast and stable) when available
-  // - Otherwise Spotify oEmbed
-  // For Dark Horse + Shane Hazel: this ensures "channel avatar", not latest video thumbnail.
-  const yt = youtubeChannelUrl ? await youtubeThumb(youtubeChannelUrl) : null;
-  if (yt) return yt;
+  if (first?.icon === 'youtube' && first?.href) {
+    // This will return null for watch?v=... etc, triggering fallback.
+    const yt = await youtubeThumb(first.href);
+    if (yt) return yt;
+  }
 
-  const sp = primarySpotify ? await spotifyThumb(primarySpotify) : null;
-  if (sp) return sp;
+  // 2) Fallbacks (in this priority order)
+  if (firstSpotify) {
+    const sp = await spotifyThumb(firstSpotify);
+    if (sp) return sp;
+  }
+
+  if (youtubeChannelUrl) {
+    const yt = await youtubeThumb(youtubeChannelUrl);
+    if (yt) return yt;
+  }
 
   return null;
 }
@@ -512,8 +530,6 @@ async function getThumb(cfg) {
 async function render() {
   for (const cfg of PODCASTS) {
     const thumbUrl = await getThumb(cfg);
-
-    const oneLiner = firstSentence(cfg.desc || ''); // optional if you ever add cfg.desc; otherwise will be blank
 
     const hasPodchaser = (cfg.links || []).some(l => l.icon === 'podchaser');
     const podchaserEpisodes = hasPodchaser ? await podchaserCount(cfg.title) : null;
@@ -534,8 +550,6 @@ async function render() {
         ${episodes  ? `<p><strong>Episodes:</strong> ${episodes}</p>` : ''}
         ${cfg.years ? `<p><strong>Created:</strong> ${cfg.years}</p>` : ''}
       </div>
-
-      ${oneLiner ? `<p class="desc">${oneLiner}</p>` : ''}
 
       <div class="links">
         ${(cfg.links || []).map(pill).join('')}
