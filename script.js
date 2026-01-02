@@ -6,7 +6,9 @@ const ICONS = {
   substack:
     '<svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M3 5h18v2H3V5zm0 4h12v10l-6-3-6 3V9z"/></svg>',
   site:
-    '<svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm1 17.9V14h3.9A8 8 0 0 1 13 19.9zM9 19.9A8 8 0 0 1 7.1 14H11v5.9zm-3.9-7.9A8 8 0 0 1 9 4.1V10H5.1zM11 10V4.1A8 8 0 0 1 17 12h-6z"/></svg>'
+    '<svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm1 17.9V14h3.9A8 8 0 0 1 13 19.9zM9 19.9A8 8 0 0 1 7.1 14H11v5.9zm-3.9-7.9A8 8 0 0 1 9 4.1V10H5.1zM11 10V4.1A8 8 0 0 1 17 12h-6z"/></svg>',
+  grokipedia:
+    '<svg viewBox="0 0 24 24" aria-hidden="true"><rect width="24" height="24" fill="none"/><text x="12" y="16" text-anchor="middle" font-family="Arial,sans-serif" font-size="14" fill="currentColor">G</text></svg>'
 };
 
 /* kind: 'podcast' => 🎙️, 'channel' => 🔊 */
@@ -32,19 +34,19 @@ const PODCASTS = [
     years: '2018',
     topics: 'Society & Culture, Health & Fitness',
     links:[
-      { label:'YouTube', href:'https://www.youtube.com/@ChrisWillx', icon:'youtube', size:'lg' },
-      { label:'Spotify', href:'https://open.spotify.com/show/0XrOqvxlqQI6bmdYHuIVnr', icon:'spotify', size:'lg' }
+      { label:'Spotify', href:'https://open.spotify.com/show/0XrOqvxlqQI6bmdYHuIVnr', icon:'spotify', size:'lg' },
+      { label:'YouTube', href:'https://www.youtube.com/@ChrisWillx', icon:'youtube', size:'lg' }
     ]
   },
   {
     size:'lg', kind:'podcast',
     title:'Triggernometry',
-    years: '',
+    years: '2018',
     topics: 'Politics, News, Society & Culture',
     links:[
+      { label:'Spotify', href:'https://open.spotify.com/show/1JH26td5UtmKQWHLv0NCZp', icon:'spotify', size:'lg' },
       { label:'YouTube', href:'https://www.youtube.com/@triggerpod', icon:'youtube', size:'lg' },
       { label:'YouTube Clips', href:'https://www.youtube.com/@TRIGGERClips', icon:'youtube', size:'lg' },
-      { label:'Spotify', href:'https://open.spotify.com/show/1JH26td5UtmKQWHLv0NCZp', icon:'spotify', size:'lg' },
       { label:'Substack', href:'https://www.triggerpod.co.uk/', icon:'substack', size:'md' }
     ]
   },
@@ -53,7 +55,7 @@ const PODCASTS = [
   {
     size:'md', kind:'channel',
     title:'Academy of Ideas',
-    years: '',
+    years: '2012',
     topics: 'Philosophy, Psychology, Society & Culture',
     links:[
       { label:'Spotify', href:'https://open.spotify.com/show/2dio7KUNuDHErlMumZtNt6', icon:'spotify', size:'md' },
@@ -64,7 +66,7 @@ const PODCASTS = [
   {
     size:'md', kind:'channel',
     title:'Eternalised',
-    years: '',
+    years: '2020',
     topics: 'Philosophy, Psychology, Society & Culture',
     links:[
       { label:'Spotify', href:'https://open.spotify.com/show/6Wimp2yM4QWuIJZneUNqbr', icon:'spotify', size:'md' },
@@ -74,7 +76,7 @@ const PODCASTS = [
   {
     size:'md', kind:'channel',
     title:'CaspianReport',
-    years: '',
+    years: '2010',
     topics: 'Politics, News',
     links:[
       { label:'YouTube', href:'https://www.youtube.com/@CaspianReport', icon:'youtube', size:'md' }
@@ -85,7 +87,7 @@ const PODCASTS = [
   {
     size:'sm', kind:'podcast',
     title:'The Jordan B Peterson Podcast',
-    years: '',
+    years: '2013',
     topics: 'Society & Culture, Education, Psychology',
     links:[
       { label:'Spotify', href:'https://open.spotify.com/show/1Zw2DKjelPnuEYpydFlhgN', icon:'spotify', size:'sm' },
@@ -95,7 +97,7 @@ const PODCASTS = [
   {
     size:'sm', kind:'podcast',
     title:'John Anderson: Conversations',
-    years: '',
+    years: '2018',
     topics: 'Society & Culture, Politics',
     links:[
       { label:'Spotify', href:'https://open.spotify.com/show/6Qh2fEsC7nEVxXxQzwTv54', icon:'spotify', size:'sm' },
@@ -105,7 +107,7 @@ const PODCASTS = [
   {
     size:'sm', kind:'podcast',
     title:'Heretics',
-    years: '',
+    years: '2023',
     topics: 'News, Society & Culture',
     links:[
       { label:'Spotify', href:'https://open.spotify.com/show/2NiFf7pGB4pqkvbrnS1b9X', icon:'spotify', size:'sm' },
@@ -115,7 +117,7 @@ const PODCASTS = [
   {
     size:'sm', kind:'podcast',
     title:'Within Reason',
-    years: '',
+    years: '2019',
     topics: 'Philosophy, Society & Culture',
     links:[
       { label:'Spotify', href:'https://open.spotify.com/show/16wUbvDT95dxzpG2KEhakK', icon:'spotify', size:'sm' },
@@ -125,7 +127,7 @@ const PODCASTS = [
   {
     size:'sm', kind:'podcast',
     title:'Straight Talk with Mark Bouris',
-    years: '',
+    years: '2015',
     topics: 'Business, Society & Culture',
     links:[
       { label:'Spotify', href:'https://open.spotify.com/show/0W3GWublEOW75ufTa8vAGq', icon:'spotify', size:'sm' },
@@ -135,7 +137,7 @@ const PODCASTS = [
   {
     size:'md', kind:'channel',
     title:'After Skool',
-    years: '',
+    years: '2016',
     topics: 'Philosophy, Psychology, Education',
     links:[
       { label:'YouTube', href:'https://www.youtube.com/@AfterSkool', icon:'youtube', size:'md' }
@@ -154,9 +156,10 @@ const PODCASTS = [
   {
     size:'sm', kind:'podcast',
     title:'Dark Horse Podcast with Bret Weinstein and Heather Heying',
-    years: '',
+    years: '2019',
     topics: 'Science, Society & Culture',
     links:[
+      { label:'Grokipedia', href: 'https://grokipedia.com/page/Andrew_Huberman', icon:'grokipedia', size:'sm' },
       { label:'Spotify', href:'https://open.spotify.com/show/57R7dOcs60jUfOnuNG0J1R', icon:'spotify', size:'sm' },
       { label:'YouTube', href:'https://www.youtube.com/c/BretWeinsteinDarkHorse', icon:'youtube', size:'sm' },
       { label:'Website', href:'https://www.bretweinstein.net/darkhorse-podcast', icon:'website', size:'sm' },
