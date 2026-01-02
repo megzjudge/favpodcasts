@@ -422,16 +422,6 @@ function mountToGrid(size){
   return document.getElementById('grid-sm');
 }
 
-/* Spaced en dash in year label */
-function yearsLabel(firstDate, lastDate){
-  if(!firstDate && !lastDate) return '';
-  const firstY = firstDate ? firstDate.getFullYear() : (lastDate ? lastDate.getFullYear() : '');
-  const lastY  = lastDate  ? lastDate.getFullYear()  : '';
-  const now    = new Date();
-  const recent = lastDate && ((now - lastDate) / (1000*60*60*24) < 365);
-  return `${firstY}${recent ? ' – current' : (lastY ? ` – ${lastY}` : ' –')}`;
-}
-
 /* Badge HTML from kind */
 const getBadge = (cfg) => {
   const badge = KIND_BADGE[cfg.kind];
@@ -439,23 +429,15 @@ const getBadge = (cfg) => {
 };
 
 async function podchaserCount(title){
+  const url = `/podchaser-count?title=${encodeURIComponent(title)}`;
+  const res = await fetch(url);
+  const text = await res.text();
+  if(!res.ok) throw new Error(`Podchaser count failed (${res.status}): ${text.slice(0,200)}`);
   try{
-    const res = await fetch(`/podchaser-count?title=${encodeURIComponent(title)}`);
-    const text = await res.text();
-
-    if(!res.ok) throw new Error(`Podchaser count failed (${res.status})`);
-
-    // If it’s HTML, you’ll see it immediately in the console.
-    if (text.trim().startsWith('<')) {
-      console.warn('Podchaser count returned HTML:', text.slice(0, 200));
-      return null;
-    }
-
     const data = JSON.parse(text);
     return Number.isFinite(data.numberOfEpisodes) ? data.numberOfEpisodes : null;
-  }catch(e){
-    console.warn('Podchaser count error', e);
-    return null;
+  }catch{
+    throw new Error(`Podchaser count non-JSON: ${text.slice(0,200)}`);
   }
 }
 
@@ -465,12 +447,6 @@ async function render(){
     const youtubeChannel = (cfg.links || []).find(l => l.icon === 'youtube')?.href || null;
 
     const show   = await itunesFindShow(cfg.title);
-    const epData = show?.collectionId ? await itunesEpisodes(show.collectionId) : { episodes: [], first:null, last:null };
-
-    let numbered = null;
-    if (cfg.title === 'The Joe Rogan Experience'){
-      numbered = maxNumberedEpisode(epData.episodes);
-    }
 
     let thumbUrl = null;
     if (cfg.art === 'youtube' && youtubeChannel){
@@ -506,9 +482,9 @@ async function render(){
         <h2>${cfg.title}</h2>
 
         <div class="meta">
-          ${years    ? `<p><strong>Created:</strong> ${years}</p>` : ''}
-          ${topics   ? `<p><strong>Topics:</strong> ${topics}</p>` : ''}
-          ${episodes ? `<p><strong>Episodes:</strong> ${episodes}</p>` : ''}
+          ${cfg.years ? `<p><strong>Created:</strong> ${cfg.years}</p>` : ''}
+          ${topics    ? `<p><strong>Topics:</strong> ${topics}</p>` : ''}
+          ${episodes  ? `<p><strong>Episodes:</strong> ${episodes}</p>` : ''}
         </div>
 
         ${oneLiner ? `<p class="desc">${oneLiner}</p>` : ''}
