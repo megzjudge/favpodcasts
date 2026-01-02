@@ -341,158 +341,59 @@ const PODCASTS = [
   }
 ];
 
-const firstSentence = t => (t || '').split(/(?<=[.!?])\s+/)[0] || '';
+const firstSentence = t => (t || "").split(/(?<=[.!?])\s+/)[0] || "";
 
 const pill = link =>
   `<a class="pill ${link.size}" href="${link.href}" target="_blank" rel="noopener">
      ${ICONS[link.icon] || ICONS.site}${link.label}
    </a>`;
 
-// --- Thumb cache (per page load) ---
-const THUMB_CACHE = new Map();
-
-/**
- * Return a "channel-level" YouTube URL from a list of links, if one exists.
- * Prefers @handle or /channel/ links over watch/playlist URLs.
- */
-function getYoutubeChannelUrl(links){
-  const yt = (links || []).filter(l => l.icon === 'youtube' && typeof l.href === 'string');
-  if (!yt.length) return null;
-
-  const preferred = yt.find(l => /youtube\.com\/@/i.test(l.href) || /youtube\.com\/channel\//i.test(l.href));
-  return (preferred || yt[0]).href;
-}
-
-/**
- * Always returns a channel avatar URL (via unavatar) for a YouTube channel URL.
- * Works for @handle and /channel/ links; avoids returning video thumbnails.
- */
-function youtubeAvatarUrlFromAnyYoutubeUrl(youtubeUrl){
-  try{
-    const u = new URL(youtubeUrl);
-    const parts = u.pathname.split('/').filter(Boolean);
-
-    // @handle
-    const at = parts.find(p => p.startsWith('@'));
-    if (at){
-      const handle = at.slice(1);
-      return `https://unavatar.io/youtube/${encodeURIComponent(handle)}`;
-    }
-
-    // /channel/UC....
-    const chIdx = parts.indexOf('channel');
-    if (chIdx !== -1 && parts[chIdx + 1]){
-      const channelId = parts[chIdx + 1];
-      return `https://unavatar.io/youtube/${encodeURIComponent(channelId)}`;
-    }
-
-    // If it's a watch/playlist/etc and we can't infer a channel identifier, bail.
-    return null;
-  }catch{
-    return null;
-  }
-}
-
-/**
- * Spotify oEmbed thumbnail for a *show* URL.
- * If it looks like episode/track art, return null so we can fall back.
- */
-async function spotifyShowThumbSafe(spotifyUrl){
-  try{
-    // Hard guard: only attempt on show URLs
-    if (!/open\.spotify\.com\/show\//i.test(spotifyUrl)) return null;
-
-    const api = `https://open.spotify.com/oembed?url=${encodeURIComponent(spotifyUrl)}`;
-    const res = await fetch(api);
-    if(!res.ok) return null;
-    const data = await res.json();
-    const thumb = data && data.thumbnail_url ? String(data.thumbnail_url) : null;
-    if(!thumb) return null;
-
-    // Heuristic: Spotify show cover art commonly uses "ab676563" (show),
-    // whereas episode/track art commonly uses "ab67616d"/"ab676161".
-    // If we detect the episode/track pattern, reject and fall back.
-    const lower = thumb.toLowerCase();
-    const looksEpisodeLike =
-      lower.includes('ab67616d') || lower.includes('ab676161') || lower.includes('/episode/');
-
-    return looksEpisodeLike ? null : thumb;
-  }catch{
-    return null;
-  }
-}
-
-/**
- * Unified thumb getter:
- * - Uses first link as preferred source (youtube/spotify).
- * - Guarantees channel-level for YouTube.
- * - Guarantees show-level for Spotify, otherwise falls back to YouTube channel avatar.
- */
-async function getThumb(cfg){
-  const cacheKey = cfg.title;
-  if (THUMB_CACHE.has(cacheKey)) return THUMB_CACHE.get(cacheKey);
-
-  const links = cfg.links || [];
-  const first = links[0] || null;
-
-  const youtubeChannelUrl = getYoutubeChannelUrl(links);
-  const youtubeAvatar = youtubeChannelUrl ? youtubeAvatarUrlFromAnyYoutubeUrl(youtubeChannelUrl) : null;
-
-  let thumb = null;
-
-  try{
-    if (first && first.icon === 'youtube'){
-      // Always channel avatar, never video thumb
-      thumb = youtubeAvatar;
-    } else if (first && first.icon === 'spotify'){
-      // Prefer show cover, but reject "episode-like" art
-      thumb = await spotifyShowThumbSafe(first.href);
-
-      // If Spotify produced episode-like or failed, fall back to YouTube channel avatar
-      if (!thumb && youtubeAvatar) thumb = youtubeAvatar;
-    } else {
-      // Other first-link types: fall back in a sensible order
-      thumb = youtubeAvatar;
-
-      if (!thumb){
-        const spotifyFirst = links.find(l => l.icon === 'spotify' && /open\.spotify\.com\/show\//i.test(l.href));
-        if (spotifyFirst) thumb = await spotifyShowThumbSafe(spotifyFirst.href);
-      }
-    }
-  }catch(e){
-    console.warn('Thumb fetch error', e);
-    thumb = youtubeAvatar || null;
-  }
-
-  THUMB_CACHE.set(cacheKey, thumb);
-  return thumb;
-}
-
 function mountToGrid(size){
-  if(size === 'lg') return document.getElementById('grid-lg');
-  if(size === 'md') return document.getElementById('grid-md');
-  return document.getElementById('grid-sm');
+  if(size === "lg") return document.getElementById("grid-lg");
+  if(size === "md") return document.getElementById("grid-md");
+  return document.getElementById("grid-sm");
 }
 
 /* Badge HTML from kind */
 const getBadge = (cfg) => {
   const badge = KIND_BADGE[cfg.kind];
-  return badge ? `<div class="podbadge" aria-hidden="true">${badge}</div>` : '';
+  return badge ? `<div class="podbadge" aria-hidden="true">${badge}</div>` : "";
 };
+
+/* YouTube avatar via Unavatar (works with @handles) */
+async function youtubeThumb(channelUrl){
+  try{
+    const handle = channelUrl.split("/").pop() || "";
+    const cleaned = handle.startsWith("@") ? handle.slice(1) : handle;
+    const unavatar = `https://unavatar.io/youtube/${encodeURIComponent(cleaned)}`;
+    const res = await fetch(unavatar, { mode:"cors" });
+    if(!res.ok) throw new Error("Unavatar failed");
+    return unavatar; // channel avatar URL
+  }catch(e){
+    console.warn("YouTube avatar fetch error", e);
+    return null;
+  }
+}
+
+/* Spotify show artwork (server-side via Pages Function -> Spotify Web API) */
+async function spotifyShowThumb(spotifyUrl){
+  try{
+    const api = `/spotify?url=${encodeURIComponent(spotifyUrl)}`;
+    const res = await fetch(api, { headers: { "accept":"application/json" } });
+    const text = await res.text();
+    if(!res.ok) throw new Error(`Spotify API failed (${res.status}): ${text.slice(0,200)}`);
+    const data = JSON.parse(text);
+    return data?.image || null; // guaranteed show-level image if available
+  }catch(e){
+    console.warn("Spotify show thumb error", e);
+    return null;
+  }
+}
 
 async function podchaserCount(title){
   const url = `/podchaser?title=${encodeURIComponent(title)}`;
-  const res = await fetch(url);
+  const res = await fetch(url, { headers: { "accept":"application/json" } });
   const text = await res.text();
-
-  // Helpful debug (safe to keep; remove later if you want)
-  console.debug('[podchaserCount]', {
-    url,
-    status: res.status,
-    contentType: res.headers.get('content-type') || '',
-    head: text.slice(0, 140)
-  });
-
   if(!res.ok) throw new Error(`Podchaser count failed (${res.status}): ${text.slice(0,200)}`);
   try{
     const data = JSON.parse(text);
@@ -502,48 +403,79 @@ async function podchaserCount(title){
   }
 }
 
+/**
+ * Artwork selection rule:
+ * - Use the FIRST link in cfg.links as the primary artwork source.
+ * - If it fails, fall back to the next usable source (spotify/youtube).
+ * This avoids episode thumbnails because:
+ * - Spotify comes from /v1/shows (show-level image)
+ * - YouTube comes from unavatar (channel avatar)
+ */
+async function getThumbFromLinks(links){
+  const tryOne = async (link) => {
+    if(!link?.href || !link?.icon) return null;
+    if(link.icon === "spotify") return await spotifyShowThumb(link.href);
+    if(link.icon === "youtube") return await youtubeThumb(link.href);
+    return null;
+  };
+
+  // 1) primary: first listed link
+  if(Array.isArray(links) && links.length){
+    const primary = await tryOne(links[0]);
+    if(primary) return primary;
+  }
+
+  // 2) fallback: any spotify/youtube in order
+  for(const l of (links || [])){
+    const u = await tryOne(l);
+    if(u) return u;
+  }
+
+  return null;
+}
+
 async function render(){
   for(const cfg of PODCASTS){
-    const thumbUrl = await getThumb(cfg);
-
-    const hasPodchaser = (cfg.links || []).some(l => l.icon === 'podchaser');
-    let podchaserEpisodes = null;
-    if (hasPodchaser){
-      try{
-        podchaserEpisodes = await podchaserCount(cfg.title);
-      }catch(e){
-        console.warn('Podchaser count error', e);
-      }
+    let thumbUrl = null;
+    try{
+      thumbUrl = await getThumbFromLinks(cfg.links || []);
+    }catch(e){
+      console.warn("Thumb fetch error", e);
+      thumbUrl = null;
     }
 
-    const episodesCount =
-      Number.isFinite(podchaserEpisodes) ? podchaserEpisodes : null;
+    // Episodes: only if they have a Podchaser link (keeps API calls bounded)
+    let episodesCount = null;
+    try{
+      const hasPodchaser = (cfg.links || []).some(l => l.icon === "podchaser");
+      episodesCount = hasPodchaser ? await podchaserCount(cfg.title) : null;
+    }catch(e){
+      console.warn("Podchaser count error", e);
+      episodesCount = null;
+    }
 
-    const episodes = Number.isFinite(episodesCount) ? episodesCount.toLocaleString() : '';
+    const episodes = Number.isFinite(episodesCount) ? episodesCount.toLocaleString() : "";
 
-    // Use your explicit topics + years from the const only (no external scanning)
-    const topics = cfg.topics || '';
-    const created = cfg.years || '';
-
-    const card = document.createElement('article');
+    const card = document.createElement("article");
     card.className = `pod size-${cfg.size}`;
     card.innerHTML =
       `
         ${getBadge(cfg)}
-        ${thumbUrl ? `<div class="podthumb"><img alt="${cfg.title} cover" src="${thumbUrl}" loading="lazy" decoding="async"/></div>` : ''}
+        ${thumbUrl ? `<div class="podthumb"><img alt="${cfg.title} cover" src="${thumbUrl}" loading="lazy" decoding="async"/></div>` : ""}
 
         <h2>${cfg.title}</h2>
 
         <div class="meta">
-          ${topics  ? `<p><strong>Topics:</strong> ${topics}</p>` : ''}
-          ${episodes? `<p><strong>Episodes:</strong> ${episodes}</p>` : ''}
-          ${created ? `<p><strong>Created:</strong> ${created}</p>` : ''}
+          ${cfg.topics ? `<p><strong>Topics:</strong> ${cfg.topics}</p>` : ""}
+          ${episodes   ? `<p><strong>Episodes:</strong> ${episodes}</p>` : ""}
+          ${cfg.years  ? `<p><strong>Created:</strong> ${cfg.years}</p>` : ""}
         </div>
 
         <div class="links">
-          ${(cfg.links || []).map(pill).join('')}
+          ${(cfg.links || []).map(pill).join("")}
         </div>
       `;
+
     mountToGrid(cfg.size).appendChild(card);
   }
 }
