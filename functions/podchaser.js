@@ -5,7 +5,6 @@ export async function onRequestGet({ request, env }) {
 
   const endpoint = "https://api.podchaser.com/graphql";
 
-  // 1) Mint access token (server-side)
   const tokenRes = await fetch(endpoint, {
     method: "POST",
     headers: { "content-type": "application/json" },
@@ -30,13 +29,26 @@ export async function onRequestGet({ request, env }) {
     })
   });
 
-  const tokenJson = await tokenRes.json();
-  const accessToken = tokenJson?.data?.requestAccessToken?.access_token;
-  if (!accessToken) {
-    return json({ error: "Token request failed", details: tokenJson }, 502);
+  const tokenText = await tokenRes.text();
+  let tokenJson = null;
+  try { tokenJson = JSON.parse(tokenText); } catch { }
+
+  if (!tokenRes.ok) {
+    return json(
+      {
+        error: "Token request failed",
+        status: tokenRes.status,
+        details: tokenJson ?? tokenText.slice(0, 300)
+      },
+      502
+    );
   }
 
-  // 2) Query podcast episode count
+  const accessToken = tokenJson?.data?.requestAccessToken?.access_token;
+  if (!accessToken) {
+    return json({ error: "Token missing in response", details: tokenJson }, 502);
+  }
+
   const gqlRes = await fetch(endpoint, {
     method: "POST",
     headers: {
@@ -59,7 +71,21 @@ export async function onRequestGet({ request, env }) {
     })
   });
 
-  const gqlJson = await gqlRes.json();
+  const gqlText = await gqlRes.text();
+  let gqlJson = null;
+  try { gqlJson = JSON.parse(gqlText); } catch {  }
+
+  if (!gqlRes.ok) {
+    return json(
+      {
+        error: "Podchaser query failed",
+        status: gqlRes.status,
+        details: gqlJson ?? gqlText.slice(0, 300)
+      },
+      502
+    );
+  }
+
   const match = gqlJson?.data?.podcasts?.data?.[0] ?? null;
 
   return json({
