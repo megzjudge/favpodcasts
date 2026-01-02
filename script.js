@@ -438,6 +438,18 @@ const getBadge = (cfg) => {
   return badge ? `<div class="podbadge" aria-hidden="true">${badge}</div>` : '';
 };
 
+async function podchaserCount(title){
+  try{
+    const res = await fetch(`/podchaser-count?title=${encodeURIComponent(title)}`);
+    if(!res.ok) throw new Error('Podchaser count failed');
+    const data = await res.json();
+    return Number.isFinite(data.numberOfEpisodes) ? data.numberOfEpisodes : null;
+  }catch(e){
+    console.warn('Podchaser count error', e);
+    return null;
+  }
+}
+
 async function render(){
   for(const cfg of PODCASTS){
     const primarySpotify = (cfg.links || []).find(l => l.icon === 'spotify')?.href || null;
@@ -464,13 +476,16 @@ async function render(){
     const topics = (show?.genres || []).filter(g => typeof g === 'string').slice(0, 4).join(', ');
     const oneLiner = firstSentence(show?.description || '');
 
+    const hasPodchaser = (cfg.links || []).some(l => l.icon === 'podchaser');
+    const podchaserEpisodes = hasPodchaser ? await podchaserCount(cfg.title) : null;
+
     const episodesCount =
-      (cfg.title === 'The Joe Rogan Experience' && Number.isInteger(numbered))
-        ? numbered
-        : (Number.isFinite(show?.trackCount) ? show.trackCount : null);
+      Number.isFinite(podchaserEpisodes) ? podchaserEpisodes
+      : ((cfg.title === 'The Joe Rogan Experience' && Number.isInteger(numbered))
+          ? numbered
+          : (Number.isFinite(show?.trackCount) ? show.trackCount : null));
+
     const episodes = Number.isFinite(episodesCount) ? episodesCount.toLocaleString() : '';
-    const years = yearsLabel(epData.first, epData.last)
-               || (show?.releaseDate ? `${new Date(show.releaseDate).getFullYear()} –` : '');
 
     const card = document.createElement('article');
     card.className = `pod size-${cfg.size}`;
