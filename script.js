@@ -22,11 +22,12 @@ const PODCASTS = [
     years: '2009',
     topics: 'Comedy, Society & Culture',
     links:[
-      { label:'Grokipedia', href: 'https://grokipedia.com/page/The_Joe_Rogan_Experience', icon:'grokipedia', size:'sm' },
       { label:'Spotify', href:'https://open.spotify.com/show/4rOoJ6Egrf8K2IrywzwOMk', icon:'spotify', size:'lg' },
       { label:'YouTube', href:'https://www.youtube.com/@joerogan', icon:'youtube', size:'lg' },
       { label:'Spotify', href:'https://open.spotify.com/show/1LMmQF9PH8LjYrktU0Oq5Y', icon:'spotify', size:'md' },
       { label:'YouTube', href:'https://www.youtube.com/@JREClips', icon:'youtube', size:'md' },
+      { label:'Grokipedia', href: 'https://grokipedia.com/page/The_Joe_Rogan_Experience', icon:'grokipedia', size:'sm' },
+      { label:'Podchaser', href: 'https://www.podchaser.com/podcasts/the-joe-rogan-experience-10829', icon:'podchaser', size:'sm' }
     ]
   },
   {
@@ -35,9 +36,10 @@ const PODCASTS = [
     years: '2018',
     topics: 'Society & Culture, Health & Fitness',
     links:[
-      { label:'Grokipedia', href: 'https://grokipedia.com/page/Chris_Williamson', icon:'grokipedia', size:'sm' },
       { label:'Spotify', href:'https://open.spotify.com/show/0XrOqvxlqQI6bmdYHuIVnr', icon:'spotify', size:'lg' },
       { label:'YouTube', href:'https://www.youtube.com/@ChrisWillx', icon:'youtube', size:'lg' },
+      { label:'Grokipedia', href: 'https://grokipedia.com/page/Chris_Williamson', icon:'grokipedia', size:'sm' },
+      { label:'Podchaser', href: 'https://www.podchaser.com/podcasts/modern-wisdom-5872558', icon:'podchaser', size:'sm' }
     ]
   },
   {
@@ -46,11 +48,12 @@ const PODCASTS = [
     years: '2018',
     topics: 'Politics, News, Society & Culture',
     links:[
-      { label:'Grokipedia', href: 'https://grokipedia.com/page/Konstantin_Kisin', icon:'grokipedia', size:'sm' },
       { label:'Spotify', href:'https://open.spotify.com/show/1JH26td5UtmKQWHLv0NCZp', icon:'spotify', size:'lg' },
       { label:'YouTube', href:'https://www.youtube.com/@triggerpod', icon:'youtube', size:'lg' },
       { label:'YouTube Clips', href:'https://www.youtube.com/@TRIGGERClips', icon:'youtube', size:'lg' },
-      { label:'Substack', href:'https://www.triggerpod.co.uk/', icon:'substack', size:'md' }
+      { label:'Substack', href:'https://www.triggerpod.co.uk/', icon:'substack', size:'md' },
+      { label:'Grokipedia', href: 'https://grokipedia.com/page/Konstantin_Kisin', icon:'grokipedia', size:'sm' },
+      { label:'Podchaser', href: 'https://www.podchaser.com/podcasts/triggernometry-664691', icon:'podchaser', size:'sm' }
     ]
   },
 
@@ -64,7 +67,8 @@ const PODCASTS = [
 
       { label:'Spotify', href:'https://open.spotify.com/show/2dio7KUNuDHErlMumZtNt6', icon:'spotify', size:'md' },
       { label:'YouTube', href:'https://www.youtube.com/@academyofideas', icon:'youtube', size:'md' },
-      { label:'Substack', href:'https://theacademyofideas.substack.com/', icon:'substack', size:'md' }
+      { label:'Substack', href:'https://theacademyofideas.substack.com/', icon:'substack', size:'md' },
+      { label:'Podchaser', href: 'https://www.podchaser.com/podcasts/academy-of-ideas-649141', icon:'podchaser', size:'sm' }
     ]
   },
   {
@@ -74,7 +78,8 @@ const PODCASTS = [
     topics: 'Philosophy, Psychology, Society & Culture',
     links:[
       { label:'Spotify', href:'https://open.spotify.com/show/6Wimp2yM4QWuIJZneUNqbr', icon:'spotify', size:'md' },
-      { label:'YouTube', href:'https://www.youtube.com/@Eternalised', icon:'youtube', size:'md' }
+      { label:'YouTube', href:'https://www.youtube.com/@Eternalised', icon:'youtube', size:'md' },
+      { label:'Podchaser', href: 'https://www.podchaser.com/podcasts/eternalised-1419110', icon:'podchaser', size:'sm' }
     ]
   },
   {
@@ -83,7 +88,7 @@ const PODCASTS = [
     years: '2010',
     topics: 'Politics, News',
     links:[
-      { label:'YouTube', href:'https://www.youtube.com/@CaspianReport', icon:'youtube', size:'md' }
+      { label:'YouTube', href:'https://www.youtube.com/@CaspianReport', icon:'youtube', size:'md' },
     ]
   },
 
@@ -94,9 +99,10 @@ const PODCASTS = [
     years: '2016',
     topics: 'Society & Culture, Education, Psychology',
     links:[
-      { label:'Grokipedia', href: 'https://grokipedia.com/page/jordan_b_peterson#podcast-and-lecture-series', icon:'grokipedia', size:'sm' },
       { label:'Spotify', href:'https://open.spotify.com/show/1Zw2DKjelPnuEYpydFlhgN', icon:'spotify', size:'sm' },
-      { label:'YouTube', href:'https://www.youtube.com/@JordanBPeterson', icon:'youtube', size:'sm' }
+      { label:'YouTube', href:'https://www.youtube.com/@JordanBPeterson', icon:'youtube', size:'sm' },
+      { label:'Grokipedia', href: 'https://grokipedia.com/page/jordan_b_peterson#podcast-and-lecture-series', icon:'grokipedia', size:'sm' },
+      { label:'Podchaser', href: 'https://www.podchaser.com/podcasts/the-jordan-b-peterson-podcast-225906', icon:'podchaser', size:'sm' }
     ]
   },
   {
@@ -105,9 +111,10 @@ const PODCASTS = [
     years: '2018',
     topics: 'Society & Culture, Politics',
     links:[
-      { label:'Grokipedia', href: 'https://grokipedia.com/page/John_Anderson', icon:'grokipedia', size:'sm' },
       { label:'Spotify', href:'https://open.spotify.com/show/6Qh2fEsC7nEVxXxQzwTv54', icon:'spotify', size:'sm' },
       { label:'YouTube', href:'https://www.youtube.com/@JohnAndersonMedia', icon:'youtube', size:'sm' }
+      { label:'Grokipedia', href: 'https://grokipedia.com/page/John_Anderson', icon:'grokipedia', size:'sm' },
+      { label:'Podchaser', href: 'https://www.podchaser.com/podcasts/john-anderson-conversations-657776', icon:'podchaser', size:'sm' }
     ]
   },
   {
@@ -116,9 +123,10 @@ const PODCASTS = [
     years: '2023',
     topics: 'News, Society & Culture',
     links:[
-      { label:'Grokipedia', href: 'https://grokipedia.com/page/andrew-gold-journalist', icon:'grokipedia', size:'sm' },
       { label:'Spotify', href:'https://open.spotify.com/show/2NiFf7pGB4pqkvbrnS1b9X', icon:'spotify', size:'sm' },
       { label:'YouTube', href:'https://www.youtube.com/@andrewgoldheretics', icon:'youtube', size:'sm' }
+      { label:'Grokipedia', href: 'https://grokipedia.com/page/andrew-gold-journalist', icon:'grokipedia', size:'sm' },
+      { label:'Podchaser', href: 'https://www.podchaser.com/podcasts/heretics-1316949', icon:'podchaser', size:'sm' }
     ]
   },
   {
@@ -127,9 +135,10 @@ const PODCASTS = [
     years: '2019',
     topics: 'Philosophy, Society & Culture',
     links:[
-      { label:'Grokipedia', href: 'https://grokipedia.com/page/alex-oconnor', icon:'grokipedia', size:'sm' },
       { label:'Spotify', href:'https://open.spotify.com/show/16wUbvDT95dxzpG2KEhakK', icon:'spotify', size:'sm' },
       { label:'YouTube', href:'https://www.youtube.com/@CosmicSkeptic', icon:'youtube', size:'sm' }
+      { label:'Grokipedia', href: 'https://grokipedia.com/page/alex-oconnor', icon:'grokipedia', size:'sm' },
+      { label:'Podchaser', href: 'https://www.podchaser.com/podcasts/within-reason-836655', icon:'podchaser', size:'sm' }
     ]
   },
   {
@@ -138,9 +147,10 @@ const PODCASTS = [
     years: '2015',
     topics: 'Business, Society & Culture',
     links:[
-      { label:'Grokipedia', href: 'https://grokipedia.com/page/Mark_Bouris', icon:'grokipedia', size:'sm' },
       { label:'Spotify', href:'https://open.spotify.com/show/0W3GWublEOW75ufTa8vAGq', icon:'spotify', size:'sm' },
       { label:'YouTube', href:'https://www.youtube.com/@MarkBourisYT', icon:'youtube', size:'sm' }
+      { label:'Grokipedia', href: 'https://grokipedia.com/page/Mark_Bouris', icon:'grokipedia', size:'sm' },
+      { label:'Podchaser', href: 'https://www.podchaser.com/podcasts/straight-talk-with-mark-bouris-1909016', icon:'podchaser', size:'sm' }
     ]
   },
   {
@@ -149,17 +159,19 @@ const PODCASTS = [
     years: '2016',
     topics: 'Philosophy, Psychology, Education',
     links:[
-      { label:'YouTube', href:'https://www.youtube.com/@AfterSkool', icon:'youtube', size:'md' }
+      { label:'YouTube', href:'https://www.youtube.com/@AfterSkool', icon:'youtube', size:'md' },
+      { label:'Podchaser', href: 'https://www.podchaser.com/podcasts/after-skool-6050376/', icon:'podchaser', size:'sm' }
     ]
   },
   {
     size:'sm', kind:'podcast',
     title:'Nomad Capitalist',
-    years: '',
+    years: '2013',
     topics: 'Places & Travel, Society & Culture',
     links:[
       { label:'Spotify', href:'https://open.spotify.com/show/6obf671rfu4baNg2xBy5fG', icon:'spotify', size:'sm' },
-      { label:'YouTube', href:'https://www.youtube.com/c/nomadcapitalist', icon:'youtube', size:'sm' }
+      { label:'YouTube', href:'https://www.youtube.com/c/nomadcapitalist', icon:'youtube', size:'sm' },
+      { label:'Podchaser', href: 'https://www.podchaser.com/podcasts/nomad-capitalist-4986930', icon:'podchaser', size:'sm' }
     ]
   },
   {
@@ -168,130 +180,141 @@ const PODCASTS = [
     years: '2019',
     topics: 'Science, Society & Culture',
     links:[
-      { label:'Grokipedia', href: 'https://grokipedia.com/page/Bret_Weinstein', icon:'grokipedia', size:'sm' },
-      { label:'Grokipedia', href: 'https://grokipedia.com/page/Heather_Heying', icon:'grokipedia', size:'sm' },
       { label:'Spotify', href:'https://open.spotify.com/show/57R7dOcs60jUfOnuNG0J1R', icon:'spotify', size:'sm' },
       { label:'YouTube', href:'https://www.youtube.com/c/BretWeinsteinDarkHorse', icon:'youtube', size:'sm' },
-      { label:'YouTube', href:'https://www.youtube.com/@DarkHorsePodcastClips/videos', icon:'youtube', size:'sm' }
+      { label:'YouTube', href:'https://www.youtube.com/@DarkHorsePodcastClips/videos', icon:'youtube', size:'sm' },
+      { label:'Grokipedia', href: 'https://grokipedia.com/page/Bret_Weinstein', icon:'grokipedia', size:'sm' },
+      { label:'Grokipedia', href: 'https://grokipedia.com/page/Heather_Heying', icon:'grokipedia', size:'sm' },
+      { label:'Podchaser', href: 'https://www.podchaser.com/podcasts/darkhorse-podcast-891627', icon:'podchaser', size:'sm' }
     ]
   },
   {
     size:'sm', kind:'podcast',
     title:'Huberman Lab',
-    years: '',
+    years: '2020',
     topics: 'Health & Fitness, Science',
     links:[
-      { label:'Grokipedia', href: 'https://grokipedia.com/page/Andrew_Huberman', icon:'grokipedia', size:'sm' },
       { label:'Spotify', href:'https://open.spotify.com/show/79CkJF3UJTHFV8Dse3Oy0P', icon:'spotify', size:'sm' },
-      { label:'YouTube', href:'https://www.youtube.com/c/AndrewHubermanLab', icon:'youtube', size:'sm' }
+      { label:'YouTube', href:'https://www.youtube.com/c/AndrewHubermanLab', icon:'youtube', size:'sm' },
+      { label:'Grokipedia', href: 'https://grokipedia.com/page/Andrew_Huberman', icon:'grokipedia', size:'sm' },
+      { label:'Podchaser', href: 'https://www.podchaser.com/podcasts/huberman-lab-1576373', icon:'podchaser', size:'sm' }
     ]
   },
   {
     size:'sm', kind:'podcast',
     title:'Lex Fridman',
-    years: '',
+    years: '2014',
     topics: 'Technology, Science',
     links:[
-      { label:'Grokipedia', href: 'https://grokipedia.com/page/Lex_Fridman', icon:'grokipedia', size:'sm' },
       { label:'Spotify', href:'https://open.spotify.com/show/2MAi0BvDc6GTFvKFPXnkCL', icon:'spotify', size:'sm' },
-      { label:'YouTube', href:'https://www.youtube.com/c/lexfridman', icon:'youtube', size:'sm' }
+      { label:'YouTube', href:'https://www.youtube.com/c/lexfridman', icon:'youtube', size:'sm' },
+      { label:'Grokipedia', href: 'https://grokipedia.com/page/Lex_Fridman', icon:'grokipedia', size:'sm' },
+      { label:'Podchaser', href: 'https://www.podchaser.com/podcasts/lex-fridman-podcast-721928', icon:'podchaser', size:'sm' }
     ]
   },
   {
     size:'sm', kind:'podcast',
     title:'Conversations with Peter Boghossian',
-    years: '',
+    years: '2012',
     topics: 'Society & Culture, News',
     links:[
-      { label:'Grokipedia', href: '', icon:'grokipedia', size:'sm' },
       { label:'Spotify', href:'https://open.spotify.com/show/4H8GYvSCxN4yJLnBCQDfwZ', icon:'spotify', size:'sm' },
-      { label:'YouTube', href:'https://www.youtube.com/@drpeterboghossian/', icon:'youtube', size:'sm' }
+      { label:'YouTube', href:'https://www.youtube.com/@drpeterboghossian/', icon:'youtube', size:'sm' },
+      { label:'Grokipedia', href: 'https://grokipedia.com/page/Peter_Boghossian', icon:'grokipedia', size:'sm' },
+      { label:'Podchaser', href: 'https://www.podchaser.com/podcasts/conversations-with-peter-bogho-4930998', icon:'podchaser', size:'sm' }
     ]
   },
   {
     size:'sm', kind:'channel',
     title:'DW Documentary',
-    years: '',
+    years: '2014',
     topics: 'Documentary, Society & Culture',
     links:[
-      { label:'Grokipedia', href: 'https://grokipedia.com/page/Peter_Boghossian', icon:'grokipedia', size:'sm' },
-      { label:'YouTube', href:'https://www.youtube.com/c/DWDocumentary', icon:'youtube', size:'sm' }
+      { label:'YouTube', href:'https://www.youtube.com/c/DWDocumentary', icon:'youtube', size:'sm' },
+      { label:'Grokipedia', href: 'https://grokipedia.com/page/DW-TV', icon:'grokipedia', size:'sm' }
     ]
   },
   {
     size:'sm', kind:'podcast',
     title:'ReasonTV',
-    years: '',
+    years: '2007',
     topics: 'Politics, Society & Culture',
     links:[
-      { label:'Grokipedia', href: '', icon:'grokipedia', size:'sm' },
       { label:'YouTube', href:'https://www.youtube.com/@ReasonTV', icon:'youtube', size:'sm' },
-      { label:'Website', href:'https://reason.org/about-reason-foundation/', icon:'website', size:'sm' }
+      { label:'Website', href:'https://reason.org/about-reason-foundation/', icon:'website', size:'sm' },
+      { label:'Grokipedia', href: 'https://grokipedia.com/page/Reason_Foundation', icon:'grokipedia', size:'sm' },
     ]
   },
   {
     size:'sm', kind:'podcast',
     title:'The Rubin Report',
-    years: '',
+    years: '2013',
     topics: 'News Commentary, News',
     links:[
-      { label:'Grokipedia', href: '', icon:'grokipedia', size:'sm' },
       { label:'Spotify', href:'https://open.spotify.com/show/40MKOGQ99YLZvgR2KYHmHl', icon:'spotify', size:'sm' },
-      { label:'YouTube', href:'https://www.youtube.com/watch?v=f8BBzY3PqMI&list=PLEbhOtC9klbAEFtDOff5ZNzDDJTiLCdWc', icon:'youtube', size:'sm' }
+      { label:'YouTube', href:'https://www.youtube.com/watch?v=UMTacwjK-QI&list=PLEbhOtC9klbAEFtDOff5ZNzDDJTiLCdWc', icon:'youtube', size:'sm' },
+      { label:'Grokipedia', href: 'https://grokipedia.com/page/The_Rubin_Report', icon:'grokipedia', size:'sm' },
+      { label:'Podchaser', href: 'https://www.podchaser.com/podcasts/the-rubin-report-1564', icon:'podchaser', size:'sm' }
     ]
   },
   {
     size:'sm', kind:'podcast',
     title:'Uncommon Knowledge | Hoover Institution',
-    years: '',
+    years: '2008',
     topics: 'Politics, History, Society & Culture',
     links:[
-      { label:'Grokipedia', href: '', icon:'grokipedia', size:'sm' },
       { label:'Youtube', href:'https://www.youtube.com/@HooverInstitution', icon:'youtube', size:'sm' },
-      { label:'Website', href:'https://www.hoover.org/publications/uncommon-knowledge', icon:'website', size:'sm' }
+      { label:'Website', href:'https://www.hoover.org/publications/uncommon-knowledge', icon:'website', size:'sm' },
+      { label:'Grokipedia', href: 'https://grokipedia.com/page/Hoover_Institution', icon:'grokipedia', size:'sm' },
+      { label:'Podchaser', href: 'https://www.podchaser.com/podcasts/uncommon-knowledge-666841', icon:'podchaser', size:'sm' }
     ]
   },
   {
     size:'sm', kind:'podcast',
     title:'Jocko Podcast',
-    years: '',
+    years: '2015',
     topics: 'Self-Improvement, Health & Fitness, Society & Culture',
     links:[
-      { label:'Grokipedia', href: '', icon:'grokipedia', size:'sm' },
       { label:'Spotify', href:'https://open.spotify.com/show/7irxBvxNqGYnUdFo1c2gMc', icon:'spotify', size:'sm' },
-      { label:'YouTube', href:'https://www.youtube.com/c/JockoPodcastOfficial', icon:'youtube', size:'sm' }
+      { label:'YouTube', href:'https://www.youtube.com/c/JockoPodcastOfficial', icon:'youtube', size:'sm' },
+      { label:'Grokipedia', href: 'https://grokipedia.com/page/Jocko_Willink', icon:'grokipedia', size:'sm' },
+      { label:'Podchaser', href: 'https://www.podchaser.com/podcasts/jocko-podcast-208346', icon:'podchaser', size:'sm' }
     ]
   },
   {
     size:'sm', kind:'podcast',
     title:'Russell Brand',
-    years: '',
+    years: '2017',
     topics: 'News Commentary, News, Politics',
     links:[
-      { label:'Grokipedia', href: '', icon:'grokipedia', size:'sm' },
       { label:'Spotify', href:'https://open.spotify.com/show/1bmU8gqK78sF4iD2OKFKUZ', icon:'spotify', size:'sm' },
-      { label:'YouTube', href:'https://www.youtube.com/@RussellBrand', icon:'youtube', size:'sm' }
+      { label:'YouTube', href:'https://www.youtube.com/@RussellBrand', icon:'youtube', size:'sm' },
+      { label:'Grokipedia', href: 'https://grokipedia.com/page/Russell_Brand', icon:'grokipedia', size:'sm' },
+      { label:'Podchaser', href: 'https://www.podchaser.com/podcasts/under-the-skin-with-russell-br-455708', icon:'podchaser', size:'sm' },
+      { label:'Podchaser', href: 'https://www.podchaser.com/podcasts/stay-free-with-russell-brand-4912796', icon:'podchaser', size:'sm' }
     ]
   },
   {
-    size:'sm', kind:'channel',
-    title:'Dan Crenshaw',
-    years: '',
+    size:'sm', kind:'podcast',
+    title:'Hold These Truths with Dan Crenshaw',
+    years: '2019',
     topics: 'Politics, Society & Culture, News',
     links:[
-      { label:'Grokipedia', href: '', icon:'grokipedia', size:'sm' },
       { label:'Spotify', href:'https://open.spotify.com/show/2BbbFyOBNTLpYDzUai6ta2?si=d59ad3a3fad64f75&nd=1', icon:'spotify', size:'sm' },
-      { label:'YouTube', href:'https://www.youtube.com/@RepDanCrenshaw', icon:'youtube', size:'sm' }
+      { label:'YouTube', href:'https://www.youtube.com/@RepDanCrenshaw', icon:'youtube', size:'sm' },
+      { label:'Grokipedia', href: 'https://grokipedia.com/page/Dan_Crenshaw', icon:'grokipedia', size:'sm' },
+      { label:'Podchaser', href: 'https://www.podchaser.com/podcasts/hold-these-truths-with-dan-cre-1037869', icon:'podchaser', size:'sm' }
     ]
   },
   {
-    size:'sm', kind:'channel',
-    title:'Shane Hazel',
-    years: '',
+    size:'sm', kind:'podcast',
+    title:'The Shane Hazel Show',
+    years: '2020',
     topics: 'Comedy, Society & Cultures',
     links:[
-      { label:'Grokipedia', href: '', icon:'grokipedia', size:'sm' },
       { label:'Spotify', href:'https://open.spotify.com/show/7ztGuDsRRnwL9PnZQhZPwP?si=50b6c72abc10439d&nd=1', icon:'spotify', size:'sm' },
+      { label:'Grokipedia', href: '', icon:'grokipedia', size:'sm' },
+      { label:'Podchaser', href: 'https://www.podchaser.com/podcasts/the-shane-hazel-show-1153063', icon:'podchaser', size:'sm' }
     ]
   }
 ];
