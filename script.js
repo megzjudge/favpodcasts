@@ -67,7 +67,7 @@ const PODCASTS = [
     kind: "channel",
     title: "Academy of Ideas",
     years: "2012",
-    topics: "Philosophy, Psychology, Society & Culture",
+    topics: "Philosophy, Psychology",
     links: [
       { label: "Spotify", href: "https://open.spotify.com/show/2dio7KUNuDHErlMumZtNt6", icon: "spotify", size: "md" },
       { label: "YouTube", href: "https://www.youtube.com/@academyofideas", icon: "youtube", size: "md" },
@@ -80,7 +80,7 @@ const PODCASTS = [
     kind: "channel",
     title: "Eternalised",
     years: "2020",
-    topics: "Philosophy, Psychology, Society & Culture",
+    topics: "Philosophy, Psychology",
     links: [
       { label: "Spotify", href: "https://open.spotify.com/show/6Wimp2yM4QWuIJZneUNqbr", icon: "spotify", size: "md" },
       { label: "YouTube", href: "https://www.youtube.com/@Eternalised", icon: "youtube", size: "md" },
@@ -188,7 +188,7 @@ const PODCASTS = [
   {
     size: "sm",
     kind: "podcast",
-    title: "Dark Horse Podcast with Bret Weinstein and Heather Heying",
+    title: "Dark Horse Podcast",
     years: "2019",
     topics: "Science, Society & Culture",
     links: [
@@ -278,7 +278,7 @@ const PODCASTS = [
   {
     size: "sm",
     kind: "podcast",
-    title: "Uncommon Knowledge | Hoover Institution",
+    title: "Uncommon Knowledge",
     years: "2008",
     topics: "Politics, History, Society & Culture",
     links: [
@@ -342,189 +342,208 @@ const PODCASTS = [
   }
 ];
 
-const firstSentence = t => (t || "").split(/(?<=[.!?])\s+/)[0] || "";
+const firstSentence = t => (t || '').split(/(?<=[.!?])\s+/)[0] || '';
+
+/**
+ * Robustly pick a "channel-like" YouTube URL from cfg.links.
+ * We avoid watch?v=... links because those are videos/playlists, not channels/handles.
+ */
+function pickYoutubeChannelUrl(links = []) {
+  const yt = links.filter(l => l?.icon === 'youtube' && typeof l?.href === 'string');
+
+  const isChannelish = (u) =>
+    u.includes('youtube.com/@') ||
+    u.includes('youtube.com/channel/') ||
+    u.includes('youtube.com/c/') ||
+    u.includes('youtube.com/user/');
+
+  // Prefer explicit handle/channel/c/user urls
+  const channelish = yt.find(l => isChannelish(l.href));
+  if (channelish) return channelish.href;
+
+  // If someone pasted something like ".../@Handle/videos", that’s still fine.
+  const handleVideos = yt.find(l => l.href.includes('youtube.com/@'));
+  if (handleVideos) return handleVideos.href;
+
+  // Otherwise treat as not usable for channel avatar (e.g., watch?v=...)
+  return null;
+}
+
+/**
+ * Convert a YouTube channel URL into an Unavatar request that returns the channel avatar.
+ * Works with:
+ * - https://www.youtube.com/@handle
+ * - https://www.youtube.com/channel/UC...
+ * - https://www.youtube.com/c/Name
+ * - https://www.youtube.com/user/Name
+ */
+async function youtubeThumb(channelUrl) {
+  const url = String(channelUrl || '').trim();
+  if (!url) return null;
+
+  let key = null;
+
+  // @handle
+  const mHandle = url.match(/youtube\.com\/@([^/?#]+)/i);
+  if (mHandle?.[1]) key = mHandle[1];
+
+  // /channel/UCxxxx
+  if (!key) {
+    const mChannel = url.match(/youtube\.com\/channel\/([^/?#]+)/i);
+    if (mChannel?.[1]) key = mChannel[1];
+  }
+
+  // /c/Name
+  if (!key) {
+    const mC = url.match(/youtube\.com\/c\/([^/?#]+)/i);
+    if (mC?.[1]) key = mC[1];
+  }
+
+  // /user/Name
+  if (!key) {
+    const mUser = url.match(/youtube\.com\/user\/([^/?#]+)/i);
+    if (mUser?.[1]) key = mUser[1];
+  }
+
+  if (!key) return null;
+
+  const unavatar = `https://unavatar.io/youtube/${encodeURIComponent(key)}`;
+
+  try {
+    const res = await fetch(unavatar, { mode: 'cors' });
+    if (!res.ok) return null;
+    return unavatar;
+  } catch {
+    return null;
+  }
+}
+
+/* Spotify oEmbed thumbnail (show artwork) */
+async function spotifyThumb(spotifyUrl) {
+  const url = String(spotifyUrl || '').trim();
+  if (!url) return null;
+
+  try {
+    const api = `https://open.spotify.com/oembed?url=${encodeURIComponent(url)}`;
+    const res = await fetch(api);
+    if (!res.ok) return null;
+    const data = await res.json();
+    return data?.thumbnail_url || null;
+  } catch {
+    return null;
+  }
+}
 
 const pill = link =>
   `<a class="pill ${link.size}" href="${link.href}" target="_blank" rel="noopener">
      ${ICONS[link.icon] || ICONS.site}${link.label}
    </a>`;
 
-function mountToGrid(size){
-  if(size === "lg") return document.getElementById("grid-lg");
-  if(size === "md") return document.getElementById("grid-md");
-  return document.getElementById("grid-sm");
+function mountToGrid(size) {
+  if (size === 'lg') return document.getElementById('grid-lg');
+  if (size === 'md') return document.getElementById('grid-md');
+  return document.getElementById('grid-sm');
 }
 
 /* Badge HTML from kind */
 const getBadge = (cfg) => {
   const badge = KIND_BADGE[cfg.kind];
-  return badge ? `<div class="podbadge" aria-hidden="true">${badge}</div>` : "";
+  return badge ? `<div class="podbadge" aria-hidden="true">${badge}</div>` : '';
 };
 
-/* YouTube avatar via Unavatar (works with @handles) */
-async function youtubeThumb(channelUrl){
-  try{
-    const handle = channelUrl.split("/").pop() || "";
-    const cleaned = handle.startsWith("@") ? handle.slice(1) : handle;
-    return `https://unavatar.io/youtube/${encodeURIComponent(cleaned)}`;
-  }catch(e){
-    console.warn("YouTube avatar fetch error", e);
-    return null;
-  }
-}
-
-/* Spotify oEmbed thumbnail (fallback) */
-async function spotifyThumb(spotifyUrl){
-  try{
-    const api = `https://open.spotify.com/oembed?url=${encodeURIComponent(spotifyUrl)}`;
-    const res = await fetch(api);
-    if(!res.ok) throw new Error("Spotify oEmbed failed");
-    const data = await res.json();
-    return data.thumbnail_url || null;
-  }catch(e){
-    console.warn("Spotify oEmbed error", e);
-    return null;
-  }
-}
-
-async function podchaserCount(title){
+/**
+ * Your Worker is at /podchaser (per your logs).
+ * This function is intentionally tolerant: if anything looks off, it returns null.
+ */
+async function podchaserCount(title) {
   const url = `/podchaser?title=${encodeURIComponent(title)}`;
-  const res = await fetch(url, { headers: { accept: "application/json" } });
 
-  const ct = (res.headers.get("content-type") || "").toLowerCase();
-  const text = await res.text();
+  try {
+    const res = await fetch(url, { headers: { 'accept': 'application/json' } });
+    const contentType = res.headers.get('content-type') || '';
+    const text = await res.text();
 
-  // Leave this in while tuning; remove later if you want
-  console.log("[podchaserCount]", { url, status: res.status, contentType: ct, head: text.slice(0,120) });
+    if (!res.ok) throw new Error(`HTTP ${res.status}: ${text.slice(0, 200)}`);
+    if (!contentType.includes('application/json')) throw new Error(`Non-JSON content-type: ${contentType}`);
 
-  if (!res.ok) throw new Error(`Podchaser failed (${res.status}): ${text.slice(0,200)}`);
-  const data = JSON.parse(text);
-  return Number.isFinite(data.numberOfEpisodes) ? data.numberOfEpisodes : null;
-}
-
-/* Small concurrency limiter */
-async function runPool(tasks, limit = 6){
-  const executing = new Set();
-  const results = [];
-
-  for (const task of tasks){
-    const p = (async () => task())()
-      .then(v => ({ ok:true, value:v }))
-      .catch(e => ({ ok:false, error:e }));
-
-    results.push(p);
-    executing.add(p);
-
-    p.finally(() => executing.delete(p));
-
-    if (executing.size >= limit){
-      await Promise.race(executing);
-    }
-  }
-
-  return Promise.all(results);
-}
-
-function formatInt(n){
-  return Number.isFinite(n) ? n.toLocaleString() : "";
-}
-
-async function getThumb(cfg){
-  try{
-    const primarySpotify = (cfg.links || []).find(l => l.icon === "spotify")?.href || null;
-    const youtubeChannel = (cfg.links || []).find(l => l.icon === "youtube")?.href || null;
-
-    // Prefer YouTube avatar if a YouTube link exists; else Spotify oEmbed
-    if (youtubeChannel){
-      const yt = await youtubeThumb(youtubeChannel);
-      if (yt) return yt;
-    }
-    if (primarySpotify){
-      const sp = await spotifyThumb(primarySpotify);
-      if (sp) return sp;
-    }
-    return null;
-  }catch(e){
-    console.warn("Thumb fetch error", e);
+    const data = JSON.parse(text);
+    return Number.isFinite(data?.numberOfEpisodes) ? data.numberOfEpisodes : null;
+  } catch (e) {
+    console.warn('Podchaser count error', e);
     return null;
   }
 }
 
-function buildCard(cfg){
-  const card = document.createElement("article");
-  card.className = `pod size-${cfg.size}`;
-  card.dataset.title = cfg.title;
+/**
+ * Thumbnail policy overrides per your request.
+ * - forceSpotify: always use Spotify artwork, never YouTube
+ */
+const THUMB_RULES = {
+  'Huberman Lab': { forceSpotify: true },
+  'Conversations with Peter Boghossian': { forceSpotify: true },
+  'The Rubin Report': { forceSpotify: true } // because your YouTube link is a watch URL, not a channel
+};
 
-  // Placeholders that will be updated asynchronously
-  const topics = cfg.topics || "";
-  const created = cfg.years || "";
+async function getThumb(cfg) {
+  const links = cfg.links || [];
+  const primarySpotify = links.find(l => l.icon === 'spotify')?.href || null;
+  const youtubeChannelUrl = pickYoutubeChannelUrl(links);
 
-  card.innerHTML = `
-    ${getBadge(cfg)}
-    <div class="podthumb is-loading"></div>
+  const rule = THUMB_RULES[cfg.title] || null;
 
-    <h2>${cfg.title}</h2>
+  // Forced Spotify (Huberman, Boghossian, Rubin)
+  if (rule?.forceSpotify) {
+    return (primarySpotify ? await spotifyThumb(primarySpotify) : null);
+  }
 
-    <div class="meta">
-      ${topics  ? `<p><strong>Topics:</strong> ${topics}</p>` : ""}
-      <p class="episodes-row" style="display:none"><strong>Episodes:</strong> <span class="episodes-val"></span></p>
-      ${created ? `<p><strong>Created:</strong> ${created}</p>` : ""}
-    </div>
+  // Default preference:
+  // - Prefer YouTube channel avatar (it’s fast and stable) when available
+  // - Otherwise Spotify oEmbed
+  // For Dark Horse + Shane Hazel: this ensures "channel avatar", not latest video thumbnail.
+  const yt = youtubeChannelUrl ? await youtubeThumb(youtubeChannelUrl) : null;
+  if (yt) return yt;
 
-    <div class="links">
-      ${(cfg.links || []).map(pill).join("")}
-    </div>
-  `;
+  const sp = primarySpotify ? await spotifyThumb(primarySpotify) : null;
+  if (sp) return sp;
 
-  return card;
+  return null;
 }
 
-async function hydrateCard(cfg, card){
-  // Thumb + episodes fetch in parallel (when relevant)
-  const tasks = [];
-
-  tasks.push(async () => {
+async function render() {
+  for (const cfg of PODCASTS) {
     const thumbUrl = await getThumb(cfg);
-    if (!thumbUrl) return;
-    const holder = card.querySelector(".podthumb");
-    if (!holder) return;
-    holder.classList.remove("is-loading");
-    holder.innerHTML = `<img alt="${cfg.title} cover" src="${thumbUrl}" loading="lazy" decoding="async"/>`;
-  });
 
-  const hasPodchaser = (cfg.links || []).some(l => l.icon === "podchaser");
-  if (hasPodchaser){
-    tasks.push(async () => {
-      const n = await podchaserCount(cfg.title);
-      if (!Number.isFinite(n)) return;
-      const row = card.querySelector(".episodes-row");
-      const val = card.querySelector(".episodes-val");
-      if (!row || !val) return;
-      val.textContent = formatInt(n);
-      row.style.display = "";
-    });
-  } else {
-    // Optional: if you want to show nothing, do nothing.
-    // If you want a static count later, add cfg.episodes and print it here.
-  }
+    const oneLiner = firstSentence(cfg.desc || ''); // optional if you ever add cfg.desc; otherwise will be blank
 
-  // Run both tasks (thumb + episodes) concurrently for this card
-  await Promise.allSettled(tasks.map(fn => fn()));
-}
+    const hasPodchaser = (cfg.links || []).some(l => l.icon === 'podchaser');
+    const podchaserEpisodes = hasPodchaser ? await podchaserCount(cfg.title) : null;
 
-async function render(){
-  // 1) Render immediately (no awaits)
-  const cards = [];
+    const episodesCount = Number.isFinite(podchaserEpisodes) ? podchaserEpisodes : null;
+    const episodes = Number.isFinite(episodesCount) ? episodesCount.toLocaleString() : '';
 
-  for (const cfg of PODCASTS){
-    const card = buildCard(cfg);
+    const card = document.createElement('article');
+    card.className = `pod size-${cfg.size}`;
+    card.innerHTML = `
+      ${getBadge(cfg)}
+      ${thumbUrl ? `<div class="podthumb"><img alt="${cfg.title} cover" src="${thumbUrl}" loading="lazy" decoding="async"/></div>` : ''}
+
+      <h2>${cfg.title}</h2>
+
+      <div class="meta">
+        ${cfg.topics ? `<p><strong>Topics:</strong> ${cfg.topics}</p>` : ''}
+        ${episodes  ? `<p><strong>Episodes:</strong> ${episodes}</p>` : ''}
+        ${cfg.years ? `<p><strong>Created:</strong> ${cfg.years}</p>` : ''}
+      </div>
+
+      ${oneLiner ? `<p class="desc">${oneLiner}</p>` : ''}
+
+      <div class="links">
+        ${(cfg.links || []).map(pill).join('')}
+      </div>
+    `;
+
     mountToGrid(cfg.size).appendChild(card);
-    cards.push({ cfg, card });
   }
-
-  // 2) Hydrate in a pool (limits concurrent network work)
-  const hydrateTasks = cards.map(({ cfg, card }) => () => hydrateCard(cfg, card));
-  await runPool(hydrateTasks, 6);
 }
 
 render();
