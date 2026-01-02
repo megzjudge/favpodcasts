@@ -284,6 +284,7 @@ const PODCASTS = [
       { label: "Youtube", href: "https://www.youtube.com/@HooverInstitution", icon: "youtube", size: "sm" },
       { label: "Website", href: "https://www.hoover.org/publications/uncommon-knowledge", icon: "website", size: "sm" },
       { label: "Grokipedia", href: "https://grokipedia.com/page/Hoover_Institution", icon: "grokipedia", size: "sm" },
+      { label: "Grokipedia", href: "https://grokipedia.com/page/Peter_Robinson_(speechwriter)", icon: "grokipedia", size: "sm" },
       { label: "Podchaser", href: "https://www.podchaser.com/podcasts/uncommon-knowledge-666841", icon: "podchaser", size: "sm" }
     ]
   },
@@ -335,7 +336,6 @@ const PODCASTS = [
     topics: "Comedy, Society & Cultures",
     links: [
       { label: "Spotify", href: "https://open.spotify.com/show/7ztGuDsRRnwL9PnZQhZPwP?si=50b6c72abc10439d&nd=1", icon: "spotify", size: "sm" },
-      { label: "Grokipedia", href: "", icon: "grokipedia", size: "sm" },
       { label: "Podchaser", href: "https://www.podchaser.com/podcasts/the-shane-hazel-show-1153063", icon: "podchaser", size: "sm" }
     ]
   }
