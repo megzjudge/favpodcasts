@@ -294,24 +294,24 @@ h2.group-title {
 /* ====== MOBILE ====== */
 @media (max-width: 480px){
   .links{
-    gap:10px 10px;
-    max-width:100%;
+    gap: 10px 10px;
+    max-width: 100%;
   }
 
   .pill{
-    --pill-pad:.64rem .9rem;
-    --pill-fs:.86rem;
+    --pill-pad: .64rem .9rem;
+    --pill-fs: .86rem;
 
-    border-width:2px;
+    border-width: 2px;
   }
 
   .pill svg{
-    width:1em;
-    height:1em;
-    margin-right:.28em;
+    width: 1em;
+    height: 1em;
+    margin-right: .28em;
   }
 
-  .pill.lg{ --pill-fs:.90rem; }
-  .pill.md{ --pill-fs:.84rem; }
-  .pill.sm{ --pill-fs:.80rem; }
+  .pill.lg{ --pill-fs: .50rem; }
+  .pill.md{ --pill-fs: .50rem; }
+  .pill.sm{ --pill-fs: .50rem; }
 }

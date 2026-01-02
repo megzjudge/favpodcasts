@@ -344,114 +344,134 @@ const PODCASTS = [
 
 const firstSentence = t => (t || '').split(/(?<=[.!?])\s+/)[0] || '';
 
-/**
- * Returns the FIRST Spotify URL in the list (if any).
- */
-function pickFirstSpotifyUrl(links = []) {
-  return (links.find(l => l?.icon === 'spotify' && typeof l?.href === 'string')?.href) || null;
-}
-
-/**
- * Returns the FIRST YouTube URL in the list (if any).
- * Note: this may be a watch URL; we validate later.
- */
-function pickFirstYoutubeUrl(links = []) {
-  return (links.find(l => l?.icon === 'youtube' && typeof l?.href === 'string')?.href) || null;
-}
-
-/**
- * Returns a "channel-like" YouTube URL we can derive an avatar from.
- * We avoid watch?v=... links because those are videos/playlists, not channels/handles.
- */
-function pickYoutubeChannelUrl(links = []) {
-  const yt = links.filter(l => l?.icon === 'youtube' && typeof l?.href === 'string');
-
-  const isChannelish = (u) =>
-    u.includes('youtube.com/@') ||
-    u.includes('youtube.com/channel/') ||
-    u.includes('youtube.com/c/') ||
-    u.includes('youtube.com/user/');
-
-  const channelish = yt.find(l => isChannelish(l.href));
-  if (channelish) return channelish.href;
-
-  // Still allow @handle with extra path (e.g., /@Handle/videos)
-  const handleish = yt.find(l => l.href.includes('youtube.com/@'));
-  if (handleish) return handleish.href;
-
-  return null;
-}
-
-/**
- * Convert a YouTube URL into an Unavatar request that returns the channel avatar.
- * Works with:
- * - https://www.youtube.com/@handle
- * - https://www.youtube.com/channel/UC...
- * - https://www.youtube.com/c/Name
- * - https://www.youtube.com/user/Name
- */
-async function youtubeThumb(youtubeUrl) {
-  const url = String(youtubeUrl || '').trim();
-  if (!url) return null;
-
-  let key = null;
-
-  const mHandle = url.match(/youtube\.com\/@([^/?#]+)/i);
-  if (mHandle?.[1]) key = mHandle[1];
-
-  if (!key) {
-    const mChannel = url.match(/youtube\.com\/channel\/([^/?#]+)/i);
-    if (mChannel?.[1]) key = mChannel[1];
-  }
-
-  if (!key) {
-    const mC = url.match(/youtube\.com\/c\/([^/?#]+)/i);
-    if (mC?.[1]) key = mC[1];
-  }
-
-  if (!key) {
-    const mUser = url.match(/youtube\.com\/user\/([^/?#]+)/i);
-    if (mUser?.[1]) key = mUser[1];
-  }
-
-  // If it’s a watch URL (or anything non-channelish), we refuse here so we can fallback cleanly.
-  if (!key) return null;
-
-  const unavatar = `https://unavatar.io/youtube/${encodeURIComponent(key)}`;
-
-  try {
-    const res = await fetch(unavatar, { mode: 'cors' });
-    if (!res.ok) return null;
-    return unavatar;
-  } catch {
-    return null;
-  }
-}
-
-/* Spotify oEmbed thumbnail (show artwork) */
-async function spotifyThumb(spotifyUrl) {
-  const url = String(spotifyUrl || '').trim();
-  if (!url) return null;
-
-  try {
-    const api = `https://open.spotify.com/oembed?url=${encodeURIComponent(url)}`;
-    const res = await fetch(api);
-    if (!res.ok) return null;
-    const data = await res.json();
-    return data?.thumbnail_url || null;
-  } catch {
-    return null;
-  }
-}
-
 const pill = link =>
   `<a class="pill ${link.size}" href="${link.href}" target="_blank" rel="noopener">
      ${ICONS[link.icon] || ICONS.site}${link.label}
    </a>`;
 
-function mountToGrid(size) {
-  if (size === 'lg') return document.getElementById('grid-lg');
-  if (size === 'md') return document.getElementById('grid-md');
+// --- Thumb cache (per page load) ---
+const THUMB_CACHE = new Map();
+
+/**
+ * Return a "channel-level" YouTube URL from a list of links, if one exists.
+ * Prefers @handle or /channel/ links over watch/playlist URLs.
+ */
+function getYoutubeChannelUrl(links){
+  const yt = (links || []).filter(l => l.icon === 'youtube' && typeof l.href === 'string');
+  if (!yt.length) return null;
+
+  const preferred = yt.find(l => /youtube\.com\/@/i.test(l.href) || /youtube\.com\/channel\//i.test(l.href));
+  return (preferred || yt[0]).href;
+}
+
+/**
+ * Always returns a channel avatar URL (via unavatar) for a YouTube channel URL.
+ * Works for @handle and /channel/ links; avoids returning video thumbnails.
+ */
+function youtubeAvatarUrlFromAnyYoutubeUrl(youtubeUrl){
+  try{
+    const u = new URL(youtubeUrl);
+    const parts = u.pathname.split('/').filter(Boolean);
+
+    // @handle
+    const at = parts.find(p => p.startsWith('@'));
+    if (at){
+      const handle = at.slice(1);
+      return `https://unavatar.io/youtube/${encodeURIComponent(handle)}`;
+    }
+
+    // /channel/UC....
+    const chIdx = parts.indexOf('channel');
+    if (chIdx !== -1 && parts[chIdx + 1]){
+      const channelId = parts[chIdx + 1];
+      return `https://unavatar.io/youtube/${encodeURIComponent(channelId)}`;
+    }
+
+    // If it's a watch/playlist/etc and we can't infer a channel identifier, bail.
+    return null;
+  }catch{
+    return null;
+  }
+}
+
+/**
+ * Spotify oEmbed thumbnail for a *show* URL.
+ * If it looks like episode/track art, return null so we can fall back.
+ */
+async function spotifyShowThumbSafe(spotifyUrl){
+  try{
+    // Hard guard: only attempt on show URLs
+    if (!/open\.spotify\.com\/show\//i.test(spotifyUrl)) return null;
+
+    const api = `https://open.spotify.com/oembed?url=${encodeURIComponent(spotifyUrl)}`;
+    const res = await fetch(api);
+    if(!res.ok) return null;
+    const data = await res.json();
+    const thumb = data && data.thumbnail_url ? String(data.thumbnail_url) : null;
+    if(!thumb) return null;
+
+    // Heuristic: Spotify show cover art commonly uses "ab676563" (show),
+    // whereas episode/track art commonly uses "ab67616d"/"ab676161".
+    // If we detect the episode/track pattern, reject and fall back.
+    const lower = thumb.toLowerCase();
+    const looksEpisodeLike =
+      lower.includes('ab67616d') || lower.includes('ab676161') || lower.includes('/episode/');
+
+    return looksEpisodeLike ? null : thumb;
+  }catch{
+    return null;
+  }
+}
+
+/**
+ * Unified thumb getter:
+ * - Uses first link as preferred source (youtube/spotify).
+ * - Guarantees channel-level for YouTube.
+ * - Guarantees show-level for Spotify, otherwise falls back to YouTube channel avatar.
+ */
+async function getThumb(cfg){
+  const cacheKey = cfg.title;
+  if (THUMB_CACHE.has(cacheKey)) return THUMB_CACHE.get(cacheKey);
+
+  const links = cfg.links || [];
+  const first = links[0] || null;
+
+  const youtubeChannelUrl = getYoutubeChannelUrl(links);
+  const youtubeAvatar = youtubeChannelUrl ? youtubeAvatarUrlFromAnyYoutubeUrl(youtubeChannelUrl) : null;
+
+  let thumb = null;
+
+  try{
+    if (first && first.icon === 'youtube'){
+      // Always channel avatar, never video thumb
+      thumb = youtubeAvatar;
+    } else if (first && first.icon === 'spotify'){
+      // Prefer show cover, but reject "episode-like" art
+      thumb = await spotifyShowThumbSafe(first.href);
+
+      // If Spotify produced episode-like or failed, fall back to YouTube channel avatar
+      if (!thumb && youtubeAvatar) thumb = youtubeAvatar;
+    } else {
+      // Other first-link types: fall back in a sensible order
+      thumb = youtubeAvatar;
+
+      if (!thumb){
+        const spotifyFirst = links.find(l => l.icon === 'spotify' && /open\.spotify\.com\/show\//i.test(l.href));
+        if (spotifyFirst) thumb = await spotifyShowThumbSafe(spotifyFirst.href);
+      }
+    }
+  }catch(e){
+    console.warn('Thumb fetch error', e);
+    thumb = youtubeAvatar || null;
+  }
+
+  THUMB_CACHE.set(cacheKey, thumb);
+  return thumb;
+}
+
+function mountToGrid(size){
+  if(size === 'lg') return document.getElementById('grid-lg');
+  if(size === 'md') return document.getElementById('grid-md');
   return document.getElementById('grid-sm');
 }
 
@@ -461,101 +481,70 @@ const getBadge = (cfg) => {
   return badge ? `<div class="podbadge" aria-hidden="true">${badge}</div>` : '';
 };
 
-/**
- * Worker endpoint: /podchaser
- * Tolerant parsing: returns null on any issue.
- */
-async function podchaserCount(title) {
+async function podchaserCount(title){
   const url = `/podchaser?title=${encodeURIComponent(title)}`;
+  const res = await fetch(url);
+  const text = await res.text();
 
-  try {
-    const res = await fetch(url, { headers: { 'accept': 'application/json' } });
-    const contentType = res.headers.get('content-type') || '';
-    const text = await res.text();
+  // Helpful debug (safe to keep; remove later if you want)
+  console.debug('[podchaserCount]', {
+    url,
+    status: res.status,
+    contentType: res.headers.get('content-type') || '',
+    head: text.slice(0, 140)
+  });
 
-    if (!res.ok) throw new Error(`HTTP ${res.status}: ${text.slice(0, 200)}`);
-    if (!contentType.includes('application/json')) throw new Error(`Non-JSON content-type: ${contentType}`);
-
+  if(!res.ok) throw new Error(`Podchaser count failed (${res.status}): ${text.slice(0,200)}`);
+  try{
     const data = JSON.parse(text);
-    return Number.isFinite(data?.numberOfEpisodes) ? data.numberOfEpisodes : null;
-  } catch (e) {
-    console.warn('Podchaser count error', e);
-    return null;
+    return Number.isFinite(data.numberOfEpisodes) ? data.numberOfEpisodes : null;
+  }catch{
+    throw new Error(`Podchaser count non-JSON: ${text.slice(0,200)}`);
   }
 }
 
-/**
- * Thumbnail selection rule:
- * 1) Look at cfg.links[0].icon:
- *    - spotify => spotifyThumb(first.href)
- *    - youtube => youtubeThumb(first.href)  (channelish only)
- * 2) If that fails:
- *    - fallback to FIRST Spotify link anywhere in links
- *    - else fallback to any channelish YouTube link anywhere in links
- *    - else null
- */
-async function getThumb(cfg) {
-  const links = cfg.links || [];
-  const first = links[0] || null;
-
-  const firstSpotify = pickFirstSpotifyUrl(links);
-  const youtubeChannelUrl = pickYoutubeChannelUrl(links);
-
-  // 1) Primary: first listed link drives the thumbnail source
-  if (first?.icon === 'spotify' && first?.href) {
-    const sp = await spotifyThumb(first.href);
-    if (sp) return sp;
-  }
-
-  if (first?.icon === 'youtube' && first?.href) {
-    // This will return null for watch?v=... etc, triggering fallback.
-    const yt = await youtubeThumb(first.href);
-    if (yt) return yt;
-  }
-
-  // 2) Fallbacks (in this priority order)
-  if (firstSpotify) {
-    const sp = await spotifyThumb(firstSpotify);
-    if (sp) return sp;
-  }
-
-  if (youtubeChannelUrl) {
-    const yt = await youtubeThumb(youtubeChannelUrl);
-    if (yt) return yt;
-  }
-
-  return null;
-}
-
-async function render() {
-  for (const cfg of PODCASTS) {
+async function render(){
+  for(const cfg of PODCASTS){
     const thumbUrl = await getThumb(cfg);
 
     const hasPodchaser = (cfg.links || []).some(l => l.icon === 'podchaser');
-    const podchaserEpisodes = hasPodchaser ? await podchaserCount(cfg.title) : null;
+    let podchaserEpisodes = null;
+    if (hasPodchaser){
+      try{
+        podchaserEpisodes = await podchaserCount(cfg.title);
+      }catch(e){
+        console.warn('Podchaser count error', e);
+      }
+    }
 
-    const episodesCount = Number.isFinite(podchaserEpisodes) ? podchaserEpisodes : null;
+    const episodesCount =
+      Number.isFinite(podchaserEpisodes) ? podchaserEpisodes : null;
+
     const episodes = Number.isFinite(episodesCount) ? episodesCount.toLocaleString() : '';
+
+    // Use your explicit topics + years from the const only (no external scanning)
+    const topics = cfg.topics || '';
+    const created = cfg.years || '';
 
     const card = document.createElement('article');
     card.className = `pod size-${cfg.size}`;
-    card.innerHTML = `
-      ${getBadge(cfg)}
-      ${thumbUrl ? `<div class="podthumb"><img alt="${cfg.title} cover" src="${thumbUrl}" loading="lazy" decoding="async"/></div>` : ''}
+    card.innerHTML =
+      `
+        ${getBadge(cfg)}
+        ${thumbUrl ? `<div class="podthumb"><img alt="${cfg.title} cover" src="${thumbUrl}" loading="lazy" decoding="async"/></div>` : ''}
 
-      <h2>${cfg.title}</h2>
+        <h2>${cfg.title}</h2>
 
-      <div class="meta">
-        ${cfg.topics ? `<p><strong>Topics:</strong> ${cfg.topics}</p>` : ''}
-        ${episodes  ? `<p><strong>Episodes:</strong> ${episodes}</p>` : ''}
-        ${cfg.years ? `<p><strong>Created:</strong> ${cfg.years}</p>` : ''}
-      </div>
+        <div class="meta">
+          ${topics  ? `<p><strong>Topics:</strong> ${topics}</p>` : ''}
+          ${episodes? `<p><strong>Episodes:</strong> ${episodes}</p>` : ''}
+          ${created ? `<p><strong>Created:</strong> ${created}</p>` : ''}
+        </div>
 
-      <div class="links">
-        ${(cfg.links || []).map(pill).join('')}
-      </div>
-    `;
-
+        <div class="links">
+          ${(cfg.links || []).map(pill).join('')}
+        </div>
+      `;
     mountToGrid(cfg.size).appendChild(card);
   }
 }
