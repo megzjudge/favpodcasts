@@ -1,4 +1,3 @@
-// script.js
 const ICONS = {
   youtube:
     '<svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.3 3.5 12 3.5 12 3.5s-7.3 0-9.4.6A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c2.1.6 9.4.6 9.4.6s7.3 0 9.4-.6a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8zM9.6 15.6V8.4L15.8 12l-6.2 3.6z"/></svg>',
@@ -9,7 +8,7 @@ const ICONS = {
   site:
     '<svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm1 17.9V14h3.9A8 8 0 0 1 13 19.9zM9 19.9A8 8 0 0 1 7.1 14H11v5.9zm-3.9-7.9A8 8 0 0 1 9 4.1V10H5.1zM11 10V4.1A8 8 0 0 1 17 12h-6z"/></svg>',
   grokipedia:
-    '<svg viewBox="0 0 24 24" aria-hidden="true"><rect width="24" height="24" fill="none"/><text x="12" y="16" text-anchor="middle" font-family="Arial,sans-serif" font-size="14" fill="currentColor">G</text></svg>'
+    '<svg viewBox="0 0 24 24" aria-hidden="true"><rect width="36" height="36" fill="none"/><text x="12" y="16" text-anchor="middle" font-family="Arial,sans-serif" font-size="14" fill="currentColor">G</text></svg>'
 };
 
 /* kind: 'podcast' => 🎙️, 'channel' => 🔊 */
@@ -349,13 +348,8 @@ const pill = link =>
      ${ICONS[link.icon] || ICONS.site}${link.label}
    </a>`;
 
-// --- Thumb cache (per page load) ---
 const THUMB_CACHE = new Map();
 
-/**
- * Return a "channel-level" YouTube URL from a list of links, if one exists.
- * Prefers @handle or /channel/ links over watch/playlist URLs.
- */
 function getYoutubeChannelUrl(links){
   const yt = (links || []).filter(l => l.icon === 'youtube' && typeof l.href === 'string');
   if (!yt.length) return null;
@@ -364,43 +358,31 @@ function getYoutubeChannelUrl(links){
   return (preferred || yt[0]).href;
 }
 
-/**
- * Always returns a channel avatar URL (via unavatar) for a YouTube channel URL.
- * Works for @handle and /channel/ links; avoids returning video thumbnails.
- */
 function youtubeAvatarUrlFromAnyYoutubeUrl(youtubeUrl){
   try{
     const u = new URL(youtubeUrl);
     const parts = u.pathname.split('/').filter(Boolean);
 
-    // @handle
     const at = parts.find(p => p.startsWith('@'));
     if (at){
       const handle = at.slice(1);
       return `https://unavatar.io/youtube/${encodeURIComponent(handle)}`;
     }
 
-    // /channel/UC....
     const chIdx = parts.indexOf('channel');
     if (chIdx !== -1 && parts[chIdx + 1]){
       const channelId = parts[chIdx + 1];
       return `https://unavatar.io/youtube/${encodeURIComponent(channelId)}`;
     }
 
-    // If it's a watch/playlist/etc and we can't infer a channel identifier, bail.
     return null;
-  }catch{
+  } catch{
     return null;
   }
 }
 
-/**
- * Spotify oEmbed thumbnail for a *show* URL.
- * If it looks like episode/track art, return null so we can fall back.
- */
 async function spotifyShowThumbSafe(spotifyUrl){
   try{
-    // Hard guard: only attempt on show URLs
     if (!/open\.spotify\.com\/show\//i.test(spotifyUrl)) return null;
 
     const api = `https://open.spotify.com/oembed?url=${encodeURIComponent(spotifyUrl)}`;
@@ -410,9 +392,6 @@ async function spotifyShowThumbSafe(spotifyUrl){
     const thumb = data && data.thumbnail_url ? String(data.thumbnail_url) : null;
     if(!thumb) return null;
 
-    // Heuristic: Spotify show cover art commonly uses "ab676563" (show),
-    // whereas episode/track art commonly uses "ab67616d"/"ab676161".
-    // If we detect the episode/track pattern, reject and fall back.
     const lower = thumb.toLowerCase();
     const looksEpisodeLike =
       lower.includes('ab67616d') || lower.includes('ab676161') || lower.includes('/episode/');
@@ -423,12 +402,6 @@ async function spotifyShowThumbSafe(spotifyUrl){
   }
 }
 
-/**
- * Unified thumb getter:
- * - Uses first link as preferred source (youtube/spotify).
- * - Guarantees channel-level for YouTube.
- * - Guarantees show-level for Spotify, otherwise falls back to YouTube channel avatar.
- */
 async function getThumb(cfg){
   const cacheKey = cfg.title;
   if (THUMB_CACHE.has(cacheKey)) return THUMB_CACHE.get(cacheKey);
@@ -443,16 +416,12 @@ async function getThumb(cfg){
 
   try{
     if (first && first.icon === 'youtube'){
-      // Always channel avatar, never video thumb
       thumb = youtubeAvatar;
     } else if (first && first.icon === 'spotify'){
-      // Prefer show cover, but reject "episode-like" art
       thumb = await spotifyShowThumbSafe(first.href);
 
-      // If Spotify produced episode-like or failed, fall back to YouTube channel avatar
       if (!thumb && youtubeAvatar) thumb = youtubeAvatar;
     } else {
-      // Other first-link types: fall back in a sensible order
       thumb = youtubeAvatar;
 
       if (!thumb){
@@ -475,7 +444,6 @@ function mountToGrid(size){
   return document.getElementById('grid-sm');
 }
 
-/* Badge HTML from kind */
 const getBadge = (cfg) => {
   const badge = KIND_BADGE[cfg.kind];
   return badge ? `<div class="podbadge" aria-hidden="true">${badge}</div>` : '';
@@ -486,7 +454,6 @@ async function podchaserCount(title){
   const res = await fetch(url);
   const text = await res.text();
 
-  // Helpful debug (safe to keep; remove later if you want)
   console.debug('[podchaserCount]', {
     url,
     status: res.status,
@@ -522,7 +489,6 @@ async function render(){
 
     const episodes = Number.isFinite(episodesCount) ? episodesCount.toLocaleString() : '';
 
-    // Use your explicit topics + years from the const only (no external scanning)
     const topics = cfg.topics || '';
     const created = cfg.years || '';
 
