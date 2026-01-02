@@ -17,7 +17,7 @@ const PODCASTS = [
   {
     size:'lg', kind:'podcast',
     title:'The Joe Rogan Experience',
-    years: '',
+    years: '2009',
     topics: 'Comedy, Society & Culture',
     links:[
       { label:'Spotify', href:'https://open.spotify.com/show/4rOoJ6Egrf8K2IrywzwOMk', icon:'spotify', size:'lg' },
@@ -29,7 +29,7 @@ const PODCASTS = [
   {
     size:'lg', kind:'podcast',
     title:'Modern Wisdom',
-    years: '',
+    years: '2018',
     topics: 'Society & Culture, Health & Fitness',
     links:[
       { label:'YouTube', href:'https://www.youtube.com/@ChrisWillx', icon:'youtube', size:'lg' },
@@ -436,7 +436,7 @@ async function render(){
         <h2>${cfg.title}</h2>
 
         <div class="meta">
-          ${years    ? `<p><strong>Years:</strong> ${years}</p>` : ''}
+          ${years    ? `<p><strong>Created:</strong> ${years}</p>` : ''}
           ${topics   ? `<p><strong>Topics:</strong> ${topics}</p>` : ''}
           ${episodes ? `<p><strong>Episodes:</strong> ${episodes}</p>` : ''}
         </div>
