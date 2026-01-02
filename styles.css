@@ -72,11 +72,16 @@ header{
     margin-bottom:10px;
 }
 
-h1{
+h1 {
     font-size:3.2rem;
     color:var(--gold);
     text-shadow:2px 2px 6px var(--shadow);
     letter-spacing:.5px;
+    font-family: 'maccoy', fantasy;
+    padding: 0px 20px 0px 20px;
+}
+
+h2 {
     font-family: 'maccoy', fantasy;
 }
 
