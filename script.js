@@ -17,6 +17,8 @@ const PODCASTS = [
   {
     size:'lg', kind:'podcast',
     title:'The Joe Rogan Experience',
+    years: '',
+    topics: 'Comedy, Society & Culture',
     links:[
       { label:'Spotify', href:'https://open.spotify.com/show/4rOoJ6Egrf8K2IrywzwOMk', icon:'spotify', size:'lg' },
       { label:'YouTube', href:'https://www.youtube.com/@joerogan', icon:'youtube', size:'lg' },
@@ -27,6 +29,8 @@ const PODCASTS = [
   {
     size:'lg', kind:'podcast',
     title:'Modern Wisdom',
+    years: '',
+    topics: 'Society & Culture, Health & Fitness',
     links:[
       { label:'YouTube', href:'https://www.youtube.com/@ChrisWillx', icon:'youtube', size:'lg' },
       { label:'Spotify', href:'https://open.spotify.com/show/0XrOqvxlqQI6bmdYHuIVnr', icon:'spotify', size:'lg' }
@@ -35,6 +39,8 @@ const PODCASTS = [
   {
     size:'lg', kind:'podcast',
     title:'Triggernometry',
+    years: '',
+    topics: 'Politics, News, Society & Culture',
     links:[
       { label:'YouTube', href:'https://www.youtube.com/@triggerpod', icon:'youtube', size:'lg' },
       { label:'YouTube Clips', href:'https://www.youtube.com/@TRIGGERClips', icon:'youtube', size:'lg' },
@@ -47,6 +53,8 @@ const PODCASTS = [
   {
     size:'md', kind:'channel',
     title:'Academy of Ideas',
+    years: '',
+    topics: 'Philosophy, Psychology, Society & Culture',
     links:[
       { label:'Spotify', href:'https://open.spotify.com/show/2dio7KUNuDHErlMumZtNt6', icon:'spotify', size:'md' },
       { label:'YouTube', href:'https://www.youtube.com/@academyofideas', icon:'youtube', size:'md' },
@@ -56,6 +64,8 @@ const PODCASTS = [
   {
     size:'md', kind:'channel',
     title:'Eternalised',
+    years: '',
+    topics: 'Philosophy, Psychology, Society & Culture',
     links:[
       { label:'Spotify', href:'https://open.spotify.com/show/6Wimp2yM4QWuIJZneUNqbr', icon:'spotify', size:'md' },
       { label:'YouTube', href:'https://www.youtube.com/@Eternalised', icon:'youtube', size:'md' }
@@ -64,7 +74,8 @@ const PODCASTS = [
   {
     size:'md', kind:'channel',
     title:'CaspianReport',
-    art:'youtube',
+    years: '',
+    topics: 'Politics, News',
     links:[
       { label:'YouTube', href:'https://www.youtube.com/@CaspianReport', icon:'youtube', size:'md' }
     ]
@@ -74,6 +85,8 @@ const PODCASTS = [
   {
     size:'sm', kind:'podcast',
     title:'The Jordan B Peterson Podcast',
+    years: '',
+    topics: 'Society & Culture, Education, Psychology',
     links:[
       { label:'Spotify', href:'https://open.spotify.com/show/1Zw2DKjelPnuEYpydFlhgN', icon:'spotify', size:'sm' },
       { label:'YouTube', href:'https://www.youtube.com/@JordanBPeterson', icon:'youtube', size:'sm' }
@@ -82,6 +95,8 @@ const PODCASTS = [
   {
     size:'sm', kind:'podcast',
     title:'John Anderson: Conversations',
+    years: '',
+    topics: 'Society & Culture, Politics',
     links:[
       { label:'Spotify', href:'https://open.spotify.com/show/6Qh2fEsC7nEVxXxQzwTv54', icon:'spotify', size:'sm' },
       { label:'YouTube', href:'https://www.youtube.com/@JohnAndersonMedia', icon:'youtube', size:'sm' }
@@ -90,6 +105,8 @@ const PODCASTS = [
   {
     size:'sm', kind:'podcast',
     title:'Heretics',
+    years: '',
+    topics: 'News, Society & Culture',
     links:[
       { label:'Spotify', href:'https://open.spotify.com/show/2NiFf7pGB4pqkvbrnS1b9X', icon:'spotify', size:'sm' },
       { label:'YouTube', href:'https://www.youtube.com/@andrewgoldheretics', icon:'youtube', size:'sm' }
@@ -98,6 +115,8 @@ const PODCASTS = [
   {
     size:'sm', kind:'podcast',
     title:'Within Reason',
+    years: '',
+    topics: 'Philosophy, Society & Culture',
     links:[
       { label:'Spotify', href:'https://open.spotify.com/show/16wUbvDT95dxzpG2KEhakK', icon:'spotify', size:'sm' },
       { label:'YouTube', href:'https://www.youtube.com/@CosmicSkeptic', icon:'youtube', size:'sm' }
@@ -106,14 +125,27 @@ const PODCASTS = [
   {
     size:'sm', kind:'podcast',
     title:'Straight Talk with Mark Bouris',
+    years: '',
+    topics: 'Business, Society & Culture',
     links:[
       { label:'Spotify', href:'https://open.spotify.com/show/0W3GWublEOW75ufTa8vAGq', icon:'spotify', size:'sm' },
       { label:'YouTube', href:'https://www.youtube.com/@MarkBourisYT', icon:'youtube', size:'sm' }
     ]
   },
   {
+    size:'md', kind:'channel',
+    title:'After Skool',
+    years: '',
+    topics: 'Philosophy, Psychology, Education',
+    links:[
+      { label:'YouTube', href:'https://www.youtube.com/@AfterSkool', icon:'youtube', size:'md' }
+    ]
+  },
+  {
     size:'sm', kind:'podcast',
     title:'Nomad Capitalist',
+    years: '',
+    topics: 'Places & Travel, Society & Culture',
     links:[
       { label:'Spotify', href:'https://open.spotify.com/show/6obf671rfu4baNg2xBy5fG', icon:'spotify', size:'sm' },
       { label:'YouTube', href:'https://www.youtube.com/c/nomadcapitalist', icon:'youtube', size:'sm' }
@@ -122,6 +154,8 @@ const PODCASTS = [
   {
     size:'sm', kind:'podcast',
     title:'Dark Horse Podcast with Bret Weinstein and Heather Heying',
+    years: '',
+    topics: 'Science, Society & Culture',
     links:[
       { label:'Spotify', href:'https://open.spotify.com/show/57R7dOcs60jUfOnuNG0J1R', icon:'spotify', size:'sm' },
       { label:'YouTube', href:'https://www.youtube.com/c/BretWeinsteinDarkHorse', icon:'youtube', size:'sm' },
@@ -132,6 +166,8 @@ const PODCASTS = [
   {
     size:'sm', kind:'podcast',
     title:'Huberman Lab',
+    years: '',
+    topics: 'Health & Fitness, Science',
     links:[
       { label:'Spotify', href:'https://open.spotify.com/show/79CkJF3UJTHFV8Dse3Oy0P', icon:'spotify', size:'sm' },
       { label:'YouTube', href:'https://www.youtube.com/c/AndrewHubermanLab', icon:'youtube', size:'sm' }
@@ -140,6 +176,8 @@ const PODCASTS = [
   {
     size:'sm', kind:'podcast',
     title:'Lex Fridman',
+    years: '',
+    topics: 'Technology, Science',
     links:[
       { label:'Spotify', href:'https://open.spotify.com/show/2MAi0BvDc6GTFvKFPXnkCL', icon:'spotify', size:'sm' },
       { label:'YouTube', href:'https://www.youtube.com/c/lexfridman', icon:'youtube', size:'sm' }
@@ -148,6 +186,8 @@ const PODCASTS = [
   {
     size:'sm', kind:'podcast',
     title:'Peter Boghossian: Conversations & Street Epistemology',
+    years: '',
+    topics: 'Society & Culture, News',
     links:[
       { label:'Spotify', href:'https://open.spotify.com/show/4H8GYvSCxN4yJLnBCQDfwZ', icon:'spotify', size:'sm' },
       { label:'YouTube', href:'https://www.youtube.com/@drpeterboghossian/', icon:'youtube', size:'sm' }
@@ -156,6 +196,8 @@ const PODCASTS = [
   {
     size:'sm', kind:'channel',
     title:'DW Documentary',
+    years: '',
+    topics: 'Documentary, Society & Culture',
     links:[
       { label:'YouTube', href:'https://www.youtube.com/c/DWDocumentary', icon:'youtube', size:'sm' }
     ]
@@ -163,6 +205,8 @@ const PODCASTS = [
   {
     size:'sm', kind:'podcast',
     title:'ReasonTV',
+    years: '',
+    topics: 'Politics, Society & Culture',
     links:[
       { label:'YouTube', href:'https://www.youtube.com/@ReasonTV', icon:'youtube', size:'sm' },
       { label:'Website', href:'https://reason.org/about-reason-foundation/', icon:'website', size:'sm' }
@@ -171,6 +215,8 @@ const PODCASTS = [
   {
     size:'sm', kind:'podcast',
     title:'The Rubin Report',
+    years: '',
+    topics: 'News Commentary, News',
     links:[
       { label:'Spotify', href:'https://open.spotify.com/show/40MKOGQ99YLZvgR2KYHmHl', icon:'spotify', size:'sm' },
       { label:'YouTube', href:'https://www.youtube.com/watch?v=f8BBzY3PqMI&list=PLEbhOtC9klbAEFtDOff5ZNzDDJTiLCdWc', icon:'youtube', size:'sm' }
@@ -179,6 +225,8 @@ const PODCASTS = [
   {
     size:'sm', kind:'podcast',
     title:'Uncommon Knowledge | Hoover Institution',
+    years: '',
+    topics: 'Politics, History, Society & Culture',
     links:[
       { label:'Youtube', href:'https://www.youtube.com/@HooverInstitution', icon:'youtube', size:'sm' },
       { label:'Website', href:'https://www.hoover.org/publications/uncommon-knowledge', icon:'website', size:'sm' }
@@ -187,6 +235,8 @@ const PODCASTS = [
   {
     size:'sm', kind:'podcast',
     title:'Jocko Podcast',
+    years: '',
+    topics: 'Self-Improvement, Health & Fitness, Society & Culture',
     links:[
       { label:'Spotify', href:'https://open.spotify.com/show/7irxBvxNqGYnUdFo1c2gMc', icon:'spotify', size:'sm' },
       { label:'YouTube', href:'https://www.youtube.com/c/JockoPodcastOfficial', icon:'youtube', size:'sm' }
@@ -195,6 +245,8 @@ const PODCASTS = [
   {
     size:'sm', kind:'podcast',
     title:'Russell Brand',
+    years: '',
+    topics: 'News Commentary, News, Politics',
     links:[
       { label:'Spotify', href:'https://open.spotify.com/show/1bmU8gqK78sF4iD2OKFKUZ', icon:'spotify', size:'sm' },
       { label:'YouTube', href:'https://www.youtube.com/@RussellBrand', icon:'youtube', size:'sm' }
@@ -203,6 +255,8 @@ const PODCASTS = [
   {
     size:'sm', kind:'channel',
     title:'Dan Crenshaw',
+    years: '',
+    topics: 'Politics, Society & Culture, News',
     links:[
       { label:'Spotify', href:'https://open.spotify.com/show/2BbbFyOBNTLpYDzUai6ta2?si=d59ad3a3fad64f75&nd=1', icon:'spotify', size:'sm' },
       { label:'YouTube', href:'https://www.youtube.com/@RepDanCrenshaw', icon:'youtube', size:'sm' }
@@ -211,16 +265,10 @@ const PODCASTS = [
   {
     size:'sm', kind:'channel',
     title:'Shane Hazel',
+    years: '',
+    topics: 'Comedy, Society & Cultures',
     links:[
       { label:'Spotify', href:'https://open.spotify.com/show/7ztGuDsRRnwL9PnZQhZPwP?si=50b6c72abc10439d&nd=1', icon:'spotify', size:'sm' },
-    ]
-  },
-  {
-    size:'md', kind:'channel',
-    title:'After Skool',
-    art:'youtube',
-    links:[
-      { label:'YouTube', href:'https://www.youtube.com/@AfterSkool', icon:'youtube', size:'md' }
     ]
   }
 ];
