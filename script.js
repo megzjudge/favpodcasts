@@ -191,9 +191,9 @@ const PODCASTS = [
     years: "2019",
     topics: "Science, Society & Culture",
     links: [
-      { label: "YouTube", href: "https://www.youtube.com/@DarkHorsePodcastClips/videos", icon: "youtube", size: "sm" },
-      { label: "YouTube", href: "https://www.youtube.com/c/BretWeinsteinDarkHorse", icon: "youtube", size: "sm" },
       { label: "Spotify", href: "https://open.spotify.com/show/57R7dOcs60jUfOnuNG0J1R", icon: "spotify", size: "sm" },
+      { label: "YouTube", href: "https://www.youtube.com/c/BretWeinsteinDarkHorse", icon: "youtube", size: "sm" },
+      { label: "YouTube", href: "https://www.youtube.com/@DarkHorsePodcastClips/videos", icon: "youtube", size: "sm" },
       { label: "Grokipedia", href: "https://grokipedia.com/page/Bret_Weinstein", icon: "grokipedia", size: "sm" },
       { label: "Grokipedia", href: "https://grokipedia.com/page/Heather_Heying", icon: "grokipedia", size: "sm" },
       { label: "Podchaser", href: "https://www.podchaser.com/podcasts/darkhorse-podcast-891627", icon: "podchaser", size: "sm" }
@@ -206,8 +206,8 @@ const PODCASTS = [
     years: "2020",
     topics: "Health & Fitness, Science",
     links: [
-      { label: "YouTube", href: "https://www.youtube.com/c/AndrewHubermanLab", icon: "youtube", size: "sm" },
       { label: "Spotify", href: "https://open.spotify.com/show/79CkJF3UJTHFV8Dse3Oy0P", icon: "spotify", size: "sm" },
+      { label: "YouTube", href: "https://www.youtube.com/c/AndrewHubermanLab", icon: "youtube", size: "sm" },
       { label: "Grokipedia", href: "https://grokipedia.com/page/Andrew_Huberman", icon: "grokipedia", size: "sm" },
       { label: "Podchaser", href: "https://www.podchaser.com/podcasts/huberman-lab-1576373", icon: "podchaser", size: "sm" }
     ]
