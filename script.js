@@ -5,6 +5,8 @@ const ICONS = {
     '<svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 0a12 12 0 1 0 0 24A12 12 0 0 0 12 0zm5.5 17.3a.9.9 0 0 1-1.2.3 12.7 12.7 0 0 0-6.7-1.9c-1.3 0-2.6.2-3.8.6a.9.9 0 1 1-.6-1.7 14.7 14.7 0 0 1 4.4-.7 14.4 14.4 0 0 1 7.6 2.2c.4.3 .6.8 .3 1.2zm1.6-3.2a1 1 0 0 1-1.4.4 15.8 15.8 0 0 0-7.1-1.9c-1.5 0-3 .2-4.3.7a1 1 0 0 1-.7-1.9 17.8 17.8 0 0 1 5-.8c2.8 0 5.6.6 8.1 2 .5.2 .7 .8 .4 1.5zm.2-3.6a1.2 1.2 0 0 1-1.6.5 19.7 19.7 0 0 0-8.1-1.6c-1.7 0-3.4.2-5 .8a1.2 1.2 0 1 1-.8-2.2 22 22 0 0 1 5.8-.9c3.2 0 6.4.6 9.3 2 .6.3 .9 1 .6 1.4z"/></svg>',
   substack:
     '<svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M3 5h18v2H3V5zm0 4h12v10l-6-3-6 3V9z"/></svg>',
+  podchaser:
+    '<svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm-2.2 5.2h3.7a3.5 3.5 0 0 1 0 7H9.8V7.2zm2.2 5.2a1.7 1.7 0 0 0 0-3.4h-.4v3.4h.4z"/></svg>',
   site:
     '<svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm1 17.9V14h3.9A8 8 0 0 1 13 19.9zM9 19.9A8 8 0 0 1 7.1 14H11v5.9zm-3.9-7.9A8 8 0 0 1 9 4.1V10H5.1zM11 10V4.1A8 8 0 0 1 17 12h-6z"/></svg>',
   grokipedia:
@@ -55,7 +57,7 @@ const PODCASTS = [
       { label: "YouTube", href: "https://www.youtube.com/@triggerpod", icon: "youtube", size: "lg" },
       { label: "YouTube Clips", href: "https://www.youtube.com/@TRIGGERClips", icon: "youtube", size: "lg" },
       { label: "Substack", href: "https://www.triggerpod.co.uk/", icon: "substack", size: "md" },
-      { label: "Grokipedia", href: "https://grokipedia.com/page/Konstantin_Kisin", icon: "grokipedia", size: "sm" },
+      { label: "Grokipedia", href: "https://grokipedia.com/page/triggernometry", icon: "grokipedia", size: "sm" },
       { label: "Podchaser", href: "https://www.podchaser.com/podcasts/triggernometry-664691", icon: "podchaser", size: "sm" }
     ]
   },
@@ -71,6 +73,7 @@ const PODCASTS = [
       { label: "Spotify", href: "https://open.spotify.com/show/2dio7KUNuDHErlMumZtNt6", icon: "spotify", size: "md" },
       { label: "YouTube", href: "https://www.youtube.com/@academyofideas", icon: "youtube", size: "md" },
       { label: "Substack", href: "https://theacademyofideas.substack.com/", icon: "substack", size: "md" },
+      { label: "Grokipedia", href: "https://grokipedia.com/page/academy-of-ideas", icon: "grokipedia", size: "sm" },
       { label: "Podchaser", href: "https://www.podchaser.com/podcasts/academy-of-ideas-649141", icon: "podchaser", size: "sm" }
     ]
   },
@@ -83,6 +86,7 @@ const PODCASTS = [
     links: [
       { label: "YouTube", href: "https://www.youtube.com/@Eternalised", icon: "youtube", size: "md" },
       { label: "Spotify", href: "https://open.spotify.com/show/6Wimp2yM4QWuIJZneUNqbr", icon: "spotify", size: "md" },
+      { label: "Grokipedia", href: "https://grokipedia.com/page/eternalised", icon: "grokipedia", size: "sm" },
       { label: "Podchaser", href: "https://www.podchaser.com/podcasts/eternalised-1419110", icon: "podchaser", size: "sm" }
     ]
   },
@@ -92,7 +96,8 @@ const PODCASTS = [
     title: "CaspianReport",
     years: "2010",
     topics: "Politics, News",
-    links: [{ label: "YouTube", href: "https://www.youtube.com/@CaspianReport", icon: "youtube", size: "md" }]
+    links: [{ label: "YouTube", href: "https://www.youtube.com/@CaspianReport", icon: "youtube", size: "md" },
+      { label: "Grokipedia", href: "https://grokipedia.com/page/caspian-report", icon: "grokipedia", size: "sm" }]
   },
 
   /* Occasionally (small) — podcasts */
@@ -118,7 +123,7 @@ const PODCASTS = [
     links: [
       { label: "YouTube", href: "https://www.youtube.com/@JohnAndersonMedia", icon: "youtube", size: "sm" },
       { label: "Spotify", href: "https://open.spotify.com/show/6Qh2fEsC7nEVxXxQzwTv54", icon: "spotify", size: "sm" },
-      { label: "Grokipedia", href: "https://grokipedia.com/page/John_Anderson", icon: "grokipedia", size: "sm" },
+      { label: "Grokipedia", href: "https://grokipedia.com/page/John_Anderson_(Australian_politician)#media-commentary-and-public-engagement", icon: "grokipedia", size: "sm" },
       { label: "Podchaser", href: "https://www.podchaser.com/podcasts/john-anderson-conversations-657776", icon: "podchaser", size: "sm" }
     ]
   },
@@ -131,7 +136,7 @@ const PODCASTS = [
     links: [
       { label: "YouTube", href: "https://www.youtube.com/@andrewgoldheretics", icon: "youtube", size: "sm" },
       { label: "Spotify", href: "https://open.spotify.com/show/2NiFf7pGB4pqkvbrnS1b9X", icon: "spotify", size: "sm" },
-      { label: "Grokipedia", href: "https://grokipedia.com/page/andrew-gold-journalist", icon: "grokipedia", size: "sm" },
+      { label: "Grokipedia", href: "https://grokipedia.com/page/andrew-gold-journalist#media-productions", icon: "grokipedia", size: "sm" },
       { label: "Podchaser", href: "https://www.podchaser.com/podcasts/heretics-1316949", icon: "podchaser", size: "sm" }
     ]
   },
@@ -144,7 +149,7 @@ const PODCASTS = [
     links: [
       { label: "YouTube", href: "https://www.youtube.com/@CosmicSkeptic", icon: "youtube", size: "sm" },
       { label: "Spotify", href: "https://open.spotify.com/show/16wUbvDT95dxzpG2KEhakK", icon: "spotify", size: "sm" },
-      { label: "Grokipedia", href: "https://grokipedia.com/page/alex-oconnor", icon: "grokipedia", size: "sm" },
+      { label: "Grokipedia", href: "https://grokipedia.com/page/alex-oconnor#online-career", icon: "grokipedia", size: "sm" },
       { label: "Podchaser", href: "https://www.podchaser.com/podcasts/within-reason-836655", icon: "podchaser", size: "sm" }
     ]
   },
@@ -157,7 +162,7 @@ const PODCASTS = [
     links: [
       { label: "YouTube", href: "https://www.youtube.com/@MarkBourisYT", icon: "youtube", size: "sm" },
       { label: "Spotify", href: "https://open.spotify.com/show/0W3GWublEOW75ufTa8vAGq", icon: "spotify", size: "sm" },
-      { label: "Grokipedia", href: "https://grokipedia.com/page/Mark_Bouris", icon: "grokipedia", size: "sm" },
+      { label: "Grokipedia", href: "https://grokipedia.com/page/straight-talk-with-mark-bouris", icon: "grokipedia", size: "sm" },
       { label: "Podchaser", href: "https://www.podchaser.com/podcasts/straight-talk-with-mark-bouris-1909016", icon: "podchaser", size: "sm" }
     ]
   },
@@ -169,6 +174,7 @@ const PODCASTS = [
     topics: "Philosophy, Psychology, Education",
     links: [
       { label: "YouTube", href: "https://www.youtube.com/@AfterSkool", icon: "youtube", size: "md" },
+      { label: "Grokipedia", href: "https://grokipedia.com/page/after-skool", icon: "spotify", size: "sm" },
       { label: "Podchaser", href: "https://www.podchaser.com/podcasts/after-skool-6050376/", icon: "podchaser", size: "sm" }
     ]
   },
@@ -181,6 +187,7 @@ const PODCASTS = [
     links: [
       { label: "Spotify", href: "https://open.spotify.com/show/6obf671rfu4baNg2xBy5fG", icon: "spotify", size: "sm" },
       { label: "YouTube", href: "https://www.youtube.com/c/nomadcapitalist", icon: "youtube", size: "sm" },
+      { label: "Grokipedia", href: "https://grokipedia.com/page/nomad-capitalist", icon: "spotify", size: "sm" },
       { label: "Podchaser", href: "https://www.podchaser.com/podcasts/nomad-capitalist-4986930", icon: "podchaser", size: "sm" }
     ]
   },
@@ -208,7 +215,7 @@ const PODCASTS = [
     links: [
       { label: "Spotify", href: "https://open.spotify.com/show/79CkJF3UJTHFV8Dse3Oy0P", icon: "spotify", size: "sm" },
       { label: "YouTube", href: "https://www.youtube.com/c/AndrewHubermanLab", icon: "youtube", size: "sm" },
-      { label: "Grokipedia", href: "https://grokipedia.com/page/Andrew_Huberman", icon: "grokipedia", size: "sm" },
+      { label: "Grokipedia", href: "https://grokipedia.com/page/Andrew_Huberman#huberman-lab-podcast", icon: "grokipedia", size: "sm" },
       { label: "Podchaser", href: "https://www.podchaser.com/podcasts/huberman-lab-1576373", icon: "podchaser", size: "sm" }
     ]
   },
@@ -221,7 +228,7 @@ const PODCASTS = [
     links: [
       { label: "YouTube", href: "https://www.youtube.com/c/lexfridman", icon: "youtube", size: "sm" },
       { label: "Spotify", href: "https://open.spotify.com/show/2MAi0BvDc6GTFvKFPXnkCL", icon: "spotify", size: "sm" },
-      { label: "Grokipedia", href: "https://grokipedia.com/page/Lex_Fridman", icon: "grokipedia", size: "sm" },
+      { label: "Grokipedia", href: "https://grokipedia.com/page/Lex_Fridman#the-lex-fridman-podcast", icon: "grokipedia", size: "sm" },
       { label: "Podchaser", href: "https://www.podchaser.com/podcasts/lex-fridman-podcast-721928", icon: "podchaser", size: "sm" }
     ]
   },
@@ -336,6 +343,7 @@ const PODCASTS = [
     topics: "Comedy, Society & Cultures",
     links: [
       { label: "Spotify", href: "https://open.spotify.com/show/7ztGuDsRRnwL9PnZQhZPwP?si=50b6c72abc10439d&nd=1", icon: "spotify", size: "sm" },
+      { label: "Grokipedia", href: "https://grokipedia.com/page/shane-hazel#the-shane-hazel-show", icon: "grokipedia", size: "sm" },
       { label: "Podchaser", href: "https://www.podchaser.com/podcasts/the-shane-hazel-show-1153063", icon: "podchaser", size: "sm" }
     ]
   }
@@ -359,45 +367,101 @@ const getBadge = (cfg) => {
   return badge ? `<div class="podbadge" aria-hidden="true">${badge}</div>` : "";
 };
 
+/***********************
+ * Performance helpers
+ ***********************/
+const CONCURRENCY = 6;
+
+// Memoize within a single page-load (prevents duplicate fetches)
+const MEMO = {
+  youtubeThumb: new Map(),   // key: channelUrl (or derived handle) -> Promise<string|null>
+  spotifyThumb: new Map(),   // key: spotifyUrl -> Promise<string|null>
+  podchaserCnt: new Map()    // key: title -> Promise<number|null>
+};
+
+function limitConcurrency(limit){
+  let active = 0;
+  const queue = [];
+  const next = () => {
+    if(active >= limit) return;
+    const job = queue.shift();
+    if(!job) return;
+    active++;
+    job().finally(() => {
+      active--;
+      next();
+    });
+  };
+
+  return fn => new Promise((resolve, reject) => {
+    queue.push(() => Promise.resolve()
+      .then(fn)
+      .then(resolve, reject)
+    );
+    next();
+  });
+}
+
+const runLimited = limitConcurrency(CONCURRENCY);
+
+function withMemo(map, key, factory){
+  if(map.has(key)) return map.get(key);
+  const p = Promise.resolve().then(factory).catch(() => null);
+  map.set(key, p);
+  return p;
+}
+
+/***********************
+ * Fetchers
+ ***********************/
 async function youtubeThumb(channelUrl){
-  try{
-    const handle = channelUrl.split("/").pop() || "";
-    const cleaned = handle.startsWith("@") ? handle.slice(1) : handle;
-    const unavatar = `https://unavatar.io/youtube/${encodeURIComponent(cleaned)}`;
-    const res = await fetch(unavatar, { mode:"cors" });
-    if(!res.ok) throw new Error("Unavatar failed");
-    return unavatar;
-  }catch(e){
-    console.warn("YouTube avatar fetch error", e);
-    return null;
-  }
+  return withMemo(MEMO.youtubeThumb, channelUrl, async () => {
+    try{
+      const handle = channelUrl.split("/").pop() || "";
+      const cleaned = handle.startsWith("@") ? handle.slice(1) : handle;
+      const unavatar = `https://unavatar.io/youtube/${encodeURIComponent(cleaned)}`;
+
+      // NOTE: unavatar is just a URL; fetching it once warms browser cache
+      const res = await fetch(unavatar, { mode:"cors" });
+      if(!res.ok) throw new Error("Unavatar failed");
+      return unavatar;
+    }catch(e){
+      console.warn("YouTube avatar fetch error", e);
+      return null;
+    }
+  });
 }
 
 async function spotifyShowThumb(spotifyUrl){
-  try{
-    const api = `/spotify?url=${encodeURIComponent(spotifyUrl)}`;
-    const res = await fetch(api, { headers: { "accept":"application/json" } });
-    const text = await res.text();
-    if(!res.ok) throw new Error(`Spotify API failed (${res.status}): ${text.slice(0,200)}`);
-    const data = JSON.parse(text);
-    return data?.image || null;
-  }catch(e){
-    console.warn("Spotify show thumb error", e);
-    return null;
-  }
+  return withMemo(MEMO.spotifyThumb, spotifyUrl, async () => {
+    try{
+      const api = `/spotify?url=${encodeURIComponent(spotifyUrl)}`;
+      const res = await fetch(api, { headers: { "accept":"application/json" } });
+      const text = await res.text();
+      if(!res.ok) throw new Error(`Spotify API failed (${res.status}): ${text.slice(0,200)}`);
+      const data = JSON.parse(text);
+      return data?.image || null;
+    }catch(e){
+      console.warn("Spotify show thumb error", e);
+      return null;
+    }
+  });
 }
 
 async function podchaserCount(title){
-  const url = `/podchaser?title=${encodeURIComponent(title)}`;
-  const res = await fetch(url, { headers: { "accept":"application/json" } });
-  const text = await res.text();
-  if(!res.ok) throw new Error(`Podchaser count failed (${res.status}): ${text.slice(0,200)}`);
-  try{
-    const data = JSON.parse(text);
-    return Number.isFinite(data.numberOfEpisodes) ? data.numberOfEpisodes : null;
-  }catch{
-    throw new Error(`Podchaser count non-JSON: ${text.slice(0,200)}`);
-  }
+  return withMemo(MEMO.podchaserCnt, title, async () => {
+    try{
+      const url = `/podchaser?title=${encodeURIComponent(title)}`;
+      const res = await fetch(url, { headers: { "accept":"application/json" } });
+      const text = await res.text();
+      if(!res.ok) throw new Error(`Podchaser count failed (${res.status}): ${text.slice(0,200)}`);
+      const data = JSON.parse(text);
+      return Number.isFinite(data.numberOfEpisodes) ? data.numberOfEpisodes : null;
+    }catch(e){
+      console.warn("Podchaser count error", e);
+      return null;
+    }
+  });
 }
 
 async function getThumbFromLinks(links){
@@ -421,48 +485,86 @@ async function getThumbFromLinks(links){
   return null;
 }
 
-async function render(){
+/***********************
+ * Rendering
+ ***********************/
+function createCard(cfg){
+  const card = document.createElement("article");
+  card.className = `pod size-${cfg.size}`;
+
+  // placeholder thumb container (we fill it later if we find one)
+  const thumbHtml = `<div class="podthumb" data-thumb></div>`;
+
+  // placeholder episodes line (we fill it later if we have Podchaser)
+  const episodesHtml = `<p data-episodes style="display:none;"><strong>Episodes:</strong> <span data-episodes-value></span></p>`;
+
+  card.innerHTML = `
+    ${getBadge(cfg)}
+    ${thumbHtml}
+
+    <h2>${cfg.title}</h2>
+
+    <div class="meta">
+      ${cfg.topics ? `<p><strong>Topics:</strong> ${cfg.topics}</p>` : ""}
+      ${episodesHtml}
+      ${cfg.years  ? `<p><strong>Created:</strong> ${cfg.years}</p>` : ""}
+    </div>
+
+    <div class="links">
+      ${(cfg.links || []).map(pill).join("")}
+    </div>
+  `;
+  return card;
+}
+
+function setThumb(card, cfg, thumbUrl){
+  const slot = card.querySelector("[data-thumb]");
+  if(!slot) return;
+  if(!thumbUrl){
+    slot.innerHTML = "";
+    return;
+  }
+  slot.innerHTML = `<img alt="${cfg.title} cover" src="${thumbUrl}" loading="lazy" decoding="async"/>`;
+}
+
+function setEpisodes(card, count){
+  if(!Number.isFinite(count)) return;
+  const line = card.querySelector("[data-episodes]");
+  const val = card.querySelector("[data-episodes-value]");
+  if(!line || !val) return;
+  val.textContent = count.toLocaleString();
+  line.style.display = "";
+}
+
+async function hydrateCard(card, cfg){
+  // Thumb (try spotify/youtube links)
+  runLimited(async () => {
+    const thumbUrl = await getThumbFromLinks(cfg.links || []);
+    setThumb(card, cfg, thumbUrl);
+  });
+
+  // Episodes (only if Podchaser exists in links)
+  const hasPodchaser = (cfg.links || []).some(l => l.icon === "podchaser");
+  if(hasPodchaser){
+    runLimited(async () => {
+      const episodesCount = await podchaserCount(cfg.title);
+      setEpisodes(card, episodesCount);
+    });
+  }
+}
+
+function render(){
+  // 1) Build + mount cards immediately (instant paint)
+  const cards = [];
   for(const cfg of PODCASTS){
-    let thumbUrl = null;
-    try{
-      thumbUrl = await getThumbFromLinks(cfg.links || []);
-    }catch(e){
-      console.warn("Thumb fetch error", e);
-      thumbUrl = null;
-    }
-
-    let episodesCount = null;
-    try{
-      const hasPodchaser = (cfg.links || []).some(l => l.icon === "podchaser");
-      episodesCount = hasPodchaser ? await podchaserCount(cfg.title) : null;
-    }catch(e){
-      console.warn("Podchaser count error", e);
-      episodesCount = null;
-    }
-
-    const episodes = Number.isFinite(episodesCount) ? episodesCount.toLocaleString() : "";
-
-    const card = document.createElement("article");
-    card.className = `pod size-${cfg.size}`;
-    card.innerHTML =
-      `
-        ${getBadge(cfg)}
-        ${thumbUrl ? `<div class="podthumb"><img alt="${cfg.title} cover" src="${thumbUrl}" loading="lazy" decoding="async"/></div>` : ""}
-
-        <h2>${cfg.title}</h2>
-
-        <div class="meta">
-          ${cfg.topics ? `<p><strong>Topics:</strong> ${cfg.topics}</p>` : ""}
-          ${episodes   ? `<p><strong>Episodes:</strong> ${episodes}</p>` : ""}
-          ${cfg.years  ? `<p><strong>Created:</strong> ${cfg.years}</p>` : ""}
-        </div>
-
-        <div class="links">
-          ${(cfg.links || []).map(pill).join("")}
-        </div>
-      `;
-
+    const card = createCard(cfg);
     mountToGrid(cfg.size).appendChild(card);
+    cards.push([card, cfg]);
+  }
+
+  // 2) Hydrate (thumbs + episode counts) in the background with concurrency limit
+  for(const [card, cfg] of cards){
+    hydrateCard(card, cfg);
   }
 }
 
