@@ -10,7 +10,11 @@ const ICONS = {
   site:
     '<svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm1 17.9V14h3.9A8 8 0 0 1 13 19.9zM9 19.9A8 8 0 0 1 7.1 14H11v5.9zm-3.9-7.9A8 8 0 0 1 9 4.1V10H5.1zM11 10V4.1A8 8 0 0 1 17 12h-6z"/></svg>',
   grokipedia:
-    '<svg viewBox="0 0 24 24" aria-hidden="true"><rect width="36" height="36" fill="none"/><text x="12" y="16" text-anchor="middle" font-family="Arial,sans-serif" font-size="14" fill="currentColor">G</text></svg>'
+  '<svg viewBox="0 0 24 24" aria-hidden="true">' +
+    '<circle cx="12" cy="12" r="8.2" fill="none" stroke="currentColor" stroke-width="2"/>' +
+    '<path d="M6.6 16.4 L16.9 6.1" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round"/>' +
+    '<path d="M14.6 6.3 L17.9 5.2 L16.8 8.5" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"/>' +
+  '</svg>'
 };
 
 /* kind: 'podcast' => 🎙️, 'channel' => 🔊 */
@@ -174,7 +178,7 @@ const PODCASTS = [
     topics: "Philosophy, Psychology, Education",
     links: [
       { label: "YouTube", href: "https://www.youtube.com/@AfterSkool", icon: "youtube", size: "md" },
-      { label: "Grokipedia", href: "https://grokipedia.com/page/after-skool", icon: "spotify", size: "sm" },
+      { label: "Grokipedia", href: "https://grokipedia.com/page/after-skool", icon: "grokipedia", size: "sm" },
       { label: "Podchaser", href: "https://www.podchaser.com/podcasts/after-skool-6050376/", icon: "podchaser", size: "sm" }
     ]
   },
@@ -187,7 +191,7 @@ const PODCASTS = [
     links: [
       { label: "Spotify", href: "https://open.spotify.com/show/6obf671rfu4baNg2xBy5fG", icon: "spotify", size: "sm" },
       { label: "YouTube", href: "https://www.youtube.com/c/nomadcapitalist", icon: "youtube", size: "sm" },
-      { label: "Grokipedia", href: "https://grokipedia.com/page/nomad-capitalist", icon: "spotify", size: "sm" },
+      { label: "Grokipedia", href: "https://grokipedia.com/page/nomad-capitalist", icon: "grokipedia", size: "sm" },
       { label: "Podchaser", href: "https://www.podchaser.com/podcasts/nomad-capitalist-4986930", icon: "podchaser", size: "sm" }
     ]
   },
