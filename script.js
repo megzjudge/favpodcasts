@@ -239,6 +239,19 @@ const PODCASTS = [
   {
     size: "sm",
     kind: "podcast",
+    title: "Tom Bilyeu's Impact Theory",
+    years: "2014",
+    topics: "Technology, Science",
+    links: [
+      { label: "YouTube", href: "https://www.youtube.com/@TomBilyeu", icon: "youtube", size: "sm" },
+      { label: "Spotify", href: "https://open.spotify.com/show/1nARKz2vTIOb7gC9dusE4b", icon: "spotify", size: "sm" },
+      { label: "Grokipedia", href: "", icon: "grokipedia", size: "sm" },
+      { label: "Podchaser", href: "https://www.podchaser.com/podcasts/tom-bilyeus-impact-theory-240639", icon: "podchaser", size: "sm" }
+    ]
+  },
+  {
+    size: "sm",
+    kind: "podcast",
     title: "Conversations with Peter Boghossian",
     years: "2012",
     topics: "Society & Culture, News",
