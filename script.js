@@ -241,7 +241,7 @@ const PODCASTS = [
     kind: "podcast",
     title: "Tom Bilyeu's Impact Theory",
     years: "2014",
-    topics: "Technology, Science",
+    topics: "Health, Finance, Science",
     links: [
       { label: "YouTube", href: "https://www.youtube.com/@TomBilyeu", icon: "youtube", size: "sm" },
       { label: "Spotify", href: "https://open.spotify.com/show/1nARKz2vTIOb7gC9dusE4b", icon: "spotify", size: "sm" },
