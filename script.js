@@ -245,7 +245,7 @@ const PODCASTS = [
     links: [
       { label: "YouTube", href: "https://www.youtube.com/@TomBilyeu", icon: "youtube", size: "sm" },
       { label: "Spotify", href: "https://open.spotify.com/show/1nARKz2vTIOb7gC9dusE4b", icon: "spotify", size: "sm" },
-      { label: "Grokipedia", href: "", icon: "grokipedia", size: "sm" },
+      { label: "Grokipedia", href: "https://grokipedia.com/page/Tom_Bilyeu#podcasting", icon: "grokipedia", size: "sm" },
       { label: "Podchaser", href: "https://www.podchaser.com/podcasts/tom-bilyeus-impact-theory-240639", icon: "podchaser", size: "sm" }
     ]
   },
