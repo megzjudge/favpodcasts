@@ -62,7 +62,7 @@ const PODCASTS = [
       { label: "Grokipedia", href: "https://grokipedia.com/page/alex-oconnor#online-career", icon: "grokipedia", size: "sm" },
       { label: "Podchaser", href: "https://www.podchaser.com/podcasts/within-reason-836655", icon: "podchaser", size: "sm" }
     ]
-  }
+  },
 
   /* Often (medium) — channels */
   {
