@@ -51,20 +51,18 @@ const PODCASTS = [
     ]
   },
   {
-    size: "lg",
+    size: "sm",
     kind: "podcast",
-    title: "Triggernometry",
-    years: "2018",
-    topics: "Politics, News, Society & Culture",
+    title: "Within Reason",
+    years: "2019",
+    topics: "Philosophy, Society & Culture",
     links: [
-      { label: "Spotify", href: "https://open.spotify.com/show/1JH26td5UtmKQWHLv0NCZp", icon: "spotify", size: "lg" },
-      { label: "YouTube", href: "https://www.youtube.com/@triggerpod", icon: "youtube", size: "lg" },
-      { label: "YouTube Clips", href: "https://www.youtube.com/@TRIGGERClips", icon: "youtube", size: "lg" },
-      { label: "Substack", href: "https://www.triggerpod.co.uk/", icon: "substack", size: "md" },
-      { label: "Grokipedia", href: "https://grokipedia.com/page/triggernometry", icon: "grokipedia", size: "sm" },
-      { label: "Podchaser", href: "https://www.podchaser.com/podcasts/triggernometry-664691", icon: "podchaser", size: "sm" }
+      { label: "YouTube", href: "https://www.youtube.com/@CosmicSkeptic", icon: "youtube", size: "sm" },
+      { label: "Spotify", href: "https://open.spotify.com/show/16wUbvDT95dxzpG2KEhakK", icon: "spotify", size: "sm" },
+      { label: "Grokipedia", href: "https://grokipedia.com/page/alex-oconnor#online-career", icon: "grokipedia", size: "sm" },
+      { label: "Podchaser", href: "https://www.podchaser.com/podcasts/within-reason-836655", icon: "podchaser", size: "sm" }
     ]
-  },
+  }
 
   /* Often (medium) — channels */
   {
@@ -102,6 +100,21 @@ const PODCASTS = [
     topics: "Politics, News",
     links: [{ label: "YouTube", href: "https://www.youtube.com/@CaspianReport", icon: "youtube", size: "md" },
       { label: "Grokipedia", href: "https://grokipedia.com/page/caspian-report", icon: "grokipedia", size: "sm" }]
+  },
+  {
+    size: "lg",
+    kind: "podcast",
+    title: "Triggernometry",
+    years: "2018",
+    topics: "Politics, News, Society & Culture",
+    links: [
+      { label: "Spotify", href: "https://open.spotify.com/show/1JH26td5UtmKQWHLv0NCZp", icon: "spotify", size: "lg" },
+      { label: "YouTube", href: "https://www.youtube.com/@triggerpod", icon: "youtube", size: "lg" },
+      { label: "YouTube Clips", href: "https://www.youtube.com/@TRIGGERClips", icon: "youtube", size: "lg" },
+      { label: "Substack", href: "https://www.triggerpod.co.uk/", icon: "substack", size: "md" },
+      { label: "Grokipedia", href: "https://grokipedia.com/page/triggernometry", icon: "grokipedia", size: "sm" },
+      { label: "Podchaser", href: "https://www.podchaser.com/podcasts/triggernometry-664691", icon: "podchaser", size: "sm" }
+    ]
   },
 
   /* Occasionally (small) — podcasts */
@@ -147,14 +160,13 @@ const PODCASTS = [
   {
     size: "sm",
     kind: "podcast",
-    title: "Within Reason",
-    years: "2019",
-    topics: "Philosophy, Society & Culture",
+    title: "",
+    years: "",
+    topics: "",
     links: [
-      { label: "YouTube", href: "https://www.youtube.com/@CosmicSkeptic", icon: "youtube", size: "sm" },
-      { label: "Spotify", href: "https://open.spotify.com/show/16wUbvDT95dxzpG2KEhakK", icon: "spotify", size: "sm" },
-      { label: "Grokipedia", href: "https://grokipedia.com/page/alex-oconnor#online-career", icon: "grokipedia", size: "sm" },
-      { label: "Podchaser", href: "https://www.podchaser.com/podcasts/within-reason-836655", icon: "podchaser", size: "sm" }
+      { label: "Spotify", href: "https://open.spotify.com/show/2BbbFyOBNTLpYDzUai6ta2?si=d59ad3a3fad64f75&nd=1", icon: "spotify", size: "sm" },
+      { label: "Grokipedia", href: "https://grokipedia.com/page/Dan_Crenshaw", icon: "grokipedia", size: "sm" },
+      { label: "Podchaser", href: "https://www.podchaser.com/podcasts/hold-these-truths-with-dan-cre-1037869", icon: "podchaser", size: "sm" }
     ]
   },
   {
@@ -182,6 +194,18 @@ const PODCASTS = [
       { label: "Podchaser", href: "https://www.podchaser.com/podcasts/after-skool-6050376/", icon: "podchaser", size: "sm" }
     ]
   },
+  {
+    size: "md",
+    kind: "channel",
+    title: "Qoves",
+    years: "2019",
+    topics: "History, Society & Culture",
+    links: [
+      { label: "YouTube", href: "https://www.youtube.com/@QOVESStudio/", icon: "youtube", size: "md" },
+      { label: "Grokipedia", href: "", icon: "grokipedia", size: "sm" },
+    ]
+  },
+
   {
     size: "sm",
     kind: "podcast",
@@ -349,18 +373,6 @@ const PODCASTS = [
       { label: "Spotify", href: "https://open.spotify.com/show/2BbbFyOBNTLpYDzUai6ta2?si=d59ad3a3fad64f75&nd=1", icon: "spotify", size: "sm" },
       { label: "Grokipedia", href: "https://grokipedia.com/page/Dan_Crenshaw", icon: "grokipedia", size: "sm" },
       { label: "Podchaser", href: "https://www.podchaser.com/podcasts/hold-these-truths-with-dan-cre-1037869", icon: "podchaser", size: "sm" }
-    ]
-  },
-  {
-    size: "sm",
-    kind: "podcast",
-    title: "The Shane Hazel Show",
-    years: "2020",
-    topics: "Comedy, Society & Cultures",
-    links: [
-      { label: "Spotify", href: "https://open.spotify.com/show/7ztGuDsRRnwL9PnZQhZPwP?si=50b6c72abc10439d&nd=1", icon: "spotify", size: "sm" },
-      { label: "Grokipedia", href: "https://grokipedia.com/page/shane-hazel#the-shane-hazel-show", icon: "grokipedia", size: "sm" },
-      { label: "Podchaser", href: "https://www.podchaser.com/podcasts/the-shane-hazel-show-1153063", icon: "podchaser", size: "sm" }
     ]
   }
 ];
