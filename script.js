@@ -346,7 +346,6 @@ const PODCASTS = [
     years: "2019",
     topics: "Politics, Society & Culture, News",
     links: [
-      { label: "YouTube", href: "https://www.youtube.com/@RepDanCrenshaw", icon: "youtube", size: "sm" },
       { label: "Spotify", href: "https://open.spotify.com/show/2BbbFyOBNTLpYDzUai6ta2?si=d59ad3a3fad64f75&nd=1", icon: "spotify", size: "sm" },
       { label: "Grokipedia", href: "https://grokipedia.com/page/Dan_Crenshaw", icon: "grokipedia", size: "sm" },
       { label: "Podchaser", href: "https://www.podchaser.com/podcasts/hold-these-truths-with-dan-cre-1037869", icon: "podchaser", size: "sm" }
