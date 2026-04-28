@@ -31,10 +31,10 @@ const PODCASTS = [
     links: [
       { label: "YouTube", href: "https://www.youtube.com/@joerogan", icon: "youtube", size: "lg" },
       { label: "Spotify", href: "https://open.spotify.com/show/4rOoJ6Egrf8K2IrywzwOMk", icon: "spotify", size: "lg" },
-      { label: "Spotify", href: "https://open.spotify.com/show/1LMmQF9PH8LjYrktU0Oq5Y", icon: "spotify", size: "md" },
-      { label: "YouTube", href: "https://www.youtube.com/@JREClips", icon: "youtube", size: "md" },
-      { label: "Grokipedia", href: "https://grokipedia.com/page/The_Joe_Rogan_Experience", icon: "grokipedia", size: "sm" },
-      { label: "Podchaser", href: "https://www.podchaser.com/podcasts/the-joe-rogan-experience-10829", icon: "podchaser", size: "sm" }
+      { label: "Spotify", href: "https://open.spotify.com/show/1LMmQF9PH8LjYrktU0Oq5Y", icon: "spotify", size: "lg" },
+      { label: "YouTube", href: "https://www.youtube.com/@JREClips", icon: "youtube", size: "lg" },
+      { label: "Grokipedia", href: "https://grokipedia.com/page/The_Joe_Rogan_Experience", icon: "grokipedia", size: "lg" },
+      { label: "Podchaser", href: "https://www.podchaser.com/podcasts/the-joe-rogan-experience-10829", icon: "podchaser", size: "lg" }
     ]
   },
   {
@@ -46,78 +46,76 @@ const PODCASTS = [
     links: [
       { label: "YouTube", href: "https://www.youtube.com/@ChrisWillx", icon: "youtube", size: "lg" },
       { label: "Spotify", href: "https://open.spotify.com/show/0XrOqvxlqQI6bmdYHuIVnr", icon: "spotify", size: "lg" },
-      { label: "Grokipedia", href: "https://grokipedia.com/page/Chris_Williamson", icon: "grokipedia", size: "sm" },
-      { label: "Podchaser", href: "https://www.podchaser.com/podcasts/modern-wisdom-5872558", icon: "podchaser", size: "sm" }
+      { label: "Grokipedia", href: "https://grokipedia.com/page/Chris_Williamson", icon: "grokipedia", size: "lg" },
+      { label: "Podchaser", href: "https://www.podchaser.com/podcasts/modern-wisdom-5872558", icon: "podchaser", size: "lg" }
     ]
   },
   {
-    size: "sm",
+    size: "lg",
     kind: "podcast",
     title: "Within Reason",
     years: "2019",
     topics: "Philosophy, Society & Culture",
     links: [
-      { label: "YouTube", href: "https://www.youtube.com/@CosmicSkeptic", icon: "youtube", size: "sm" },
-      { label: "Spotify", href: "https://open.spotify.com/show/16wUbvDT95dxzpG2KEhakK", icon: "spotify", size: "sm" },
-      { label: "Grokipedia", href: "https://grokipedia.com/page/alex-oconnor#online-career", icon: "grokipedia", size: "sm" },
-      { label: "Podchaser", href: "https://www.podchaser.com/podcasts/within-reason-836655", icon: "podchaser", size: "sm" }
+      { label: "YouTube", href: "https://www.youtube.com/@CosmicSkeptic", icon: "youtube", size: "lg" },
+      { label: "Spotify", href: "https://open.spotify.com/show/16wUbvDT95dxzpG2KEhakK", icon: "spotify", size: "lg" },
+      { label: "Grokipedia", href: "https://grokipedia.com/page/alex-oconnor#online-career", icon: "grokipedia", size: "lg" },
+      { label: "Podchaser", href: "https://www.podchaser.com/podcasts/within-reason-836655", icon: "podchaser", size: "lg" }
     ]
   },
 
-  /* Often (medium) — channels */
+  /* Occasionally (small) — podcasts */
   {
-    size: "md",
+    size: "sm",
     kind: "channel",
     title: "Academy of Ideas",
     years: "2012",
     topics: "Philosophy, Psychology",
     links: [
-      { label: "Spotify", href: "https://open.spotify.com/show/2dio7KUNuDHErlMumZtNt6", icon: "spotify", size: "md" },
-      { label: "YouTube", href: "https://www.youtube.com/@academyofideas", icon: "youtube", size: "md" },
-      { label: "Substack", href: "https://theacademyofideas.substack.com/", icon: "substack", size: "md" },
+      { label: "Spotify", href: "https://open.spotify.com/show/2dio7KUNuDHErlMumZtNt6", icon: "spotify", size: "sm" },
+      { label: "YouTube", href: "https://www.youtube.com/@academyofideas", icon: "youtube", size: "sm" },
+      { label: "Substack", href: "https://theacademyofideas.substack.com/", icon: "substack", size: "sm" },
       { label: "Grokipedia", href: "https://grokipedia.com/page/academy-of-ideas", icon: "grokipedia", size: "sm" },
       { label: "Podchaser", href: "https://www.podchaser.com/podcasts/academy-of-ideas-649141", icon: "podchaser", size: "sm" }
     ]
   },
   {
-    size: "md",
+    size: "sm",
     kind: "channel",
     title: "Eternalised",
     years: "2020",
     topics: "Philosophy, Psychology",
     links: [
-      { label: "YouTube", href: "https://www.youtube.com/@Eternalised", icon: "youtube", size: "md" },
-      { label: "Spotify", href: "https://open.spotify.com/show/6Wimp2yM4QWuIJZneUNqbr", icon: "spotify", size: "md" },
+      { label: "YouTube", href: "https://www.youtube.com/@Eternalised", icon: "youtube", size: "sm" },
+      { label: "Spotify", href: "https://open.spotify.com/show/6Wimp2yM4QWuIJZneUNqbr", icon: "spotify", size: "sm" },
       { label: "Grokipedia", href: "https://grokipedia.com/page/eternalised", icon: "grokipedia", size: "sm" },
       { label: "Podchaser", href: "https://www.podchaser.com/podcasts/eternalised-1419110", icon: "podchaser", size: "sm" }
     ]
   },
   {
-    size: "md",
+    size: "sm",
     kind: "channel",
     title: "CaspianReport",
     years: "2010",
     topics: "Politics, News",
-    links: [{ label: "YouTube", href: "https://www.youtube.com/@CaspianReport", icon: "youtube", size: "md" },
+    links: [{ label: "YouTube", href: "https://www.youtube.com/@CaspianReport", icon: "youtube", size: "sm" },
       { label: "Grokipedia", href: "https://grokipedia.com/page/caspian-report", icon: "grokipedia", size: "sm" }]
   },
   {
-    size: "lg",
+    size: "sm",
     kind: "podcast",
     title: "Triggernometry",
     years: "2018",
     topics: "Politics, News, Society & Culture",
     links: [
-      { label: "Spotify", href: "https://open.spotify.com/show/1JH26td5UtmKQWHLv0NCZp", icon: "spotify", size: "lg" },
-      { label: "YouTube", href: "https://www.youtube.com/@triggerpod", icon: "youtube", size: "lg" },
-      { label: "YouTube Clips", href: "https://www.youtube.com/@TRIGGERClips", icon: "youtube", size: "lg" },
-      { label: "Substack", href: "https://www.triggerpod.co.uk/", icon: "substack", size: "md" },
+      { label: "Spotify", href: "https://open.spotify.com/show/1JH26td5UtmKQWHLv0NCZp", icon: "spotify", size: "sm" },
+      { label: "YouTube", href: "https://www.youtube.com/@triggerpod", icon: "youtube", size: "sm" },
+      { label: "YouTube Clips", href: "https://www.youtube.com/@TRIGGERClips", icon: "youtube", size: "sm" },
+      { label: "Substack", href: "https://www.triggerpod.co.uk/", icon: "substack", size: "sm" },
       { label: "Grokipedia", href: "https://grokipedia.com/page/triggernometry", icon: "grokipedia", size: "sm" },
       { label: "Podchaser", href: "https://www.podchaser.com/podcasts/triggernometry-664691", icon: "podchaser", size: "sm" }
     ]
   },
-
-  /* Occasionally (small) — podcasts */
   {
     size: "sm",
     kind: "podcast",
@@ -183,25 +181,25 @@ const PODCASTS = [
     ]
   },
   {
-    size: "md",
+    size: "sm",
     kind: "channel",
     title: "After Skool",
     years: "2016",
     topics: "Philosophy, Psychology, Education",
     links: [
-      { label: "YouTube", href: "https://www.youtube.com/@AfterSkool", icon: "youtube", size: "md" },
+      { label: "YouTube", href: "https://www.youtube.com/@AfterSkool", icon: "youtube", size: "sm" },
       { label: "Grokipedia", href: "https://grokipedia.com/page/after-skool", icon: "grokipedia", size: "sm" },
       { label: "Podchaser", href: "https://www.podchaser.com/podcasts/after-skool-6050376/", icon: "podchaser", size: "sm" }
     ]
   },
   {
-    size: "md",
+    size: "sm",
     kind: "channel",
     title: "Qoves",
     years: "2019",
     topics: "History, Society & Culture",
     links: [
-      { label: "YouTube", href: "https://www.youtube.com/@QOVESStudio/", icon: "youtube", size: "md" },
+      { label: "YouTube", href: "https://www.youtube.com/@QOVESStudio/", icon: "youtube", size: "sm" },
       { label: "Grokipedia", href: "", icon: "grokipedia", size: "sm" },
     ]
   },
