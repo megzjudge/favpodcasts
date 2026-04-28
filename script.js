@@ -85,7 +85,7 @@ const PODCASTS = [
     topics: "Philosophy, Psychology",
     links: [
       { label: "YouTube", href: "https://www.youtube.com/@Eternalised", icon: "youtube", size: "lg" },
-      { label: "Spotify", href: "https://open.spotify.com/show/6Wimp2yM4QWuIJZneUNqbr", icon: "spotify", size: "lg" },
+      { label: "Spotify", href: "https://open.spotify.com/show/6Wimp2yM4QWuIJZneUNqbr", icon: "spotify", size: "lg" },quyov
       { label: "Grokipedia", href: "https://grokipedia.com/page/eternalised", icon: "grokipedia", size: "lg" },
       { label: "Podchaser", href: "https://www.podchaser.com/podcasts/eternalised-1419110", icon: "podchaser", size: "lg" }
     ]
@@ -188,7 +188,7 @@ const PODCASTS = [
     topics: "History, Society & Culture",
     links: [
       { label: "YouTube", href: "https://www.youtube.com/@QOVESStudio/", icon: "youtube", size: "sm" },
-      { label: "Grokipedia", href: "", icon: "grokipedia", size: "sm" },
+      { label: "Grokipedia", href: "https://grokipedia.com/page/Qoves", icon: "grokipedia", size: "sm" },
     ]
   },
 
