@@ -63,44 +63,44 @@ const PODCASTS = [
       { label: "Podchaser", href: "https://www.podchaser.com/podcasts/within-reason-836655", icon: "podchaser", size: "lg" }
     ]
   },
-
-  /* Occasionally (small) — podcasts */
   {
-    size: "sm",
+    size: "lg",
     kind: "channel",
     title: "Academy of Ideas",
     years: "2012",
     topics: "Philosophy, Psychology",
     links: [
-      { label: "Spotify", href: "https://open.spotify.com/show/2dio7KUNuDHErlMumZtNt6", icon: "spotify", size: "sm" },
-      { label: "YouTube", href: "https://www.youtube.com/@academyofideas", icon: "youtube", size: "sm" },
-      { label: "Substack", href: "https://theacademyofideas.substack.com/", icon: "substack", size: "sm" },
-      { label: "Grokipedia", href: "https://grokipedia.com/page/academy-of-ideas", icon: "grokipedia", size: "sm" },
-      { label: "Podchaser", href: "https://www.podchaser.com/podcasts/academy-of-ideas-649141", icon: "podchaser", size: "sm" }
+      { label: "Spotify", href: "https://open.spotify.com/show/2dio7KUNuDHErlMumZtNt6", icon: "spotify", size: "lg" },
+      { label: "YouTube", href: "https://www.youtube.com/@academyofideas", icon: "youtube", size: "lg" },
+      { label: "Substack", href: "https://theacademyofideas.substack.com/", icon: "substack", size: "lg" },
+      { label: "Grokipedia", href: "https://grokipedia.com/page/academy-of-ideas", icon: "grokipedia", size: "lg" },
+      { label: "Podchaser", href: "https://www.podchaser.com/podcasts/academy-of-ideas-649141", icon: "podchaser", size: "lg" }
     ]
   },
   {
-    size: "sm",
+    size: "lg",
     kind: "channel",
     title: "Eternalised",
     years: "2020",
     topics: "Philosophy, Psychology",
     links: [
-      { label: "YouTube", href: "https://www.youtube.com/@Eternalised", icon: "youtube", size: "sm" },
-      { label: "Spotify", href: "https://open.spotify.com/show/6Wimp2yM4QWuIJZneUNqbr", icon: "spotify", size: "sm" },
-      { label: "Grokipedia", href: "https://grokipedia.com/page/eternalised", icon: "grokipedia", size: "sm" },
-      { label: "Podchaser", href: "https://www.podchaser.com/podcasts/eternalised-1419110", icon: "podchaser", size: "sm" }
+      { label: "YouTube", href: "https://www.youtube.com/@Eternalised", icon: "youtube", size: "lg" },
+      { label: "Spotify", href: "https://open.spotify.com/show/6Wimp2yM4QWuIJZneUNqbr", icon: "spotify", size: "lg" },
+      { label: "Grokipedia", href: "https://grokipedia.com/page/eternalised", icon: "grokipedia", size: "lg" },
+      { label: "Podchaser", href: "https://www.podchaser.com/podcasts/eternalised-1419110", icon: "podchaser", size: "lg" }
     ]
   },
   {
-    size: "sm",
+    size: "lg",
     kind: "channel",
     title: "CaspianReport",
     years: "2010",
     topics: "Politics, News",
-    links: [{ label: "YouTube", href: "https://www.youtube.com/@CaspianReport", icon: "youtube", size: "sm" },
-      { label: "Grokipedia", href: "https://grokipedia.com/page/caspian-report", icon: "grokipedia", size: "sm" }]
+    links: [{ label: "YouTube", href: "https://www.youtube.com/@CaspianReport", icon: "youtube", size: "lg" },
+      { label: "Grokipedia", href: "https://grokipedia.com/page/caspian-report", icon: "grokipedia", size: "lg" }]
   },
+
+  /* Occasionally (small) — podcasts */
   {
     size: "sm",
     kind: "podcast",
@@ -114,6 +114,19 @@ const PODCASTS = [
       { label: "Substack", href: "https://www.triggerpod.co.uk/", icon: "substack", size: "sm" },
       { label: "Grokipedia", href: "https://grokipedia.com/page/triggernometry", icon: "grokipedia", size: "sm" },
       { label: "Podchaser", href: "https://www.podchaser.com/podcasts/triggernometry-664691", icon: "podchaser", size: "sm" }
+    ]
+  },
+  {
+    size: "sm",
+    kind: "podcast",
+    title: "Heretics",
+    years: "2023",
+    topics: "News, Society & Culture",
+    links: [
+      { label: "YouTube", href: "https://www.youtube.com/@andrewgoldheretics", icon: "youtube", size: "sm" },
+      { label: "Spotify", href: "https://open.spotify.com/show/2NiFf7pGB4pqkvbrnS1b9X", icon: "spotify", size: "sm" },
+      { label: "Grokipedia", href: "https://grokipedia.com/page/andrew-gold-journalist#media-productions", icon: "grokipedia", size: "sm" },
+      { label: "Podchaser", href: "https://www.podchaser.com/podcasts/heretics-1316949", icon: "podchaser", size: "sm" }
     ]
   },
   {
@@ -140,31 +153,6 @@ const PODCASTS = [
       { label: "Spotify", href: "https://open.spotify.com/show/6Qh2fEsC7nEVxXxQzwTv54", icon: "spotify", size: "sm" },
       { label: "Grokipedia", href: "https://grokipedia.com/page/John_Anderson_(Australian_politician)#media-commentary-and-public-engagement", icon: "grokipedia", size: "sm" },
       { label: "Podchaser", href: "https://www.podchaser.com/podcasts/john-anderson-conversations-657776", icon: "podchaser", size: "sm" }
-    ]
-  },
-  {
-    size: "sm",
-    kind: "podcast",
-    title: "Heretics",
-    years: "2023",
-    topics: "News, Society & Culture",
-    links: [
-      { label: "YouTube", href: "https://www.youtube.com/@andrewgoldheretics", icon: "youtube", size: "sm" },
-      { label: "Spotify", href: "https://open.spotify.com/show/2NiFf7pGB4pqkvbrnS1b9X", icon: "spotify", size: "sm" },
-      { label: "Grokipedia", href: "https://grokipedia.com/page/andrew-gold-journalist#media-productions", icon: "grokipedia", size: "sm" },
-      { label: "Podchaser", href: "https://www.podchaser.com/podcasts/heretics-1316949", icon: "podchaser", size: "sm" }
-    ]
-  },
-  {
-    size: "sm",
-    kind: "podcast",
-    title: "",
-    years: "",
-    topics: "",
-    links: [
-      { label: "Spotify", href: "https://open.spotify.com/show/2BbbFyOBNTLpYDzUai6ta2?si=d59ad3a3fad64f75&nd=1", icon: "spotify", size: "sm" },
-      { label: "Grokipedia", href: "https://grokipedia.com/page/Dan_Crenshaw", icon: "grokipedia", size: "sm" },
-      { label: "Podchaser", href: "https://www.podchaser.com/podcasts/hold-these-truths-with-dan-cre-1037869", icon: "podchaser", size: "sm" }
     ]
   },
   {
