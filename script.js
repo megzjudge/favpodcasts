@@ -392,11 +392,18 @@ function linkPill(link) {
   return `<a class="pill ${link.size}" href="${link.href}" target="_blank" rel="noopener noreferrer">${icon}${link.label}</a>`;
 }
 
+function hasPodchaser(links) {
+  return links.some(function (link) { return link.icon === "podchaser"; });
+}
+
 function cardHtml(cfg) {
   const badge = BADGE[cfg.kind];
   const thumb = thumbFromLinks(cfg.links);
   const thumbHtml = thumb
     ? `<div class="podthumb"><img alt="${cfg.title} cover" src="${thumb}" width="140" height="140" loading="lazy" decoding="async"></div>`
+    : "";
+  const episodesHtml = hasPodchaser(cfg.links)
+    ? `<p data-episodes hidden><strong>Episodes:</strong> <span data-episodes-value></span></p>`
     : "";
 
   return `
@@ -405,15 +412,79 @@ function cardHtml(cfg) {
     <h2>${cfg.title}</h2>
     <div class="meta">
       ${cfg.topics ? `<p><strong>Topics:</strong> ${cfg.topics}</p>` : ""}
+      ${episodesHtml}
       ${cfg.years ? `<p><strong>Created:</strong> ${cfg.years}</p>` : ""}
     </div>
     <div class="links">${cfg.links.map(linkPill).join("")}</div>
   `;
 }
 
+const episodeMemo = new Map();
+let episodeActive = 0;
+const episodeQueue = [];
+const EPISODE_CONCURRENCY = 4;
+
+function podchaserCount(title) {
+  if (episodeMemo.has(title)) return episodeMemo.get(title);
+
+  const request = fetch("/podchaser?title=" + encodeURIComponent(title), {
+    headers: { accept: "application/json" }
+  })
+    .then(function (res) { return res.ok ? res.json() : null; })
+    .then(function (data) {
+      return data && Number.isFinite(data.numberOfEpisodes) ? data.numberOfEpisodes : null;
+    })
+    .catch(function () { return null; });
+
+  episodeMemo.set(title, request);
+  return request;
+}
+
+function setEpisodes(card, count) {
+  if (!Number.isFinite(count)) return;
+  const line = card.querySelector("[data-episodes]");
+  const val = card.querySelector("[data-episodes-value]");
+  if (!line || !val) return;
+  val.textContent = count.toLocaleString();
+  line.hidden = false;
+}
+
+function drainEpisodeQueue() {
+  while (episodeActive < EPISODE_CONCURRENCY && episodeQueue.length) {
+    const job = episodeQueue.shift();
+    episodeActive++;
+    podchaserCount(job.title).then(function (count) {
+      setEpisodes(job.card, count);
+    }).finally(function () {
+      episodeActive--;
+      drainEpisodeQueue();
+    });
+  }
+}
+
+function queueEpisodeFetch(card, title) {
+  episodeQueue.push({ card: card, title: title });
+  drainEpisodeQueue();
+}
+
+const episodeObserver = new IntersectionObserver(function (entries) {
+  for (let i = 0; i < entries.length; i++) {
+    const entry = entries[i];
+    if (!entry.isIntersecting) continue;
+    const card = entry.target;
+    episodeObserver.unobserve(card);
+    queueEpisodeFetch(card, card.dataset.title);
+  }
+}, { rootMargin: "300px" });
+
 for (const cfg of PODCASTS) {
   const card = document.createElement("article");
   card.className = `pod size-${cfg.size}`;
   card.innerHTML = cardHtml(cfg);
   GRIDS[cfg.size].appendChild(card);
+
+  if (hasPodchaser(cfg.links)) {
+    card.dataset.title = cfg.title;
+    episodeObserver.observe(card);
+  }
 }
