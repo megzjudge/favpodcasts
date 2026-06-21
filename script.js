@@ -10,18 +10,12 @@ const ICONS = {
   site:
     '<svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm1 17.9V14h3.9A8 8 0 0 1 13 19.9zM9 19.9A8 8 0 0 1 7.1 14H11v5.9zm-3.9-7.9A8 8 0 0 1 9 4.1V10H5.1zM11 10V4.1A8 8 0 0 1 17 12h-6z"/></svg>',
   grokipedia:
-  '<svg viewBox="0 0 24 24" aria-hidden="true">' +
-    '<circle cx="12" cy="12" r="8.2" fill="none" stroke="currentColor" stroke-width="2"/>' +
-    '<path d="M6.6 16.4 L16.9 6.1" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round"/>' +
-    '<path d="M14.6 6.3 L17.9 5.2 L16.8 8.5" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"/>' +
-  '</svg>'
+    '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.2" fill="none" stroke="currentColor" stroke-width="2"/><path d="M6.6 16.4 L16.9 6.1" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round"/><path d="M14.6 6.3 L17.9 5.2 L16.8 8.5" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"/></svg>'
 };
 
-/* kind: 'podcast' => 🎙️, 'channel' => 🔊 */
-const KIND_BADGE = { podcast: "🎙️", channel: "🔊" };
+const BADGE = { podcast: "🎙️", channel: "🔊" };
 
 const PODCASTS = [
-  /* Often (large) */
   {
     size: "lg",
     kind: "podcast",
@@ -85,7 +79,7 @@ const PODCASTS = [
     topics: "Philosophy, Psychology",
     links: [
       { label: "YouTube", href: "https://www.youtube.com/@Eternalised", icon: "youtube", size: "lg" },
-      { label: "Spotify", href: "https://open.spotify.com/show/6Wimp2yM4QWuIJZneUNqbr", icon: "spotify", size: "lg" },quyov
+      { label: "Spotify", href: "https://open.spotify.com/show/6Wimp2yM4QWuIJZneUNqbr", icon: "spotify", size: "lg" },
       { label: "Grokipedia", href: "https://grokipedia.com/page/eternalised", icon: "grokipedia", size: "lg" },
       { label: "Podchaser", href: "https://www.podchaser.com/podcasts/eternalised-1419110", icon: "podchaser", size: "lg" }
     ]
@@ -96,11 +90,11 @@ const PODCASTS = [
     title: "CaspianReport",
     years: "2010",
     topics: "Politics, News",
-    links: [{ label: "YouTube", href: "https://www.youtube.com/@CaspianReport", icon: "youtube", size: "lg" },
-      { label: "Grokipedia", href: "https://grokipedia.com/page/caspian-report", icon: "grokipedia", size: "lg" }]
+    links: [
+      { label: "YouTube", href: "https://www.youtube.com/@CaspianReport", icon: "youtube", size: "lg" },
+      { label: "Grokipedia", href: "https://grokipedia.com/page/caspian-report", icon: "grokipedia", size: "lg" }
+    ]
   },
-
-  /* Occasionally (small) — podcasts */
   {
     size: "sm",
     kind: "podcast",
@@ -188,10 +182,9 @@ const PODCASTS = [
     topics: "History, Society & Culture",
     links: [
       { label: "YouTube", href: "https://www.youtube.com/@QOVESStudio/", icon: "youtube", size: "sm" },
-      { label: "Grokipedia", href: "https://grokipedia.com/page/Qoves", icon: "grokipedia", size: "sm" },
+      { label: "Grokipedia", href: "https://grokipedia.com/page/Qoves", icon: "grokipedia", size: "sm" }
     ]
   },
-
   {
     size: "sm",
     kind: "podcast",
@@ -291,7 +284,7 @@ const PODCASTS = [
     topics: "Politics, Society & Culture",
     links: [
       { label: "YouTube", href: "https://www.youtube.com/@ReasonTV", icon: "youtube", size: "sm" },
-      { label: "Website", href: "https://reason.org/about-reason-foundation/", icon: "website", size: "sm" },
+      { label: "Website", href: "https://reason.org/about-reason-foundation/", icon: "site", size: "sm" },
       { label: "Grokipedia", href: "https://grokipedia.com/page/Reason_Foundation", icon: "grokipedia", size: "sm" }
     ]
   },
@@ -316,7 +309,7 @@ const PODCASTS = [
     topics: "Politics, History, Society & Culture",
     links: [
       { label: "Youtube", href: "https://www.youtube.com/@HooverInstitution", icon: "youtube", size: "sm" },
-      { label: "Website", href: "https://www.hoover.org/publications/uncommon-knowledge", icon: "website", size: "sm" },
+      { label: "Website", href: "https://www.hoover.org/publications/uncommon-knowledge", icon: "site", size: "sm" },
       { label: "Grokipedia", href: "https://grokipedia.com/page/Hoover_Institution", icon: "grokipedia", size: "sm" },
       { label: "Grokipedia", href: "https://grokipedia.com/page/Peter_Robinson_(speechwriter)", icon: "grokipedia", size: "sm" },
       { label: "Podchaser", href: "https://www.podchaser.com/podcasts/uncommon-knowledge-666841", icon: "podchaser", size: "sm" }
@@ -363,223 +356,64 @@ const PODCASTS = [
   }
 ];
 
-const firstSentence = t => (t || "").split(/(?<=[.!?])\s+/)[0] || "";
-
-const pill = link =>
-  `<a class="pill ${link.size}" href="${link.href}" target="_blank" rel="noopener">
-     ${ICONS[link.icon] || ICONS.site}${link.label}
-   </a>`;
-
-function mountToGrid(size){
-  if(size === "lg") return document.getElementById("grid-lg");
-  if(size === "md") return document.getElementById("grid-md");
-  return document.getElementById("grid-sm");
-}
-
-const getBadge = (cfg) => {
-  const badge = KIND_BADGE[cfg.kind];
-  return badge ? `<div class="podbadge" aria-hidden="true">${badge}</div>` : "";
+const GRIDS = {
+  lg: document.getElementById("grid-lg"),
+  md: document.getElementById("grid-md"),
+  sm: document.getElementById("grid-sm")
 };
 
-/***********************
- * Performance helpers
- ***********************/
-const CONCURRENCY = 6;
-
-// Memoize within a single page-load (prevents duplicate fetches)
-const MEMO = {
-  youtubeThumb: new Map(),   // key: channelUrl (or derived handle) -> Promise<string|null>
-  spotifyThumb: new Map(),   // key: spotifyUrl -> Promise<string|null>
-  podchaserCnt: new Map()    // key: title -> Promise<number|null>
-};
-
-function limitConcurrency(limit){
-  let active = 0;
-  const queue = [];
-  const next = () => {
-    if(active >= limit) return;
-    const job = queue.shift();
-    if(!job) return;
-    active++;
-    job().finally(() => {
-      active--;
-      next();
-    });
-  };
-
-  return fn => new Promise((resolve, reject) => {
-    queue.push(() => Promise.resolve()
-      .then(fn)
-      .then(resolve, reject)
-    );
-    next();
-  });
+function youtubeHandle(href) {
+  const segment = href.split("/").pop() || "";
+  if (!segment || segment === "videos") return null;
+  return segment.startsWith("@") ? segment.slice(1) : segment;
 }
 
-const runLimited = limitConcurrency(CONCURRENCY);
-
-function withMemo(map, key, factory){
-  if(map.has(key)) return map.get(key);
-  const p = Promise.resolve().then(factory).catch(() => null);
-  map.set(key, p);
-  return p;
+function spotifyShowId(href) {
+  const match = href.match(/show\/([^/?]+)/);
+  return match ? match[1] : null;
 }
 
-/***********************
- * Fetchers
- ***********************/
-async function youtubeThumb(channelUrl){
-  return withMemo(MEMO.youtubeThumb, channelUrl, async () => {
-    try{
-      const handle = channelUrl.split("/").pop() || "";
-      const cleaned = handle.startsWith("@") ? handle.slice(1) : handle;
-      const unavatar = `https://unavatar.io/youtube/${encodeURIComponent(cleaned)}`;
-
-      // NOTE: unavatar is just a URL; fetching it once warms browser cache
-      const res = await fetch(unavatar, { mode:"cors" });
-      if(!res.ok) throw new Error("Unavatar failed");
-      return unavatar;
-    }catch(e){
-      console.warn("YouTube avatar fetch error", e);
-      return null;
+function thumbFromLinks(links) {
+  for (const link of links) {
+    if (link.icon === "youtube") {
+      const handle = youtubeHandle(link.href);
+      if (handle) return `https://unavatar.io/youtube/${encodeURIComponent(handle)}`;
     }
-  });
-}
-
-async function spotifyShowThumb(spotifyUrl){
-  return withMemo(MEMO.spotifyThumb, spotifyUrl, async () => {
-    try{
-      const api = `/spotify?url=${encodeURIComponent(spotifyUrl)}`;
-      const res = await fetch(api, { headers: { "accept":"application/json" } });
-      const text = await res.text();
-      if(!res.ok) throw new Error(`Spotify API failed (${res.status}): ${text.slice(0,200)}`);
-      const data = JSON.parse(text);
-      return data?.image || null;
-    }catch(e){
-      console.warn("Spotify show thumb error", e);
-      return null;
+    if (link.icon === "spotify") {
+      const id = spotifyShowId(link.href);
+      if (id) return `https://unavatar.io/spotify/${id}`;
     }
-  });
-}
-
-async function podchaserCount(title){
-  return withMemo(MEMO.podchaserCnt, title, async () => {
-    try{
-      const url = `/podchaser?title=${encodeURIComponent(title)}`;
-      const res = await fetch(url, { headers: { "accept":"application/json" } });
-      const text = await res.text();
-      if(!res.ok) throw new Error(`Podchaser count failed (${res.status}): ${text.slice(0,200)}`);
-      const data = JSON.parse(text);
-      return Number.isFinite(data.numberOfEpisodes) ? data.numberOfEpisodes : null;
-    }catch(e){
-      console.warn("Podchaser count error", e);
-      return null;
-    }
-  });
-}
-
-async function getThumbFromLinks(links){
-  const tryOne = async (link) => {
-    if(!link?.href || !link?.icon) return null;
-    if(link.icon === "spotify") return await spotifyShowThumb(link.href);
-    if(link.icon === "youtube") return await youtubeThumb(link.href);
-    return null;
-  };
-
-  if(Array.isArray(links) && links.length){
-    const primary = await tryOne(links[0]);
-    if(primary) return primary;
   }
-
-  for(const l of (links || [])){
-    const u = await tryOne(l);
-    if(u) return u;
-  }
-
   return null;
 }
 
-/***********************
- * Rendering
- ***********************/
-function createCard(cfg){
-  const card = document.createElement("article");
-  card.className = `pod size-${cfg.size}`;
+function linkPill(link) {
+  const icon = ICONS[link.icon] || ICONS.site;
+  return `<a class="pill ${link.size}" href="${link.href}" target="_blank" rel="noopener noreferrer">${icon}${link.label}</a>`;
+}
 
-  // placeholder thumb container (we fill it later if we find one)
-  const thumbHtml = `<div class="podthumb" data-thumb></div>`;
+function cardHtml(cfg) {
+  const badge = BADGE[cfg.kind];
+  const thumb = thumbFromLinks(cfg.links);
+  const thumbHtml = thumb
+    ? `<div class="podthumb"><img alt="${cfg.title} cover" src="${thumb}" width="140" height="140" loading="lazy" decoding="async"></div>`
+    : "";
 
-  // placeholder episodes line (we fill it later if we have Podchaser)
-  const episodesHtml = `<p data-episodes style="display:none;"><strong>Episodes:</strong> <span data-episodes-value></span></p>`;
-
-  card.innerHTML = `
-    ${getBadge(cfg)}
+  return `
+    ${badge ? `<div class="podbadge" aria-hidden="true">${badge}</div>` : ""}
     ${thumbHtml}
-
     <h2>${cfg.title}</h2>
-
     <div class="meta">
       ${cfg.topics ? `<p><strong>Topics:</strong> ${cfg.topics}</p>` : ""}
-      ${episodesHtml}
-      ${cfg.years  ? `<p><strong>Created:</strong> ${cfg.years}</p>` : ""}
+      ${cfg.years ? `<p><strong>Created:</strong> ${cfg.years}</p>` : ""}
     </div>
-
-    <div class="links">
-      ${(cfg.links || []).map(pill).join("")}
-    </div>
+    <div class="links">${cfg.links.map(linkPill).join("")}</div>
   `;
-  return card;
 }
 
-function setThumb(card, cfg, thumbUrl){
-  const slot = card.querySelector("[data-thumb]");
-  if(!slot) return;
-  if(!thumbUrl){
-    slot.innerHTML = "";
-    return;
-  }
-  slot.innerHTML = `<img alt="${cfg.title} cover" src="${thumbUrl}" loading="lazy" decoding="async"/>`;
+for (const cfg of PODCASTS) {
+  const card = document.createElement("article");
+  card.className = `pod size-${cfg.size}`;
+  card.innerHTML = cardHtml(cfg);
+  GRIDS[cfg.size].appendChild(card);
 }
-
-function setEpisodes(card, count){
-  if(!Number.isFinite(count)) return;
-  const line = card.querySelector("[data-episodes]");
-  const val = card.querySelector("[data-episodes-value]");
-  if(!line || !val) return;
-  val.textContent = count.toLocaleString();
-  line.style.display = "";
-}
-
-async function hydrateCard(card, cfg){
-  // Thumb (try spotify/youtube links)
-  runLimited(async () => {
-    const thumbUrl = await getThumbFromLinks(cfg.links || []);
-    setThumb(card, cfg, thumbUrl);
-  });
-
-  // Episodes (only if Podchaser exists in links)
-  const hasPodchaser = (cfg.links || []).some(l => l.icon === "podchaser");
-  if(hasPodchaser){
-    runLimited(async () => {
-      const episodesCount = await podchaserCount(cfg.title);
-      setEpisodes(card, episodesCount);
-    });
-  }
-}
-
-function render(){
-  // 1) Build + mount cards immediately (instant paint)
-  const cards = [];
-  for(const cfg of PODCASTS){
-    const card = createCard(cfg);
-    mountToGrid(cfg.size).appendChild(card);
-    cards.push([card, cfg]);
-  }
-
-  // 2) Hydrate (thumbs + episode counts) in the background with concurrency limit
-  for(const [card, cfg] of cards){
-    hydrateCard(card, cfg);
-  }
-}
-
-render();
