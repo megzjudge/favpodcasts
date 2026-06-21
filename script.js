@@ -363,28 +363,102 @@ const GRIDS = {
 };
 
 function youtubeHandle(href) {
-  const segment = href.split("/").pop() || "";
-  if (!segment || segment === "videos") return null;
-  return segment.startsWith("@") ? segment.slice(1) : segment;
+  try {
+    const url = new URL(href);
+    if (!url.hostname.includes("youtube.com") && !url.hostname.includes("youtu.be")) return null;
+    const parts = url.pathname.split("/").filter(Boolean);
+    if (!parts.length || parts[0] === "watch") return null;
+    if (parts[0].charAt(0) === "@") return parts[0].slice(1);
+    if (parts[0] === "c" || parts[0] === "user" || parts[0] === "channel") return parts[1] || null;
+    return null;
+  } catch (e) {
+    return null;
+  }
 }
 
-function spotifyShowId(href) {
-  const match = href.match(/show\/([^/?]+)/);
-  return match ? match[1] : null;
+  return links.filter(function (link) { return link.icon === "youtube"; });
 }
 
-function thumbFromLinks(links) {
-  for (const link of links) {
-    if (link.icon === "youtube") {
-      const handle = youtubeHandle(link.href);
-      if (handle) return `https://unavatar.io/youtube/${encodeURIComponent(handle)}`;
-    }
-    if (link.icon === "spotify") {
-      const id = spotifyShowId(link.href);
-      if (id) return `https://unavatar.io/spotify/${id}`;
-    }
+function spotifyLink(links) {
+  for (let i = 0; i < links.length; i++) {
+    if (links[i].icon === "spotify") return links[i].href;
   }
   return null;
+}
+
+function youtubeThumbUrls(links) {
+  const urls = [];
+  const seen = {};
+  youtubeLinks(links).forEach(function (link) {
+    const handle = youtubeHandle(link.href);
+    if (!handle || seen[handle]) return;
+    seen[handle] = true;
+    urls.push("https://unavatar.io/youtube/" + encodeURIComponent(handle));
+  });
+  return urls;
+}
+
+const thumbMemo = new Map();
+
+function fetchSpotifyThumb(href) {
+  if (thumbMemo.has(href)) return thumbMemo.get(href);
+
+  const request = fetch("https://open.spotify.com/oembed?url=" + encodeURIComponent(href))
+    .then(function (res) { return res.ok ? res.json() : null; })
+    .then(function (data) { return data && data.thumbnail_url ? data.thumbnail_url : null; })
+    .catch(function () { return null; })
+    .then(function (url) {
+      if (url) return url;
+      return fetch("/spotify?url=" + encodeURIComponent(href))
+        .then(function (res) { return res.ok ? res.json() : null; })
+        .then(function (data) { return data && data.image ? data.image : null; })
+        .catch(function () { return null; });
+    });
+
+  thumbMemo.set(href, request);
+  return request;
+}
+
+function hideThumbWrap(img) {
+  const wrap = img.closest(".podthumb");
+  if (wrap) wrap.hidden = true;
+}
+
+function hydrateThumb(card, links) {
+  const img = card.querySelector("[data-thumb]");
+  if (!img || img.dataset.hydrated) return;
+  img.dataset.hydrated = "1";
+
+  const ytUrls = youtubeThumbUrls(links);
+  const spotifyHref = spotifyLink(links);
+  let ytIndex = 0;
+
+  function trySpotify() {
+    if (!spotifyHref) {
+      hideThumbWrap(img);
+      return;
+    }
+    fetchSpotifyThumb(spotifyHref).then(function (url) {
+      if (url) img.src = url;
+      else hideThumbWrap(img);
+    });
+  }
+
+  img.onerror = function () {
+    if (ytIndex < ytUrls.length) {
+      img.src = ytUrls[ytIndex++];
+    } else {
+      img.onerror = null;
+      trySpotify();
+    }
+  };
+
+  if (ytUrls.length) {
+    img.src = ytUrls[0];
+    ytIndex = 1;
+  } else {
+    trySpotify();
+  }
 }
 
 function linkPill(link) {
@@ -398,17 +472,13 @@ function hasPodchaser(links) {
 
 function cardHtml(cfg) {
   const badge = BADGE[cfg.kind];
-  const thumb = thumbFromLinks(cfg.links);
-  const thumbHtml = thumb
-    ? `<div class="podthumb"><img alt="${cfg.title} cover" src="${thumb}" width="140" height="140" loading="lazy" decoding="async"></div>`
-    : "";
   const episodesHtml = hasPodchaser(cfg.links)
     ? `<p data-episodes hidden><strong>Episodes:</strong> <span data-episodes-value></span></p>`
     : "";
 
   return `
     ${badge ? `<div class="podbadge" aria-hidden="true">${badge}</div>` : ""}
-    ${thumbHtml}
+    <div class="podthumb"><img data-thumb alt="${cfg.title} cover" width="140" height="140" loading="lazy" decoding="async"></div>
     <h2>${cfg.title}</h2>
     <div class="meta">
       ${cfg.topics ? `<p><strong>Topics:</strong> ${cfg.topics}</p>` : ""}
@@ -467,24 +537,28 @@ function queueEpisodeFetch(card, title) {
   drainEpisodeQueue();
 }
 
-const episodeObserver = new IntersectionObserver(function (entries) {
+const cardObserver = new IntersectionObserver(function (entries) {
   for (let i = 0; i < entries.length; i++) {
     const entry = entries[i];
     if (!entry.isIntersecting) continue;
     const card = entry.target;
-    episodeObserver.unobserve(card);
-    queueEpisodeFetch(card, card.dataset.title);
+    cardObserver.unobserve(card);
+    hydrateThumb(card, PODCASTS[card.dataset.podIndex].links);
+    if (card.dataset.title) queueEpisodeFetch(card, card.dataset.title);
   }
 }, { rootMargin: "300px" });
 
-for (const cfg of PODCASTS) {
+for (let i = 0; i < PODCASTS.length; i++) {
+  const cfg = PODCASTS[i];
   const card = document.createElement("article");
   card.className = `pod size-${cfg.size}`;
+  card.dataset.podIndex = String(i);
   card.innerHTML = cardHtml(cfg);
   GRIDS[cfg.size].appendChild(card);
 
   if (hasPodchaser(cfg.links)) {
     card.dataset.title = cfg.title;
-    episodeObserver.observe(card);
   }
+
+  cardObserver.observe(card);
 }
