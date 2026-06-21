@@ -182,6 +182,7 @@ const PODCASTS = [
     topics: "History, Society & Culture",
     links: [
       { label: "YouTube", href: "https://www.youtube.com/@QOVESStudio/", icon: "youtube", size: "sm" },
+      { label: "Spotify", href: "https://open.spotify.com/show/7vkJBCyYCmVePIoqMsISIB", icon: "spotify", size: "sm" },
       { label: "Grokipedia", href: "https://grokipedia.com/page/Qoves", icon: "grokipedia", size: "sm" }
     ]
   },
@@ -392,31 +393,28 @@ function youtubeThumbUrls(links) {
   const seen = {};
   youtubeLinks(links).forEach(function (link) {
     const handle = youtubeHandle(link.href);
-    if (!handle || seen[handle]) return;
-    seen[handle] = true;
+    if (!handle) return;
+    const key = handle.toLowerCase();
+    if (seen[key]) return;
+    seen[key] = true;
     urls.push("https://unavatar.io/youtube/" + encodeURIComponent(handle));
+    urls.push("https://unavatar.io/youtube/@" + encodeURIComponent(handle));
   });
   return urls;
 }
 
 const thumbMemo = new Map();
 
-function fetchSpotifyThumb(href) {
-  if (thumbMemo.has(href)) return thumbMemo.get(href);
+function fetchSpotifyShowThumb(href) {
+  const key = "show:" + href;
+  if (thumbMemo.has(key)) return thumbMemo.get(key);
 
-  const request = fetch("https://open.spotify.com/oembed?url=" + encodeURIComponent(href))
+  const request = fetch("/spotify?url=" + encodeURIComponent(href))
     .then(function (res) { return res.ok ? res.json() : null; })
-    .then(function (data) { return data && data.thumbnail_url ? data.thumbnail_url : null; })
-    .catch(function () { return null; })
-    .then(function (url) {
-      if (url) return url;
-      return fetch("/spotify?url=" + encodeURIComponent(href))
-        .then(function (res) { return res.ok ? res.json() : null; })
-        .then(function (data) { return data && data.image ? data.image : null; })
-        .catch(function () { return null; });
-    });
+    .then(function (data) { return data && data.image ? data.image : null; })
+    .catch(function () { return null; });
 
-  thumbMemo.set(href, request);
+  thumbMemo.set(key, request);
   return request;
 }
 
@@ -430,35 +428,30 @@ function hydrateThumb(card, links) {
   if (!img || img.dataset.hydrated) return;
   img.dataset.hydrated = "1";
 
-  const ytUrls = youtubeThumbUrls(links);
   const spotifyHref = spotifyLink(links);
+  const ytUrls = youtubeThumbUrls(links);
   let ytIndex = 0;
 
-  function trySpotify() {
-    if (!spotifyHref) {
-      hideThumbWrap(img);
-      return;
-    }
-    fetchSpotifyThumb(spotifyHref).then(function (url) {
-      if (url) img.src = url;
-      else hideThumbWrap(img);
-    });
-  }
-
-  img.onerror = function () {
+  function tryYoutube() {
     if (ytIndex < ytUrls.length) {
       img.src = ytUrls[ytIndex++];
     } else {
-      img.onerror = null;
-      trySpotify();
+      hideThumbWrap(img);
     }
-  };
+  }
 
-  if (ytUrls.length) {
+  img.onerror = tryYoutube;
+
+  if (spotifyHref) {
+    fetchSpotifyShowThumb(spotifyHref).then(function (url) {
+      if (url) img.src = url;
+      else tryYoutube();
+    });
+  } else if (ytUrls.length) {
     img.src = ytUrls[0];
     ytIndex = 1;
   } else {
-    trySpotify();
+    hideThumbWrap(img);
   }
 }
 
