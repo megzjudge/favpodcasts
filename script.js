@@ -376,6 +376,7 @@ function youtubeHandle(href) {
   }
 }
 
+function youtubeLinks(links) {
   return links.filter(function (link) { return link.icon === "youtube"; });
 }
 
