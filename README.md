@@ -11,7 +11,7 @@ A simple static site listing favourite podcasts and YouTube channels, grouped by
 ## Project structure
 
 ```
-favpodcasts-main/
+root/
 ├── index.html      # Page shell
 ├── styles.css      # Layout and theme
 ├── script.js       # Podcast data and rendering
@@ -23,17 +23,6 @@ favpodcasts-main/
     ├── youtube.js    # YouTube channel avatars
     └── _routes.json
 ```
-
-## Local preview
-
-Static files only (covers and episode counts need Cloudflare Functions):
-
-```bash
-cd favpodcasts-main
-python3 -m http.server 8080
-```
-
-Open [http://localhost:8080](http://localhost:8080).
 
 ## Deployment
 
@@ -58,7 +47,3 @@ Edit the `PODCASTS` array in `script.js`. Each entry needs:
 - `links` — array of `{ label, href, icon, size }`
 
 Optional: set `thumb: "youtube"` to prefer a YouTube channel avatar over Spotify art (e.g. for YouTube-only channels).
-
-## License
-
-© Megan Judge. All rights reserved.
