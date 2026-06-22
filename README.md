@@ -7,7 +7,6 @@ A simple static site listing favourite podcasts and YouTube channels, grouped by
 - Podcast and channel cards with links to YouTube, Spotify, Substack, Grokipedia, and Podchaser
 - Cover art loaded lazily as you scroll (Spotify show art, with YouTube fallback)
 - Episode counts fetched from Podchaser when a card comes into view
-- No build step — plain HTML, CSS, and JavaScript
 
 ## Project structure
 
