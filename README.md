@@ -26,7 +26,7 @@ root/
 
 ## Deployment
 
-Hosted on [Cloudflare Pages](https://pages.cloudflare.com/). The `functions/` folder runs as edge functions on the same domain.
+Hosted on [Cloudflare Pages](https://pages.cloudflare.com/). The `functions/` folder runs as edge functions on the website.
 
 Set these environment variables Secrets in the Cloudflare dashboard:
 
