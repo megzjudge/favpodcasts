@@ -2,8 +2,6 @@
 
 A simple static site listing favourite podcasts and YouTube channels, grouped by listening time.
 
-**Live site:** [podcasts.jdge.cc](https://podcasts.jdge.cc/)
-
 ## Features
 
 - Podcast and channel cards with links to YouTube, Spotify, Substack, Grokipedia, and Podchaser
