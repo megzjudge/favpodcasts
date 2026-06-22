@@ -1,6 +1,6 @@
 # Favourite Podcasts
 
-A simple static site listing Megan Judge's favourite podcasts and YouTube channels, grouped by how often she listens.
+A simple static site listing favourite podcasts and YouTube channels, grouped by listening time.
 
 **Live site:** [podcasts.jdge.cc](https://podcasts.jdge.cc/)
 
