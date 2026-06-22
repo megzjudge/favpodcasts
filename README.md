@@ -28,7 +28,7 @@ root/
 
 Hosted on [Cloudflare Pages](https://pages.cloudflare.com/). The `functions/` folder runs as edge functions on the same domain.
 
-Set these environment variables in the Cloudflare dashboard:
+Set these environment variables Secrets in the Cloudflare dashboard:
 
 | Variable | Used by |
 |----------|---------|
