@@ -180,9 +180,9 @@ const PODCASTS = [
     title: "Qoves",
     years: "2019",
     topics: "History, Society & Culture",
+    thumb: "youtube",
     links: [
       { label: "YouTube", href: "https://www.youtube.com/@QOVESStudio/", icon: "youtube", size: "sm" },
-      { label: "Spotify", href: "https://open.spotify.com/show/7vkJBCyYCmVePIoqMsISIB", icon: "spotify", size: "sm" },
       { label: "Grokipedia", href: "https://grokipedia.com/page/Qoves", icon: "grokipedia", size: "sm" }
     ]
   },
@@ -418,21 +418,50 @@ function fetchSpotifyShowThumb(href) {
   return request;
 }
 
+function fetchYoutubeChannelThumb(href) {
+  const key = "yt:" + href;
+  if (thumbMemo.has(key)) return thumbMemo.get(key);
+
+  const request = fetch("/youtube?url=" + encodeURIComponent(href))
+    .then(function (res) { return res.ok ? res.json() : null; })
+    .then(function (data) { return data && data.image ? data.image : null; })
+    .catch(function () { return null; });
+
+  thumbMemo.set(key, request);
+  return request;
+}
+
+function fetchFirstYoutubeThumb(links) {
+  const linksList = youtubeLinks(links);
+  let chain = Promise.resolve(null);
+
+  linksList.forEach(function (link) {
+    chain = chain.then(function (url) {
+      if (url) return url;
+      return fetchYoutubeChannelThumb(link.href);
+    });
+  });
+
+  return chain;
+}
+
 function hideThumbWrap(img) {
   const wrap = img.closest(".podthumb");
   if (wrap) wrap.hidden = true;
 }
 
-function hydrateThumb(card, links) {
+function hydrateThumb(card, cfg) {
   const img = card.querySelector("[data-thumb]");
   if (!img || img.dataset.hydrated) return;
   img.dataset.hydrated = "1";
 
+  const links = cfg.links;
+  const preferYoutube = cfg.thumb === "youtube";
   const spotifyHref = spotifyLink(links);
   const ytUrls = youtubeThumbUrls(links);
   let ytIndex = 0;
 
-  function tryYoutube() {
+  function tryUnavatar() {
     if (ytIndex < ytUrls.length) {
       img.src = ytUrls[ytIndex++];
     } else {
@@ -440,19 +469,35 @@ function hydrateThumb(card, links) {
     }
   }
 
-  img.onerror = tryYoutube;
+  img.onerror = tryUnavatar;
+
+  function setImage(url) {
+    if (url) img.src = url;
+    else tryUnavatar();
+  }
+
+  if (preferYoutube) {
+    fetchFirstYoutubeThumb(links).then(setImage);
+    return;
+  }
 
   if (spotifyHref) {
     fetchSpotifyShowThumb(spotifyHref).then(function (url) {
       if (url) img.src = url;
-      else tryYoutube();
+      else fetchFirstYoutubeThumb(links).then(setImage);
     });
-  } else if (ytUrls.length) {
-    img.src = ytUrls[0];
-    ytIndex = 1;
-  } else {
-    hideThumbWrap(img);
+    return;
   }
+
+  fetchFirstYoutubeThumb(links).then(function (url) {
+    if (url) img.src = url;
+    else if (ytUrls.length) {
+      img.src = ytUrls[0];
+      ytIndex = 1;
+    } else {
+      hideThumbWrap(img);
+    }
+  });
 }
 
 function linkPill(link) {
@@ -537,7 +582,7 @@ const cardObserver = new IntersectionObserver(function (entries) {
     if (!entry.isIntersecting) continue;
     const card = entry.target;
     cardObserver.unobserve(card);
-    hydrateThumb(card, PODCASTS[card.dataset.podIndex].links);
+    hydrateThumb(card, PODCASTS[card.dataset.podIndex]);
     if (card.dataset.title) queueEpisodeFetch(card, card.dataset.title);
   }
 }, { rootMargin: "300px" });
