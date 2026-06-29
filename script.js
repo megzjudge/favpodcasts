@@ -97,18 +97,6 @@ const PODCASTS = [
   },
   {
     size: "sm",
-    kind: "channel",
-    title: "Qoves",
-    years: "2019",
-    topics: "History, Society & Culture",
-    thumb: "youtube",
-    links: [
-      { label: "YouTube", href: "https://www.youtube.com/@QOVESStudio/", icon: "youtube", size: "sm" },
-      { label: "Grokipedia", href: "https://grokipedia.com/page/Qoves", icon: "grokipedia", size: "sm" }
-    ]
-  },
-  {
-    size: "sm",
     kind: "podcast",
     title: "Huberman Lab",
     years: "2020",
@@ -146,6 +134,18 @@ const PODCASTS = [
       { label: "Spotify", href: "https://open.spotify.com/show/2NiFf7pGB4pqkvbrnS1b9X", icon: "spotify", size: "sm" },
       { label: "Grokipedia", href: "https://grokipedia.com/page/andrew-gold-journalist#media-productions", icon: "grokipedia", size: "sm" },
       { label: "Podchaser", href: "https://www.podchaser.com/podcasts/heretics-1316949", icon: "podchaser", size: "sm" }
+    ]
+  },
+  {
+    size: "sm",
+    kind: "channel",
+    title: "Qoves",
+    years: "2019",
+    topics: "History, Society & Culture",
+    thumb: "youtube",
+    links: [
+      { label: "YouTube", href: "https://www.youtube.com/@QOVESStudio/", icon: "youtube", size: "sm" },
+      { label: "Grokipedia", href: "https://grokipedia.com/page/Qoves", icon: "grokipedia", size: "sm" }
     ]
   },
   {
