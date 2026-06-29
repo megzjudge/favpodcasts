@@ -97,6 +97,31 @@ const PODCASTS = [
   },
   {
     size: "sm",
+    kind: "channel",
+    title: "Qoves",
+    years: "2019",
+    topics: "History, Society & Culture",
+    thumb: "youtube",
+    links: [
+      { label: "YouTube", href: "https://www.youtube.com/@QOVESStudio/", icon: "youtube", size: "sm" },
+      { label: "Grokipedia", href: "https://grokipedia.com/page/Qoves", icon: "grokipedia", size: "sm" }
+    ]
+  },
+  {
+    size: "sm",
+    kind: "podcast",
+    title: "Huberman Lab",
+    years: "2020",
+    topics: "Health & Fitness, Science",
+    links: [
+      { label: "Spotify", href: "https://open.spotify.com/show/79CkJF3UJTHFV8Dse3Oy0P", icon: "spotify", size: "sm" },
+      { label: "YouTube", href: "https://www.youtube.com/c/AndrewHubermanLab", icon: "youtube", size: "sm" },
+      { label: "Grokipedia", href: "https://grokipedia.com/page/Andrew_Huberman#huberman-lab-podcast", icon: "grokipedia", size: "sm" },
+      { label: "Podchaser", href: "https://www.podchaser.com/podcasts/huberman-lab-1576373", icon: "podchaser", size: "sm" }
+    ]
+  },
+  {
+    size: "sm",
     kind: "podcast",
     title: "Triggernometry",
     years: "2018",
@@ -176,14 +201,15 @@ const PODCASTS = [
   },
   {
     size: "sm",
-    kind: "channel",
-    title: "Qoves",
-    years: "2019",
-    topics: "History, Society & Culture",
-    thumb: "youtube",
+    kind: "podcast",
+    title: "Lex Fridman",
+    years: "2014",
+    topics: "Technology, Science",
     links: [
-      { label: "YouTube", href: "https://www.youtube.com/@QOVESStudio/", icon: "youtube", size: "sm" },
-      { label: "Grokipedia", href: "https://grokipedia.com/page/Qoves", icon: "grokipedia", size: "sm" }
+      { label: "YouTube", href: "https://www.youtube.com/c/lexfridman", icon: "youtube", size: "sm" },
+      { label: "Spotify", href: "https://open.spotify.com/show/2MAi0BvDc6GTFvKFPXnkCL", icon: "spotify", size: "sm" },
+      { label: "Grokipedia", href: "https://grokipedia.com/page/Lex_Fridman#the-lex-fridman-podcast", icon: "grokipedia", size: "sm" },
+      { label: "Podchaser", href: "https://www.podchaser.com/podcasts/lex-fridman-podcast-721928", icon: "podchaser", size: "sm" }
     ]
   },
   {
@@ -212,32 +238,6 @@ const PODCASTS = [
       { label: "Grokipedia", href: "https://grokipedia.com/page/Bret_Weinstein", icon: "grokipedia", size: "sm" },
       { label: "Grokipedia", href: "https://grokipedia.com/page/Heather_Heying", icon: "grokipedia", size: "sm" },
       { label: "Podchaser", href: "https://www.podchaser.com/podcasts/darkhorse-podcast-891627", icon: "podchaser", size: "sm" }
-    ]
-  },
-  {
-    size: "sm",
-    kind: "podcast",
-    title: "Huberman Lab",
-    years: "2020",
-    topics: "Health & Fitness, Science",
-    links: [
-      { label: "Spotify", href: "https://open.spotify.com/show/79CkJF3UJTHFV8Dse3Oy0P", icon: "spotify", size: "sm" },
-      { label: "YouTube", href: "https://www.youtube.com/c/AndrewHubermanLab", icon: "youtube", size: "sm" },
-      { label: "Grokipedia", href: "https://grokipedia.com/page/Andrew_Huberman#huberman-lab-podcast", icon: "grokipedia", size: "sm" },
-      { label: "Podchaser", href: "https://www.podchaser.com/podcasts/huberman-lab-1576373", icon: "podchaser", size: "sm" }
-    ]
-  },
-  {
-    size: "sm",
-    kind: "podcast",
-    title: "Lex Fridman",
-    years: "2014",
-    topics: "Technology, Science",
-    links: [
-      { label: "YouTube", href: "https://www.youtube.com/c/lexfridman", icon: "youtube", size: "sm" },
-      { label: "Spotify", href: "https://open.spotify.com/show/2MAi0BvDc6GTFvKFPXnkCL", icon: "spotify", size: "sm" },
-      { label: "Grokipedia", href: "https://grokipedia.com/page/Lex_Fridman#the-lex-fridman-podcast", icon: "grokipedia", size: "sm" },
-      { label: "Podchaser", href: "https://www.podchaser.com/podcasts/lex-fridman-podcast-721928", icon: "podchaser", size: "sm" }
     ]
   },
   {
