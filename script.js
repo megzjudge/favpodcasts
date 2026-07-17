@@ -15,8 +15,10 @@ const ICONS = {
 
 const BADGE = { podcast: "🎤", channel: "📹" };
 const BADGE_LABEL = { podcast: "Podcast", channel: "Channel" };
-const CATEGORY_BADGE = { tech: "⚡", health: "⚕️", science: "🧬", mechanics: "⚒️", variety: "🪩", travel: "🍃", geopolitics: "🗺️", philosophy: "🧩" };
-const CATEGORY_LABEL = { tech: "Tech", health: "Health", science: "Science", mechanics: "Mechanics", variety: "Variety", travel: "Travel", geopolitics: "Geopolitics", philosophy: "Philosophy" };
+const CATEGORY_BADGE = { tech: "⚡", health: "⚕️", science: "🧬", mechanics: "⚒️", variety: "🪩", travel: "🍃", geopolitics: "🗺️", philosophy: "🧩", business: "🏷️" };
+const CATEGORY_LABEL = { tech: "Tech", health: "Health", science: "Science", mechanics: "Mechanics", variety: "Variety", travel: "Travel", geopolitics: "Geopolitics", philosophy: "Philosophy", business: "Business" };
+const FLAG_BADGE = { au: "🇦🇺" };
+const FLAG_LABEL = { au: "Australia" };
 
 // Podcast data lives in podcasts.json, not hardcoded here — fetched once
 // at startup and populated into this array before any card is built.
@@ -173,6 +175,7 @@ function hasPodchaser(links) {
 function cardHtml(cfg) {
   const badge = BADGE[cfg.kind];
   const categoryBadge = CATEGORY_BADGE[cfg.category];
+  const flagBadge = FLAG_BADGE[cfg.flag];
   const episodesHtml = hasPodchaser(cfg.links)
     ? `<p data-episodes hidden><strong>Episodes:</strong> <span data-episodes-value></span></p>`
     : "";
@@ -182,6 +185,7 @@ function cardHtml(cfg) {
     <div class="pod-inner">
       <div class="pod-face pod-front">
         ${badge ? `<div class="pod-badge pod-badge-${cfg.kind}" title="${BADGE_LABEL[cfg.kind]}" aria-hidden="true">${badge}</div>` : ""}
+        ${flagBadge ? `<div class="pod-flag-badge" title="${FLAG_LABEL[cfg.flag]}" aria-hidden="true">${flagBadge}</div>` : ""}
         <img data-thumb alt="" width="190" height="190" loading="lazy" decoding="async">
         <div class="pod-front-title">${cfg.title}</div>
       </div>

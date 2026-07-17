@@ -82,6 +82,7 @@
   {
     "size": "lg",
     "kind": "podcast",
+    "category": "philosophy",
     "title": "Within Reason",
     "years": "2019",
     "topics": "Philosophy, Society & Culture",
@@ -411,7 +412,8 @@
         "icon": "podchaser",
         "size": "sm"
       }
-    ]
+    ],
+    "flag": "au"
   },
   {
     "size": "sm",
@@ -445,7 +447,8 @@
         "icon": "podchaser",
         "size": "sm"
       }
-    ]
+    ],
+    "flag": "au"
   },
   {
     "size": "sm",
@@ -592,6 +595,7 @@
   {
     "size": "sm",
     "kind": "podcast",
+    "category": "business",
     "title": "Tom Bilyeu's Impact Theory",
     "years": "2014",
     "topics": "Health, Finance, Science",
@@ -997,6 +1001,7 @@
   {
     "size": "sm",
     "kind": "podcast",
+    "category": "health",
     "title": "ADHD Chatter Podcast",
     "years": "2023",
     "topics": "Health & Fitness, Psychology, Society & Culture",
@@ -1023,11 +1028,13 @@
         "icon": "youtube",
         "size": "sm"
       }
-    ]
+    ],
+    "flag": "au"
   },
   {
     "size": "sm",
     "kind": "podcast",
+    "category": "health",
     "title": "Based Camp with Simone & Malcolm Collins",
     "years": "2023",
     "topics": "Society & Culture, Philosophy, Science",
@@ -1101,6 +1108,7 @@
         "icon": "youtube",
         "size": "sm"
       }
-    ]
+    ],
+    "flag": "au"
   }
 ]
