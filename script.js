@@ -13,7 +13,7 @@ const ICONS = {
     '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.2" fill="none" stroke="currentColor" stroke-width="2"/><path d="M6.6 16.4 L16.9 6.1" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round"/><path d="M14.6 6.3 L17.9 5.2 L16.8 8.5" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"/></svg>'
 };
 
-const BADGE = { podcast: "🎙️", channel: "🔊" };
+const BADGE = { podcast: "🎤", channel: "📹" };
 
 // Podcast data lives in podcasts.json, not hardcoded here — fetched once
 // at startup and populated into this array before any card is built.
@@ -174,9 +174,9 @@ function cardHtml(cfg) {
     : "";
 
   return `
+    ${badge ? `<div class="pod-badge" aria-hidden="true">${badge}</div>` : ""}
     <div class="pod-inner">
       <div class="pod-face pod-front">
-        ${badge ? `<div class="pod-badge" aria-hidden="true">${badge}</div>` : ""}
         <img data-thumb alt="" width="190" height="190" loading="lazy" decoding="async">
         <div class="pod-front-title">${cfg.title}</div>
       </div>
