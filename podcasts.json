@@ -211,6 +211,40 @@
   },
   {
     "size": "sm",
+    "kind": "channel",
+    "category": "health",
+    "title": "HealthyGamerGG",
+    "years": "2019",
+    "topics": "Health, Psychology",
+    "links": [
+      {
+        "label": "YouTube",
+        "href": "https://www.youtube.com/@HealthyGamerGG",
+        "icon": "youtube",
+        "size": "sm"
+      },
+      {
+        "label": "Spotify",
+        "href": "https://open.spotify.com/show/6VaJwyS2KXxiXqR77jqzmP?si=83e6d398de5147f8",
+        "icon": "spotify",
+        "size": "sm"
+      },
+      {
+        "label": "Grokipedia",
+        "href": "https://grokipedia.com/page/Alok_Kanojia",
+        "icon": "grokipedia",
+        "size": "sm"
+      },
+      {
+        "label": "Podchaser",
+        "href": "https://www.podchaser.com/podcasts/healthygamergg-986313",
+        "icon": "podchaser",
+        "size": "sm"
+      }
+    ]
+  },
+  {
+    "size": "sm",
     "kind": "podcast",
     "category": "science",
     "title": "Huberman Lab",
@@ -238,6 +272,33 @@
       {
         "label": "Podchaser",
         "href": "https://www.podchaser.com/podcasts/huberman-lab-1576373",
+        "icon": "podchaser",
+        "size": "sm"
+      }
+    ]
+  },
+  {
+    "size": "sm",
+    "kind": "podcast",
+    "category": "science",
+    "title": "From First Principles",
+    "topics": "Science, Technology",
+    "links": [
+      {
+        "label": "YouTube",
+        "href": "https://www.youtube.com/@FromFirstPrinciplesPod",
+        "icon": "youtube",
+        "size": "sm"
+      },
+      {
+        "label": "Spotify",
+        "href": "https://open.spotify.com/show/57SMaGqfU64urFPeBabO7A?si=6d08ff42c7ec4832",
+        "icon": "spotify",
+        "size": "sm"
+      },
+      {
+        "label": "Podchaser",
+        "href": "https://www.podchaser.com/podcasts/from-first-principles-6172665",
         "icon": "podchaser",
         "size": "sm"
       }
@@ -1012,40 +1073,6 @@
   },
   {
     "size": "sm",
-    "kind": "channel",
-    "category": "health",
-    "title": "HealthyGamerGG",
-    "years": "2019",
-    "topics": "Health, Psychology",
-    "links": [
-      {
-        "label": "YouTube",
-        "href": "https://www.youtube.com/@HealthyGamerGG",
-        "icon": "youtube",
-        "size": "sm"
-      },
-      {
-        "label": "Spotify",
-        "href": "https://open.spotify.com/show/6VaJwyS2KXxiXqR77jqzmP?si=83e6d398de5147f8",
-        "icon": "spotify",
-        "size": "sm"
-      },
-      {
-        "label": "Grokipedia",
-        "href": "https://grokipedia.com/page/Alok_Kanojia",
-        "icon": "grokipedia",
-        "size": "sm"
-      },
-      {
-        "label": "Podchaser",
-        "href": "https://www.podchaser.com/podcasts/healthygamergg-986313",
-        "icon": "podchaser",
-        "size": "sm"
-      }
-    ]
-  },
-  {
-    "size": "sm",
     "kind": "podcast",
     "category": "variety",
     "title": "Conversations with Coleman",
@@ -1261,33 +1288,6 @@
         "label": "Grokipedia",
         "href": "https://grokipedia.com/page/gamers-nexus",
         "icon": "grokipedia",
-        "size": "sm"
-      }
-    ]
-  },
-  {
-    "size": "sm",
-    "kind": "podcast",
-    "category": "science",
-    "title": "From First Principles",
-    "topics": "Science, Technology",
-    "links": [
-      {
-        "label": "YouTube",
-        "href": "https://www.youtube.com/@FromFirstPrinciplesPod",
-        "icon": "youtube",
-        "size": "sm"
-      },
-      {
-        "label": "Spotify",
-        "href": "https://open.spotify.com/show/57SMaGqfU64urFPeBabO7A?si=6d08ff42c7ec4832",
-        "icon": "spotify",
-        "size": "sm"
-      },
-      {
-        "label": "Podchaser",
-        "href": "https://www.podchaser.com/podcasts/from-first-principles-6172665",
-        "icon": "podchaser",
         "size": "sm"
       }
     ]
