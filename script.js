@@ -14,21 +14,15 @@ const ICONS = {
 };
 
 const BADGE = { podcast: "🎤", channel: "📹" };
-const CATEGORY_BADGE = { tech: "⚡", health: "⚕️", science: "🧬" };
-const CATEGORY_LABEL = { tech: "Tech", health: "Health", science: "Science" };
+const BADGE_LABEL = { podcast: "Podcast", channel: "Channel" };
+const CATEGORY_BADGE = { tech: "⚡", health: "⚕️", science: "🧬", mechanics: "⚒️", variety: "🪩", travel: "🍃", geopolitics: "🗺️", philosophy: "🧩" };
+const CATEGORY_LABEL = { tech: "Tech", health: "Health", science: "Science", mechanics: "Mechanics", variety: "Variety", travel: "Travel", geopolitics: "Geopolitics", philosophy: "Philosophy" };
 
 // Podcast data lives in podcasts.json, not hardcoded here — fetched once
 // at startup and populated into this array before any card is built.
 let PODCASTS = [];
 
 const GRID = document.getElementById("grid");
-
-const categoryKeyEl = document.getElementById("categoryKey");
-if (categoryKeyEl) {
-  categoryKeyEl.textContent = Object.keys(CATEGORY_BADGE)
-    .map(function (key) { return CATEGORY_BADGE[key] + " " + CATEGORY_LABEL[key]; })
-    .join("   ");
-}
 
 function youtubeHandle(href) {
   try {
@@ -184,10 +178,10 @@ function cardHtml(cfg) {
     : "";
 
   return `
-    ${badge ? `<div class="pod-badge pod-badge-${cfg.kind}" aria-hidden="true">${badge}</div>` : ""}
-    ${categoryBadge ? `<div class="pod-category-badge" aria-hidden="true">${categoryBadge}</div>` : ""}
+    ${categoryBadge ? `<div class="pod-category-badge" title="${CATEGORY_LABEL[cfg.category]}" aria-hidden="true">${categoryBadge}</div>` : ""}
     <div class="pod-inner">
       <div class="pod-face pod-front">
+        ${badge ? `<div class="pod-badge pod-badge-${cfg.kind}" title="${BADGE_LABEL[cfg.kind]}" aria-hidden="true">${badge}</div>` : ""}
         <img data-thumb alt="" width="190" height="190" loading="lazy" decoding="async">
         <div class="pod-front-title">${cfg.title}</div>
       </div>

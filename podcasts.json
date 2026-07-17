@@ -2,6 +2,7 @@
   {
     "size": "lg",
     "kind": "podcast",
+    "category": "variety",
     "title": "The Joe Rogan Experience",
     "years": "2009",
     "topics": "Comedy, Society & Culture",
@@ -47,6 +48,7 @@
   {
     "size": "lg",
     "kind": "podcast",
+    "category": "variety",
     "title": "Modern Wisdom",
     "years": "2018",
     "topics": "Society & Culture, Health & Fitness",
@@ -113,6 +115,7 @@
   {
     "size": "lg",
     "kind": "channel",
+    "category": "philosophy",
     "title": "Academy of Ideas",
     "years": "2012",
     "topics": "Philosophy, Psychology",
@@ -152,6 +155,7 @@
   {
     "size": "lg",
     "kind": "channel",
+    "category": "philosophy",
     "title": "Eternalised",
     "years": "2020",
     "topics": "Philosophy, Psychology",
@@ -185,6 +189,7 @@
   {
     "size": "lg",
     "kind": "channel",
+    "category": "geopolitics",
     "title": "CaspianReport",
     "years": "2010",
     "topics": "Politics, News",
@@ -206,6 +211,7 @@
   {
     "size": "sm",
     "kind": "podcast",
+    "category": "science",
     "title": "Huberman Lab",
     "years": "2020",
     "topics": "Health & Fitness, Science",
@@ -239,6 +245,7 @@
   {
     "size": "sm",
     "kind": "podcast",
+    "category": "variety",
     "title": "Triggernometry",
     "years": "2018",
     "topics": "Politics, News, Society & Culture",
@@ -284,6 +291,7 @@
   {
     "size": "sm",
     "kind": "podcast",
+    "category": "variety",
     "title": "Heretics",
     "years": "2023",
     "topics": "News, Society & Culture",
@@ -317,6 +325,7 @@
   {
     "size": "sm",
     "kind": "channel",
+    "category": "science",
     "title": "Qoves",
     "years": "2019",
     "topics": "History, Society & Culture",
@@ -339,6 +348,7 @@
   {
     "size": "sm",
     "kind": "podcast",
+    "category": "variety",
     "title": "The Jordan B Peterson Podcast",
     "years": "2016",
     "topics": "Society & Culture, Education, Psychology",
@@ -372,6 +382,7 @@
   {
     "size": "sm",
     "kind": "podcast",
+    "category": "variety",
     "title": "John Anderson: Conversations",
     "years": "2018",
     "topics": "Society & Culture, Politics",
@@ -405,6 +416,7 @@
   {
     "size": "sm",
     "kind": "podcast",
+    "category": "variety",
     "title": "Straight Talk with Mark Bouris",
     "years": "2015",
     "topics": "Business, Society & Culture",
@@ -438,6 +450,7 @@
   {
     "size": "sm",
     "kind": "channel",
+    "category": "science",
     "title": "After Skool",
     "years": "2016",
     "topics": "Philosophy, Psychology, Education",
@@ -465,6 +478,7 @@
   {
     "size": "sm",
     "kind": "podcast",
+    "category": "variety",
     "title": "Lex Fridman",
     "years": "2014",
     "topics": "Technology, Science",
@@ -498,6 +512,7 @@
   {
     "size": "sm",
     "kind": "podcast",
+    "category": "travel",
     "title": "Nomad Capitalist",
     "years": "2013",
     "topics": "Places & Travel, Society & Culture",
@@ -531,6 +546,7 @@
   {
     "size": "sm",
     "kind": "podcast",
+    "category": "science",
     "title": "Dark Horse Podcast",
     "years": "2019",
     "topics": "Science, Society & Culture",
@@ -609,6 +625,7 @@
   {
     "size": "sm",
     "kind": "podcast",
+    "category": "philosophy",
     "title": "Conversations with Peter Boghossian",
     "years": "2012",
     "topics": "Society & Culture, News",
@@ -642,6 +659,7 @@
   {
     "size": "sm",
     "kind": "channel",
+    "category": "variety",
     "title": "DW Documentary",
     "years": "2014",
     "topics": "Documentary, Society & Culture",
@@ -663,6 +681,7 @@
   {
     "size": "sm",
     "kind": "podcast",
+    "category": "variety",
     "title": "ReasonTV",
     "years": "2007",
     "topics": "Politics, Society & Culture",
@@ -690,6 +709,7 @@
   {
     "size": "sm",
     "kind": "podcast",
+    "category": "variety",
     "title": "The Rubin Report",
     "years": "2013",
     "topics": "News Commentary, News",
@@ -723,6 +743,7 @@
   {
     "size": "sm",
     "kind": "podcast",
+    "category": "variety",
     "title": "Uncommon Knowledge",
     "years": "2008",
     "topics": "Politics, History, Society & Culture",
@@ -762,6 +783,7 @@
   {
     "size": "sm",
     "kind": "podcast",
+    "category": "health",
     "title": "Jocko Podcast",
     "years": "2015",
     "topics": "Self-Improvement, Health & Fitness, Society & Culture",
@@ -795,6 +817,7 @@
   {
     "size": "sm",
     "kind": "podcast",
+    "category": "geopolitics",
     "title": "Russell Brand",
     "years": "2017",
     "topics": "News Commentary, News, Politics",
@@ -834,6 +857,7 @@
   {
     "size": "sm",
     "kind": "podcast",
+    "category": "geopolitics",
     "title": "Hold These Truths with Dan Crenshaw",
     "years": "2019",
     "topics": "Politics, Society & Culture, News",
@@ -861,6 +885,7 @@
   {
     "size": "sm",
     "kind": "channel",
+    "category": "science",
     "title": "Big Think",
     "years": "2007",
     "topics": "Science, Philosophy, Society & Culture",
@@ -876,6 +901,7 @@
   {
     "size": "sm",
     "kind": "podcast",
+    "category": "variety",
     "title": "BeerBiceps",
     "years": "2015",
     "topics": "Health & Fitness, Business, Self-Improvement",
@@ -891,6 +917,7 @@
   {
     "size": "sm",
     "kind": "podcast",
+    "category": "variety",
     "title": "The Jolly Heretic",
     "years": "2018",
     "topics": "Psychology, Science, Society & Culture",
@@ -922,6 +949,7 @@
   {
     "size": "sm",
     "kind": "channel",
+    "category": "health",
     "title": "HealthyGamerGG",
     "years": "2019",
     "topics": "Health & Fitness, Psychology, Self-Improvement",
@@ -937,6 +965,7 @@
   {
     "size": "sm",
     "kind": "podcast",
+    "category": "variety",
     "title": "Conversations with Coleman",
     "years": "2019",
     "topics": "Society & Culture, Politics, Philosophy",
@@ -952,6 +981,7 @@
   {
     "size": "sm",
     "kind": "channel",
+    "category": "geopolitics",
     "title": "Zeihan on Geopolitics",
     "years": "2020",
     "topics": "Politics, News, Society & Culture",
@@ -982,6 +1012,7 @@
   {
     "size": "sm",
     "kind": "channel",
+    "category": "variety",
     "title": "Centre for Independent Studies",
     "years": "2009",
     "topics": "Politics, Business, Society & Culture",
@@ -1059,6 +1090,7 @@
   {
     "size": "sm",
     "kind": "podcast",
+    "category": "mechanics",
     "title": "Auto Uncovered",
     "years": "2026",
     "topics": "Automotive, Technology",

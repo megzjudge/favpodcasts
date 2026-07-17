@@ -99,14 +99,6 @@ h1 {
     font-size: clamp(0.9rem, 1.6vw, 1rem);
     color: var(--muted);
     text-shadow: 1px 1px 3px var(--shadow);
-    margin: 0 0 10px;
-}
-
-.category-key {
-    font-size: clamp(0.85rem, 1.5vw, 0.95rem);
-    color: var(--muted);
-    text-shadow: 1px 1px 3px var(--shadow);
-    letter-spacing: 0.3px;
     margin: 0 0 28px;
 }
 
@@ -224,10 +216,6 @@ h1 {
     top: -4px;
     right: -10px;
     transform: rotate(180deg);
-}
-
-.pod.is-flipped .pod-badge {
-    display: none;
 }
 
 .pod-category-badge {
