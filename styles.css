@@ -133,8 +133,6 @@ h1 {
     cursor: pointer;
     border-radius: 16px;
     outline: none;
-    content-visibility: auto;
-    contain-intrinsic-size: 190px 190px;
 }
 
 .pod:focus-visible .pod-inner {
@@ -218,7 +216,7 @@ h1 {
 }
 
 .pod-badge-channel {
-    top: -4px;
+    top: 2px;
     right: -10px;
 }
 
@@ -349,7 +347,7 @@ h1 {
     }
 
     .pod-badge-channel {
-        top: -3px;
+        top: 2px;
         right: -8px;
     }
 

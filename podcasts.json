@@ -1055,5 +1055,20 @@
         "size": "sm"
       }
     ]
+  },
+  {
+    "size": "sm",
+    "kind": "podcast",
+    "title": "Auto Uncovered",
+    "years": "2026",
+    "topics": "Automotive, Technology",
+    "links": [
+      {
+        "label": "YouTube",
+        "href": "https://www.youtube.com/@AutoUncoveredPodcast",
+        "icon": "youtube",
+        "size": "sm"
+      }
+    ]
   }
 ]
