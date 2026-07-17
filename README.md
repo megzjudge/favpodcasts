@@ -1,6 +1,8 @@
 # Favourite Podcasts
 
-A static site listing favourite podcasts and YouTube channels. Each entry is a flip card: the front shows cover art, a kind badge (🎤 podcast / 📹 channel), a category badge, and an optional country flag; clicking (or pressing Enter/Space) flips it to show topics, episode count, and links out to YouTube, Spotify, Substack, Grokipedia, Podchaser, or a website.
+A static site listing favourite podcasts and YouTube channels.
+
+Each entry is a flip card: the front shows cover art, a kind badge (🎤 podcast / 📹 channel), a category badge, and an optional country flag; clicking (or pressing Enter/Space) flips it to show topics, episode count, and links out to YouTube, Spotify, Substack, Grokipedia, Podchaser, or a website.
 
 ## Features
 
@@ -31,7 +33,9 @@ root/
 
 Hosted on [Cloudflare Pages](https://pages.cloudflare.com/). The `functions/` folder runs as edge functions alongside the static site — small server-side scripts that fetch cover art and episode counts from Spotify, Podchaser, and YouTube on the site's behalf, so the API keys never have to sit in the browser-facing code.
 
-Each of those lookups is saved for 30 days so the site doesn't have to ask Spotify/Podchaser/YouTube again every time someone visits. There's no clock or scheduled job doing this — it happens naturally each time a visitor loads the site: when a request for, say, a podcast's cover art comes in, Cloudflare checks whether it already has a saved copy from the last 30 days. If it does, it hands that back immediately. If the saved copy doesn't exist yet, or it's older than 30 days, only *then* does the function actually call out to Spotify/Podchaser/YouTube, and it saves the fresh result for the next 30 days. So "refreshing" only ever happens as a side effect of someone visiting the site after the 30 days are up — if nobody visits, nothing goes and fetches new data in the background.
+Each of those lookups is saved for 30 days so the site doesn't have to ping the Spotify/Podchaser/YouTube API again every time someone visits.
+
+There's no clock or scheduled job doing this — it happens naturally each time a visitor loads the site: when a request for, say, a podcast's cover art comes in, Cloudflare checks whether it already has a saved copy from the last 30 days. If it does, it shows that image to the user immediately. If the saved copy doesn't exist yet, or it's older than 30 days, *then* the function calls to Spotify/Podchaser/YouTube via API and saves the fresh result for the next 30 days. So "refreshing" only ever happens as a side effect of someone visiting the site after the 30 days are up — if nobody visits, nothing goes and fetches new data in the background.
 
 Set these as environment variable secrets in the Cloudflare Pages dashboard:
 
