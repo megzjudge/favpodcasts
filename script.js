@@ -357,11 +357,7 @@ const PODCASTS = [
   }
 ];
 
-const GRIDS = {
-  lg: document.getElementById("grid-lg"),
-  md: document.getElementById("grid-md"),
-  sm: document.getElementById("grid-sm")
-};
+const GRID = document.getElementById("grid");
 
 function youtubeHandle(href) {
   try {
@@ -446,8 +442,8 @@ function fetchFirstYoutubeThumb(links) {
 }
 
 function hideThumbWrap(img) {
-  const wrap = img.closest(".podthumb");
-  if (wrap) wrap.hidden = true;
+  const front = img.closest(".pod-front");
+  if (front) front.classList.add("no-thumb");
 }
 
 function hydrateThumb(card, cfg) {
@@ -516,15 +512,23 @@ function cardHtml(cfg) {
     : "";
 
   return `
-    ${badge ? `<div class="podbadge" aria-hidden="true">${badge}</div>` : ""}
-    <div class="podthumb"><img data-thumb alt="${cfg.title} cover" width="140" height="140" loading="lazy" decoding="async"></div>
-    <h2>${cfg.title}</h2>
-    <div class="meta">
-      ${cfg.topics ? `<p><strong>Topics:</strong> ${cfg.topics}</p>` : ""}
-      ${episodesHtml}
-      ${cfg.years ? `<p><strong>Created:</strong> ${cfg.years}</p>` : ""}
+    <div class="pod-inner">
+      <div class="pod-face pod-front">
+        ${badge ? `<div class="pod-badge" aria-hidden="true">${badge}</div>` : ""}
+        <img data-thumb alt="" width="190" height="190" loading="lazy" decoding="async">
+        <div class="pod-front-title">${cfg.title}</div>
+        <span class="pod-flip-hint" aria-hidden="true">&#8635;</span>
+      </div>
+      <div class="pod-face pod-back">
+        <h2>${cfg.title}</h2>
+        <div class="meta">
+          ${cfg.topics ? `<p><strong>Topics:</strong> ${cfg.topics}</p>` : ""}
+          ${episodesHtml}
+          ${cfg.years ? `<p><strong>Created:</strong> ${cfg.years}</p>` : ""}
+        </div>
+        <div class="links">${cfg.links.map(linkPill).join("")}</div>
+      </div>
     </div>
-    <div class="links">${cfg.links.map(linkPill).join("")}</div>
   `;
 }
 
@@ -587,13 +591,37 @@ const cardObserver = new IntersectionObserver(function (entries) {
   }
 }, { rootMargin: "300px" });
 
+function toggleFlip(card) {
+  const flipped = card.classList.toggle("is-flipped");
+  card.setAttribute("aria-pressed", flipped ? "true" : "false");
+}
+
+GRID.addEventListener("click", function (e) {
+  if (e.target.closest("a")) return;
+  const card = e.target.closest(".pod");
+  if (card) toggleFlip(card);
+});
+
+GRID.addEventListener("keydown", function (e) {
+  if (e.key !== "Enter" && e.key !== " ") return;
+  if (e.target.closest("a")) return;
+  const card = e.target.closest(".pod");
+  if (!card) return;
+  e.preventDefault();
+  toggleFlip(card);
+});
+
 for (let i = 0; i < PODCASTS.length; i++) {
   const cfg = PODCASTS[i];
   const card = document.createElement("article");
-  card.className = `pod size-${cfg.size}`;
+  card.className = "pod";
+  card.tabIndex = 0;
+  card.setAttribute("role", "button");
+  card.setAttribute("aria-pressed", "false");
+  card.setAttribute("aria-label", `${cfg.title}, show details`);
   card.dataset.podIndex = String(i);
   card.innerHTML = cardHtml(cfg);
-  GRIDS[cfg.size].appendChild(card);
+  GRID.appendChild(card);
 
   if (hasPodchaser(cfg.links)) {
     card.dataset.title = cfg.title;
