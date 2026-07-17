@@ -32,7 +32,7 @@ export async function onRequestGet({ request, waitUntil }) {
   const payload = { url: inputUrl, image };
 
   const res = json(payload, 200, {
-    "cache-control": "public, max-age=86400"
+    "cache-control": "public, max-age=2592000" // 30d
   });
 
   if (waitUntil) waitUntil(cache.put(cacheKey, res.clone()));

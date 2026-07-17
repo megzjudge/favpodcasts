@@ -61,7 +61,7 @@ export async function onRequestGet({ request, env, waitUntil }) {
 
   // 4) Cache the response (TTL via Cache-Control)
   const res = json(payload, 200, {
-    "cache-control": "public, max-age=86400" // 24h
+    "cache-control": "public, max-age=2592000" // 30d
   });
 
   // Cache asynchronously so we return ASAP
