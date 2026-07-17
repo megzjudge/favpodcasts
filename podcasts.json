@@ -906,6 +906,7 @@
   {
     "size": "sm",
     "kind": "channel",
+    "category": "health",
     "title": "Dr John Campbell",
     "years": "2007",
     "topics": "Health & Fitness, Science, News",
@@ -1011,6 +1012,7 @@
   {
     "size": "sm",
     "kind": "channel",
+    "category": "tech",
     "title": "Louis Rossmann",
     "years": "2012",
     "topics": "Technology, Business, News Commentary",
@@ -1026,6 +1028,7 @@
   {
     "size": "sm",
     "kind": "channel",
+    "category": "tech",
     "title": "Gamers Nexus",
     "years": "2009",
     "topics": "Technology, News",
@@ -1033,6 +1036,21 @@
       {
         "label": "YouTube",
         "href": "https://www.youtube.com/@GamersNexus",
+        "icon": "youtube",
+        "size": "sm"
+      }
+    ]
+  },
+  {
+    "size": "sm",
+    "kind": "podcast",
+    "category": "science",
+    "title": "From First Principles",
+    "topics": "Science, Technology",
+    "links": [
+      {
+        "label": "YouTube",
+        "href": "https://www.youtube.com/@FromFirstPrinciplesPod",
         "icon": "youtube",
         "size": "sm"
       }

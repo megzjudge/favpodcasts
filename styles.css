@@ -99,6 +99,14 @@ h1 {
     font-size: clamp(0.9rem, 1.6vw, 1rem);
     color: var(--muted);
     text-shadow: 1px 1px 3px var(--shadow);
+    margin: 0 0 10px;
+}
+
+.category-key {
+    font-size: clamp(0.85rem, 1.5vw, 0.95rem);
+    color: var(--muted);
+    text-shadow: 1px 1px 3px var(--shadow);
+    letter-spacing: 0.3px;
     margin: 0 0 28px;
 }
 
@@ -202,8 +210,6 @@ h1 {
 
 .pod-badge {
     position: absolute;
-    top: -10px;
-    right: -10px;
     font-size: clamp(1.8rem, 6vw, 2.4rem);
     line-height: 1;
     filter: drop-shadow(1px 2px 3px rgba(0, 0, 0, 0.65));
@@ -211,7 +217,32 @@ h1 {
     z-index: 2;
 }
 
+.pod-badge-channel {
+    top: -4px;
+    right: -10px;
+}
+
+.pod-badge-podcast {
+    bottom: -10px;
+    left: -10px;
+}
+
 .pod.is-flipped .pod-badge {
+    display: none;
+}
+
+.pod-category-badge {
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    font-size: clamp(1.8rem, 6vw, 2.4rem);
+    line-height: 1;
+    filter: drop-shadow(1px 2px 3px rgba(0, 0, 0, 0.65));
+    pointer-events: none;
+    z-index: 2;
+}
+
+.pod.is-flipped .pod-category-badge {
     display: none;
 }
 
@@ -313,8 +344,22 @@ h1 {
     }
 
     .pod-badge {
-        top: -8px;
+        font-size: clamp(1.4rem, 7vw, 1.9rem);
+    }
+
+    .pod-badge-channel {
+        top: -3px;
         right: -8px;
+    }
+
+    .pod-badge-podcast {
+        bottom: -8px;
+        left: -8px;
+    }
+
+    .pod-category-badge {
+        top: -8px;
+        left: -8px;
         font-size: clamp(1.4rem, 7vw, 1.9rem);
     }
 
