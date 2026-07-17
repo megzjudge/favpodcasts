@@ -98,14 +98,6 @@ h1 {
     margin: 0 auto;
 }
 
-.grid-hint {
-    font-size: clamp(0.9rem, 1.6vw, 1rem);
-    color: var(--muted);
-    text-shadow: 1px 1px 3px var(--shadow);
-    padding-top: 10px;
-    margin: 0 0 28px;
-}
-
 .footer::before,
 .footer::after {
     content: "";
