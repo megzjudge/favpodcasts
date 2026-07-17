@@ -892,12 +892,30 @@
     "category": "science",
     "title": "Big Think",
     "years": "2007",
-    "topics": "Science, Philosophy, Society & Culture",
+    "topics": "Science, Health",
     "links": [
       {
         "label": "YouTube",
         "href": "https://www.youtube.com/@bigthink",
         "icon": "youtube",
+        "size": "sm"
+      },
+      {
+        "label": "Spotify",
+        "href": "https://open.spotify.com/show/7KRYoRD1NdF2aoQcBMyPlb?si=5c68e993e7024a68",
+        "icon": "spotify",
+        "size": "sm"
+      },
+      {
+        "label": "Grokipedia",
+        "href": "https://grokipedia.com/page/Big_Think",
+        "icon": "grokipedia",
+        "size": "sm"
+      },
+      {
+        "label": "Podchaser",
+        "href": "https://www.podchaser.com/podcasts/think-again-a-big-think-podcas-61602",
+        "icon": "podchaser",
         "size": "sm"
       }
     ]
@@ -908,12 +926,18 @@
     "category": "variety",
     "title": "BeerBiceps",
     "years": "2015",
-    "topics": "Health & Fitness, Business, Self-Improvement",
+    "topics": "Philosophy, Self-Improvement",
     "links": [
       {
         "label": "YouTube",
         "href": "https://www.youtube.com/@beerbiceps",
         "icon": "youtube",
+        "size": "sm"
+      },
+      {
+        "label": "Spotify",
+        "href": "https://open.spotify.com/show/6ZcvVBPQ2ToLXEWVbaw59P?si=9181bae72d7544aa",
+        "icon": "spotify",
         "size": "sm"
       }
     ]
@@ -924,12 +948,30 @@
     "category": "variety",
     "title": "The Jolly Heretic",
     "years": "2018",
-    "topics": "Psychology, Science, Society & Culture",
+    "topics": "Science, Society & Culture",
     "links": [
       {
         "label": "YouTube",
         "href": "https://www.youtube.com/@TheJollyHeretic",
         "icon": "youtube",
+        "size": "sm"
+      },
+      {
+        "label": "Spotify",
+        "href": "https://open.spotify.com/show/2dldVnt47gYfvfaWwA7w9o?si=c0d99e53a4c74bc7",
+        "icon": "spotify",
+        "size": "sm"
+      },
+      {
+        "label": "Grokipedia",
+        "href": "https://grokipedia.com/page/Edward_Dutton",
+        "icon": "grokipedia",
+        "size": "sm"
+      },
+      {
+        "label": "Podchaser",
+        "href": "https://www.podchaser.com/podcasts/the-jolly-heretic-with-prof-ed-5942617",
+        "icon": "podchaser",
         "size": "sm"
       }
     ]
@@ -940,12 +982,30 @@
     "category": "health",
     "title": "Dr John Campbell",
     "years": "2007",
-    "topics": "Health & Fitness, Science, News",
+    "topics": "Health, Science, News",
     "links": [
       {
         "label": "YouTube",
         "href": "https://www.youtube.com/@Campbellteaching",
         "icon": "youtube",
+        "size": "sm"
+      },
+      {
+        "label": "Spotify",
+        "href": "https://open.spotify.com/show/3V4jd0GmmeTnjNE3KPJGmS?si=50fad39b934c4f27",
+        "icon": "spotify",
+        "size": "sm"
+      },
+      {
+        "label": "Grokipedia",
+        "href": "https://grokipedia.com/page/John_Campbell",
+        "icon": "grokipedia",
+        "size": "sm"
+      },
+      {
+        "label": "Podchaser",
+        "href": "https://www.podchaser.com/podcasts/dr-john-campbell-6493013",
+        "icon": "podchaser",
         "size": "sm"
       }
     ]
@@ -956,12 +1016,30 @@
     "category": "health",
     "title": "HealthyGamerGG",
     "years": "2019",
-    "topics": "Health & Fitness, Psychology, Self-Improvement",
+    "topics": "Health, Psychology",
     "links": [
       {
         "label": "YouTube",
         "href": "https://www.youtube.com/@HealthyGamerGG",
         "icon": "youtube",
+        "size": "sm"
+      },
+      {
+        "label": "Spotify",
+        "href": "https://open.spotify.com/show/6VaJwyS2KXxiXqR77jqzmP?si=83e6d398de5147f8",
+        "icon": "spotify",
+        "size": "sm"
+      },
+      {
+        "label": "Grokipedia",
+        "href": "https://grokipedia.com/page/Alok_Kanojia",
+        "icon": "grokipedia",
+        "size": "sm"
+      },
+      {
+        "label": "Podchaser",
+        "href": "https://www.podchaser.com/podcasts/healthygamergg-986313",
+        "icon": "podchaser",
         "size": "sm"
       }
     ]
@@ -972,12 +1050,30 @@
     "category": "variety",
     "title": "Conversations with Coleman",
     "years": "2019",
-    "topics": "Society & Culture, Politics, Philosophy",
+    "topics": "Society & Culture, Politics",
     "links": [
       {
         "label": "YouTube",
         "href": "https://www.youtube.com/@ColemanHughesOfficial",
         "icon": "youtube",
+        "size": "sm"
+      },
+      {
+        "label": "Spotify",
+        "href": "https://open.spotify.com/show/0Cj2lIpGxkrw1RFVIPTa6a?si=6595037c27564524",
+        "icon": "spotify",
+        "size": "sm"
+      },
+      {
+        "label": "Grokipedia",
+        "href": "https://grokipedia.com/page/Coleman_Hughes",
+        "icon": "grokipedia",
+        "size": "sm"
+      },
+      {
+        "label": "Podchaser",
+        "href": "https://www.podchaser.com/podcasts/conversations-with-coleman-972502",
+        "icon": "podchaser",
         "size": "sm"
       }
     ]
@@ -988,12 +1084,30 @@
     "category": "geopolitics",
     "title": "Zeihan on Geopolitics",
     "years": "2020",
-    "topics": "Politics, News, Society & Culture",
+    "topics": "Politics, News",
     "links": [
       {
         "label": "YouTube",
         "href": "https://www.youtube.com/@ZeihanonGeopolitics",
         "icon": "youtube",
+        "size": "sm"
+      },
+      {
+        "label": "Spotify",
+        "href": "https://open.spotify.com/show/5MNYxc5dlrwwNbjQuDoyEM?si=1946f0d0df3d420f",
+        "icon": "spotify",
+        "size": "sm"
+      },
+      {
+        "label": "Grokipedia",
+        "href": "https://grokipedia.com/page/Peter_Zeihan",
+        "icon": "grokipedia",
+        "size": "sm"
+      },
+      {
+        "label": "Podchaser",
+        "href": "https://www.podchaser.com/podcasts/the-peter-zeihan-podcast-serie-5081861",
+        "icon": "podchaser",
         "size": "sm"
       }
     ]
@@ -1004,12 +1118,24 @@
     "category": "health",
     "title": "ADHD Chatter Podcast",
     "years": "2023",
-    "topics": "Health & Fitness, Psychology, Society & Culture",
+    "topics": "Health, Psychology",
     "links": [
       {
         "label": "YouTube",
         "href": "https://www.youtube.com/@ADHD_Chatter_Podcast",
         "icon": "youtube",
+        "size": "sm"
+      },
+      {
+        "label": "Spotify",
+        "href": "https://open.spotify.com/show/371UdLohffgSlWAEuQ55Hi?si=bf5d2bdacd2a4f63",
+        "icon": "spotify",
+        "size": "sm"
+      },
+      {
+        "label": "Podchaser",
+        "href": "https://www.podchaser.com/podcasts/adhd-chatter-5229600",
+        "icon": "podchaser",
         "size": "sm"
       }
     ]
@@ -1027,6 +1153,24 @@
         "href": "https://www.youtube.com/@CISAus",
         "icon": "youtube",
         "size": "sm"
+      },
+      {
+        "label": "Spotify",
+        "href": "https://open.spotify.com/show/3fFQPpcQrDXrtrE7Zk4fgs?si=72270d4e157b4254",
+        "icon": "spotify",
+        "size": "sm"
+      },
+      {
+        "label": "Grokipedia",
+        "href": "https://grokipedia.com/page/Centre_for_Independent_Studies",
+        "icon": "grokipedia",
+        "size": "sm"
+      },
+      {
+        "label": "Podchaser",
+        "href": "https://www.podchaser.com/podcasts/centre-for-independent-studies-671718",
+        "icon": "podchaser",
+        "size": "sm"
       }
     ],
     "flag": "au"
@@ -1037,12 +1181,30 @@
     "category": "health",
     "title": "Based Camp with Simone & Malcolm Collins",
     "years": "2023",
-    "topics": "Society & Culture, Philosophy, Science",
+    "topics": "Society & Culture, Science",
     "links": [
       {
         "label": "YouTube",
         "href": "https://www.youtube.com/@SimoneandMalcolm",
         "icon": "youtube",
+        "size": "sm"
+      },
+      {
+        "label": "Spotify",
+        "href": "https://open.spotify.com/show/6zvG6MZv52vtujOUneLnl1?si=d6ab1123b67e42cf",
+        "icon": "spotify",
+        "size": "sm"
+      },
+      {
+        "label": "Podchaser",
+        "href": "https://www.podchaser.com/podcasts/based-camp-simone-malcolm-coll-5334542",
+        "icon": "podchaser",
+        "size": "sm"
+      },
+      {
+        "label": "Podchaser",
+        "href": "https://www.podchaser.com/podcasts/based-camp-simone-malcolm-coll-5685804",
+        "icon": "podchaser",
         "size": "sm"
       }
     ]
@@ -1053,12 +1215,30 @@
     "category": "tech",
     "title": "Louis Rossmann",
     "years": "2012",
-    "topics": "Technology, Business, News Commentary",
+    "topics": "Technology, Business",
     "links": [
       {
         "label": "YouTube",
         "href": "https://www.youtube.com/@rossmanngroup",
         "icon": "youtube",
+        "size": "sm"
+      },
+      {
+        "label": "Spotify",
+        "href": "https://open.spotify.com/show/3PAycE0aGi6IeKfJGvucEw?si=903a6921b73b435d",
+        "icon": "spotify",
+        "size": "sm"
+      },
+      {
+        "label": "Grokipedia",
+        "href": "https://grokipedia.com/page/Louis_Rossmann",
+        "icon": "grokipedia",
+        "size": "sm"
+      },
+      {
+        "label": "Podchaser",
+        "href": "https://www.podchaser.com/podcasts/core-philosophies-and-rants-lo-6093715",
+        "icon": "podchaser",
         "size": "sm"
       }
     ]
@@ -1076,6 +1256,12 @@
         "href": "https://www.youtube.com/@GamersNexus",
         "icon": "youtube",
         "size": "sm"
+      },
+      {
+        "label": "Grokipedia",
+        "href": "https://grokipedia.com/page/gamers-nexus",
+        "icon": "grokipedia",
+        "size": "sm"
       }
     ]
   },
@@ -1090,6 +1276,18 @@
         "label": "YouTube",
         "href": "https://www.youtube.com/@FromFirstPrinciplesPod",
         "icon": "youtube",
+        "size": "sm"
+      },
+      {
+        "label": "Spotify",
+        "href": "https://open.spotify.com/show/57SMaGqfU64urFPeBabO7A?si=6d08ff42c7ec4832",
+        "icon": "spotify",
+        "size": "sm"
+      },
+      {
+        "label": "Podchaser",
+        "href": "https://www.podchaser.com/podcasts/from-first-principles-6172665",
+        "icon": "podchaser",
         "size": "sm"
       }
     ]
@@ -1106,6 +1304,12 @@
         "label": "YouTube",
         "href": "https://www.youtube.com/@AutoUncoveredPodcast",
         "icon": "youtube",
+        "size": "sm"
+      },
+      {
+        "label": "Spotify",
+        "href": "https://open.spotify.com/show/01mjpzR0aiU40RHz0XfG5I?si=0754687a51b245df",
+        "icon": "spotify",
         "size": "sm"
       }
     ],
