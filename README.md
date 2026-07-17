@@ -2,8 +2,6 @@
 
 A static site listing favourite podcasts and YouTube channels. Each entry is a flip card: the front shows cover art, a kind badge (🎤 podcast / 📹 channel), a category badge, and an optional country flag; clicking (or pressing Enter/Space) flips it to show topics, episode count, and links out to YouTube, Spotify, Substack, Grokipedia, Podchaser, or a website.
 
-Live at [podcasts.jdge.cc](https://podcasts.jdge.cc/).
-
 ## Features
 
 - Podcast/channel cards with links to YouTube, Spotify, Substack, Grokipedia, Podchaser, and generic websites
