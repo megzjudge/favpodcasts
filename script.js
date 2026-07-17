@@ -15,7 +15,7 @@ const ICONS = {
 
 const BADGE = { podcast: "🎤", channel: "📹" };
 const BADGE_LABEL = { podcast: "Podcast", channel: "Channel" };
-const CATEGORY_BADGE = { tech: "⚡", health: "⚕️", science: "🧬", mechanics: "⚒️", variety: "🪩", travel: "🍃", geopolitics: "🗺️", philosophy: "🧩", business: "🏷️" };
+const CATEGORY_BADGE = { tech: "⚡", health: "⚕️", science: "🧬", mechanics: "⚒️", variety: "🪩", travel: "🍃", geopolitics: "❤️‍🩹", philosophy: "🧩", business: "🏷️" };
 const CATEGORY_LABEL = { tech: "Tech", health: "Health", science: "Science", mechanics: "Mechanics", variety: "Variety", travel: "Travel", geopolitics: "Geopolitics", philosophy: "Philosophy", business: "Business" };
 const FLAG_BADGE = { au: "🇦🇺" };
 const FLAG_LABEL = { au: "Australia" };
