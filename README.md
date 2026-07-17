@@ -20,7 +20,7 @@ root/
 ├── script.js       # Fetches podcasts.json and renders cards
 ├── podcasts.json   # Podcast/channel data
 ├── fonts/          # Maccoy display font
-├── images/         # Site assets (favicon, head image)
+├── images/         # Site assets (favicon etc)
 ├── robots.txt      # Crawler rules
 └── functions/      # Cloudflare Pages Functions (API proxies)
     ├── spotify.js    # Spotify show cover art + episode total
